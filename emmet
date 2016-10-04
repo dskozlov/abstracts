@@ -1,0 +1,33 @@
+<!-- Всех сокращения для Emmet -->
+http://docs.emmet.io/cheat-sheet/
+
+HTML
+
+<!-- Прикольные команды -->
+!
+p.classname
+.classname
+a.class#id
+img[alt="Dog"][width="200px"]
+h1{Title}
+lorem
+lorem47
+p>a
+ul>li*5
+div>p+div
+.privet.medved|c
+p>img+a|e
+p>p>p|s
+
+<!-- Сначала выделить написанный текст,
+	потом нажать ctrl + W
+	и написать код Emmet -->
+
+CSS
+
+работает fuzzy search
+
+<!-- Прикольные команды -->
+p100
+w80p
+m10-20-30-40

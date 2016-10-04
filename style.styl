@@ -1,0 +1,68 @@
+// В stylus можно опускать синтаксис как частично, так и полностью
+
+a {
+	width: 10px;
+}
+
+p {
+	padding 20%
+}
+
+*
+	color #a
+	
+// Наследование стилей как в SASS
+
+p
+	color black
+	a
+		text-decoration none
+		&:hover 
+		&:visited
+			text-decoration underline
+			
+p
+	&:before:after
+		content "dd"
+		
+// Переменные
+
+$color = #58BFF7
+
+div
+	background $color
+
+// Функции (есть встроенные функции как в SASS, а также расширенный функционал — в библиотеке nib) @import nib
+zebra(even_color = #eee, odd_color =#ddd, child = "&")
+	{child}:nth-child(odd)
+		background-color even_color
+	{child}:nth-child(even)
+		background-color odd_color
+
+table
+	tr
+		zebra()
+		
+.table
+	tr
+		zebra(#FFB062, #CDA948)		
+		
+#table
+	zebra(#FFB062, #CDA948, "> ") // для всех детей
+
+// можно создавать своеобразные переменные в таком стиле
+
+.centered
+	width 10px
+	height 20px
+	// можно создать функцию из следующего кода 
+	position absolute
+	top 50%
+	left 50%
+	margin-left (@width / 2) * -1
+	margin-top (@height / 2) * -1
+
+// Логика
+$font_size = 1.1
+	if $font_size != 1
+		font-size unit($font_size, em)
