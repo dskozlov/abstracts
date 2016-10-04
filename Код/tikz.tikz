@@ -1,0 +1,425 @@
+% Рисунок должен находиться в окружении,
+\begin{tikzpicture}
+	
+\end{tikzpicture}
+% либо же внутри команды
+\tikz
+% Части картинок можно группировать внутри окружения
+\begin{scope}[shift={(0,0)}, rotate=0, scale=1]
+	
+\end{scope}
+% {tikzpicture} — тот же {scope}
+% также можно использовать только команду
+\scoped[]%{}
+% \usetikzlibrary{scopes}	% позволяет использовать сокращения для {scope}
+{[red]
+	\draw (0mm,10mm) -- (10mm,10mm);
+	\draw (0mm,8mm)  -- (10mm,8mm);
+}
+% Это можно использовать даже внутри \path (но в этом случае цвета не могут быть изменены )
+
+% Рисунок состоит из контуров (paths), которые наносятся слоями.
+% Чем дальше строчка кода, тем выше слой.
+
+% Вне рисунка можно задать стиль,
+\tikzset{style name/.style={gray,thin}}
+% иои в преамбуле рисунка
+[style name/.style={gray,thin}]
+% который можно потом присвоить чему угодно.
+\draw[style name] (0,0)	-- (45:1);	% \path[draw]
+% Также стилю можно задать параметр следующим образом,
+[style name/.style={color=#1!50,thin},
+style name/.default=red]
+% где "red" - значение по умолчанию. Соответственно, вызывать стиль со своим параметром следует так:
+\draw[style name=blue] (0,0) -- (45:1);
+% если нужно 2 параметра, то
+.style 2 args={<style>}
+% если больше, то
+.style n args={<number of args>}{<style>}
+% Тогда параметры задаются так:
+\draw[style name={blue}{2cm}{thick}] (0,0) -- (45:1);
+% также стиль можно дополнить (в конце) с помощью такой конструкции 
+style name/.append style={}
+% для дополнения стиля в начале используется
+style name/.prefix style={}
+
+%% Маленькие картинки задаются так
+\tikzset{
+	seagull/.pic={
+		\draw (-3mm,0) to [bend left] (0,0) to [bend left] (3mm,0);
+	}
+}
+% и вызываются так
+\draw
+	(0,0)
+		pic {seagull}
+	-- (1,0)
+		pic[rotate=30,red,thick] {seagull};
+% см. описание на стр. 252
+%% Макросы
+\def{\smth}{\large smth}	% Задаются без точки с запятой
+
+% Невидимая линия (контур)
+\path (0,0)
+	-- (45:1);
+% Рисование
+\draw (0,0)	% \path[draw]
+	-- (45:1);
+% Заливка
+\fill[green!20!blue] (0,0)	% \path[fill]
+	circle (1);
+% Затенение (градиент)
+\shade[top color=yellow, bollom color=black] (0,0)	% \path[shade]
+	rectangle (1,2);
+\shade[left color=yellow, right color=black] (0,0)
+	rectangle (1,2);
+\shade[inner color=yellow, outer color=black] (0,0)
+	rectangle (1,2);
+\shade[ball color=green] (0,0) circle (1);
+% Обрезать изображение (в пределах окружения {scope}) в выбранной области
+\clip (0,0)
+	rectangle +(1,2);
+% Различные комбинации
+\filldraw[fill=green!50!blue, draw=green!30!black] (0,0) circle (1);
+\shadedraw[draw=green!30!black] (0,0) circle (1);
+\draw[clip]
+
+% Системы координат
+(canvas cs:x=0cm, y=2mm)	% (0cm,2mm) - прямоугольная 2D
+(canvas polar cs:radius=2cm, angle=30)	% (30:2cm) - полярная 2D; вместо углов могут быть использованы слова такие как: up, down, left, right, north, south, west, east, north east, north west, south east, south west
+(canvas polar cs:x radius=2cm, y radius=1cm, angle=30)	% (30:2cm and 1cm) - полярная 2D по эллипсу
+(xyz cs:x=1, y=1, z=1)	% (1,1,1) - прямоугольная 3D
+(xyz polar cs:angle=0, radius=1)	% (xy polar cs:angle=0,radius=1) - то же, что и обычная полярная 2D, только подчиняется изменённым координатам [x=1.5cm,y=1cm]
+(barycentric cs:node1=0.5, node2=0.1, node3=1)	% барицентрическая с заданными узлами node1, node2 и node3
+(node cs:name=x)	% (node cs:name=x, anchor=south), (node cs:name=x, angle=15), (x), (x.south), (x.15) - СК, связанная с узлом
+% \usetikzlibrary{calc}
+(tangent cs:node=c,point={(a)},solution=1)	% для вычисления точки касания прямой от точки (a) и узла (с)
+% можно также создать свою СК (см. стр. 138)
+% Поддерживаются трансформации
+([xshift=3pt] 1,1)
+
+
+% Задание координат
+\coordinate (O) at (0,0);
+\draw (0,0)
+	-- (45:1)
+		coordinate (A);
+
+%% Узлы
+\node (name) at (0,0) {Text};	%  \path (0,0) node[below, name=name] {O};
+\node (name1) [left=of name] {Text};
+\node (name2) [right=of name] {Text};	% соединение узлов
+\path
+	(name2) edge[->, bend left] (name1)
+	(name2) edge[->, bend right] (name)
+	(name2) edge[->, to path={-- ++(0,-.7) -| (\tikztotarget)}] (name)	% для создания циклов (см. стр. 70)
+	(name2) edge[->, loop];
+% для использования bend right и bend left нужно в преамбуле прописать стиль
+[bend angle=45,
+pre/.style={<-,shorten <=1pt},
+post/.style={->,shorten >=1pt}]
+
+\draw[->] (name1) to[out=180, in=90] (name2);
+\draw[->] (name1) to[bend right=45] (name2);
+
+\node[above] at (name.north) {Text};	% через точку задаётся один из якорей: west, east, south, north, center, base (для baseline)
+\draw (0,0)
+		node[inner sep=1pt, above=.2cm] {Text}	% below (), left (или anchor=west), right (или anchor=east)
+	-- (45:1);
+
+% Также узлы можно расположить с помощью матриц (синтаксис похож на таблицы в LaTeX)
+\matrix[row sep=1mm, column sep=5mm]{
+	&	\node[black] (n1) {name1}; &	\\
+	&	& \node[red] (n2) {name2};	\\
+	\node[blue] (n3) {name3};	&	&	\\
+};
+% кроме того, есть специальный пакет для создания диаграмм (данный пример работает с предыдущей матрицей)
+
+% Опции для узлов
+shape=circle	% можно не писать "shape="
+	rectangle
+	ellipse
+	% \usetikzlibrary{shapes.misc}
+	rounded rectangle
+minimum size	% minimum height, minimum width; хорошо идёт с inner sep=0pt (чтобы писать текст, и размер не менялся)
+inner sep=1pt	% padding для текста
+text width=1cm	% задаёт ширину {текстового блока} — для переносов
+text height=1.25ex		% высота
+text depth=.25ex		% глубина
+align=center	% выключность текста
+above=.2cm		% или anchor=south
+below	% или anchor=north
+left			% или anchor=west
+right			% или anchor=east
+auto	% автоматически располагает текст
+swap	% в противоположную сторону
+	% \usetikzlibrary{positioning}
+	below=of <node name>
+	base right=of	% справа относительно базовой линии (чтобы узлы не прыгали, лучше прописать text height и text depth — см. стр. 68)
+node distance	% расстояние для взаимного расположения узлов (нужно также чтобы была подключена опция on grid)
+label=above:$x$
+label={[red]60:$\alpha$}	% можно также переопределить стиль: every label/.style={red}
+midway			% если расположить узел посередине контура, то и midway писать не надо: \draw (A) -- node[auto] {$3$} (B);
+near start
+very near end
+pos=.5
+sloped	% текст узла повторяет контур
+execute at begin node=\hskip0pt	% для переноса первых слов в начале абзаца
+cross out
+% \usetikzlibrary{through}
+circle through=(B)	% или любая другая координата
+% \usetikzlibrary{shadows}
+circular drop shadow	% круговая тень
+
+% Деревья
+\node {root}
+	child {node {left}}
+	child {node {right}
+		child {node {child}}
+		child {node {child}}
+	};
+% Опции для деревьев
+% В преамбуле
+edge from parent fork down
+every node/.style={concept}
+root concept	% для корневого элемента
+concept color
+annotation	% создаёт плавающий элемент
+every annotation/.style={}
+edge from parent/.style={red,-o,thick,draw}
+parent anchor=east,
+child anchor=west,
+grow=right	% east
+% \usetikzlibrary{trees}
+grow cyclic
+level1/.style={sibling distance=6em}	% расстояние между соседними узлами
+level distance=5em	% расстояние между уровнями
+siblings angle=60	% угол, под которым расположены соседние узлы по отношению друг к другу
+% Для использования внутри child
+name/.style={..., name/.style={}}
+% \usetikzlibrary{mindmap}
+mindmap
+large mindmap
+huge mindmap
+
+% Графы
+% \usetikzlibrary{graphs}
+\graph {	% \path graph
+	(n3) <-> (n1) -> (n2) ->[to path={|- (\tikztotarget)}] (n3);
+};
+% ещё упрощаем себе жизнь
+\graph[use existing nodes] {
+	n1 -> n3;
+	n2 <->[to path={|- (\tikztotarget)}] {n3, n1} ->[bend right] n2;
+};
+% соединение нескольких дочерних элементов
+\graph {
+  root -> {left, right -> {child, child}}
+};
+% а ещё можно создавать узлы "на лету":
+\graph[grow right sep=.7cm] {
+	/ ->
+	Hi! ->
+	hru[as=How R U?] ->
+	wrud/What R U doin? ->
+	"..."[text depth=.25ex,text height=1.25ex] ->
+	p1/;
+	
+	"..." ->[bend left] Hi!;
+};
+% Опции для графов
+	simple	% при повторном соединении узлов графа выигрывает последнее соединение
+	grow down
+	branch right
+% Опции для узлов графов
+	as=Some text	% текст для узла
+
+
+% \usetikzlibrary{calendar}
+\calendar[]
+% Опции для календаря
+day list domnward
+name=
+dates=2009-40-01 to 2009-40-14
+month text=\%mt\ \%y0
+month yshift=3.5em
+if(weekend)
+	[red]
+if(day of month=1){
+	\node at (0pt, 1.5em) [anchor=base west]
+};	{\small\tikzmonthtext}
+
+
+%%% Математика
+%% Математические операторы
++
+-
+*
+/
+rand	% є[-1,1]
+sqrt()
+sin()
+cos()
+% линейная комбинация координат
+% \usetikzlibrary{calc}
+($ (0,0) + 2*(0,2) $)
+% переменные для чисел (\n<digit>), вектора(например, \p1) и его координат(\x1, \y1)
+\draw
+	let
+		\p1 = ($ (B) - (A) $),
+		\n{radius} = {veclen(\x1,\y1)}
+	in
+		(A) circle (\n{radius})
+		(B) circle (\n{radius});
+($ (A) ! veclen(\x1,\y1) ! (С) $)	% точка на расстоянии veclen(\x1,\y1) от (A) в сторону (C) — см. стр. 65
+($ (A) !.5! (B) $)	% середина между двумя точками (можно брать числа даже больше единицы)
+($ (A) !.5! (B) ! {sin(60)*2} ! 90:(B) $)	% цепь преобразований + математика + поворот на некоторый угол
+
+
+% Прямая от (0,0) до (45:1)
+\draw (0,0)		% В прямоугольной системе координат (СК)
+	-- (45:1);	% В полярной СК. Обязательна точка с запятой; вместо угла можно писать left, right, up, down
+
+% Треугольник
+\draw (0,0)
+	-- ++(1,0)	% Делает эту точку новой опорной
+	-- +(0,1)	% Делает эту точку временной (однократно) опорной
+	-- cycle;	% Завершает контур (path), вернувшись к начальной точке; в данном случае — к (0,0)
+
+% Кривая Безье
+\draw (0,0) .. controls +(45:1) and +(120:1) .. (2,0);	% Контрольные точки удобнее всего задавать именно таким образом — тогда они будут располагаться относительно основных (каждой для своей)
+
+% Можно также рисовать в трёхмерной СК где точки представляются в виде
+(1,1,1)
+
+% Окружность с радиусом 1cm и центром в т.(0,0)
+\draw (0,0)
+	circle [radius=1cm];
+% или
+\draw (0,0)
+	circle (1);
+
+% Эллипс с полуосями 1cm, 0.5cm и центром в т.(0,0)
+\draw (0,0)
+	ellipse [x radius=1cm, y radius=.5cm];
+% или
+	%%%\draw (0,0) circle (1,.5);
+
+% Прямоугольник
+\draw (0,0)
+	rectangle +(1,2); 
+
+% Сетка
+\draw[step=.5cm] (0,0)	% xstep, ystep
+	grid (1,2);
+
+% Дуга
+\draw (.5,0)
+	arc [start angle=0, end angle=45, radius=.5];	% Если надо, пользуемся x radius, y radius
+% или
+\draw (.5,0)
+	arc (0:45:.5);
+	(-90:270:.5 and 1);	% Для случая x radius, y radius
+
+% Парабола
+\draw (0,0)
+	parabola (1,2);
+% Парабола (более гибкий вариант — можно указать экстремум)
+\draw (-1,0)
+	parabola bend (0,1) (1,0);	
+% Синус
+\draw (0,0)
+	sin (1,2);
+% Косинус
+\draw (0,0)
+	cos (1,2);
+
+\foreach \x/\xtext in {1,.5/\frac{1}{2}...,5} {	% Цикл % можно перечислять всё, что угодно (не только цифры)
+	% Тело цикла
+}
+
+%% Пересечения
+(30:1 |- 0,0)	% Пересечение вертикальной линии от точки (30:1) и горизонтальной от точки (0,0)
+(30:1 -| 0,0)	% Пересечение горизонтальной линии от точки (30:1) и вертикальной от точки (0,0)
+% \usetikzlibrary{intersections}
+\draw[name path=circle1] (0,0) circle (2);
+\draw[name path=circle2] (1,0) circle (2);
+\draw[name intersections={of=circle1 and circle2, by={[label=above:$A$]A, [label=below:$B$]B}}]
+	(A) -- (B);	% (A) == (intersection-1), если не использовать by
+
+%% Декорирование линий
+% \usetikzlibrary{decoration}
+decorate, decoration={snake, amplitude=2pt, segment length=6pt, post length=1pt}	% змейка (волнистая линия)
+decorate, decoration={random steps, amplitude=2pt, segment length=5pt}	% случайная ломаная линия
+decorate, decoration={coil, amplitude=2mm, segment length=1.5mm, aspect=0.3}	% спираль
+decorate, decoration={brace, amplitude=5pt, raise=1pt, mirror}	% фигурная скобка
+
+%% Слои
+% \usetikzlibrary{layers}
+on background layer
+\begin{pgfonlayer}{background}
+	...
+\end{pgfonlayer}
+
+%% Подгонка
+% \usetikzlibrary{fit}
+fit=(name)(name1)(name2)
+
+
+%% Опции
+rounded corners=10pt	% Закруглённые края
+even odd rule			% Пересечение цветов при трансформации внутри контура
+use as bounding box		% обозначение области, по которой будет выровнено изображение в тексте
+baseline=(current bounding box.north)	% выравнивание по верхней части изображения
+% Трансформации
+shift={(5pt,5pt)}			%% xshift, yshift %% Сдвиг
+rotate=45					% Повернуть контур
+rotate around={40:(1,1)}	% Повернуть контур на 40 градусов вокруг точки (1,1)
+xslant=1pt					% Наклон по горизонтали
+yslant=1pt					% Наклон по вертикали
+scale=2						%% xscale, yscale %% Масштабировать контур
+x=1pt,y=10pt				% Масштабирование СК
+cm
+opacity=.5	% прозрачность
+font=\itshape\small	% шрифт
+% Можно внутри контуров добавлять трансформации
+\begin{scope}[even odd rule,rounded corners=2pt,x=10pt,y=10pt]
+	\filldraw
+		[fill=yellow!80!black] (0,0) rectangle (1,1)
+		[xshift=5pt,yshift=5pt] (0,0) rectangle (1,1)
+		[rotate=30] (-1,-1) rectangle (2,2);
+\end{scope}
+% Толщина линии
+ultra thin
+very thin
+thin	% По умолчанию
+semithick
+thick
+very thick
+ultra thick
+line width=5pt
+% Декорирование линий
+dashed	% Пунктир
+loosely dashed	% Разреженный
+densely dashed	% Учащённый
+dotted	% В точечку
+loosely dotted
+densely dotted
+dash pattern=<smth>
+% Стрелочки (наконечники для линий)
+->	% В конец
+<-	% В начало
+<->	% В начало и в конец
+% Можно изменить вид стрелочек
+>=Stealth
+baseline={0,0}	% расположение базовой линии
+
+% Опции в преамбуле {tikzpicture}
+execute at begin picture=\it
+execute at end picture=
+every scope/.style={}
+execute at begin scope=
+execute at end scope=
+
+% для \tikzset{}
+every picture/.style={line width=1pt}
