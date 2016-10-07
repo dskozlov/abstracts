@@ -115,7 +115,7 @@ tell application "Finder"
 	-- http://www.adobe.com/devnet/photoshop/scripting.html
 
 
-	set theImagesFoder to ((path to desktop folder) & "images") as string as alias
+	set theImagesFolder to ((path to desktop folder) & "images") as string as alias
 	set theImages to the name of every file of theImagesFoder
 
 	repeat with anImage in theImages -- repeat with i from 1 to the count of theImages
