@@ -149,4 +149,37 @@ string.substr(start, length);	// То же, что и slice, только воз
 // Если сравнивать строки, то сравнение будет вестись по первым символам вне зависимости от количества символов (при этом символы верхнего регистра меньше, чем нижнего)
 
 
-document.getElementsByTagName("a");	// Массив найденных по тегу элементов
+// Выборка элементов DOM-дерева
+document.getElementsByTagName("tag");			// Массив найденных по тегу элементов
+var element = document.getElementById("id");	// Элемент, найденный по идентификатору
+element.getElementsByTagName("tag");			// Массив найденных по тегу элементов внутри выбранного элемента
+// Для выбранных элементов существуют следующие свойства
+element.nodeType;						// тип элемента
+element.innerHTML;						// код внутри тега
+element.childNodes;						// массив дочерних элементов
+element.getAttribute("attr");			// значение атрибута выбранного элемента
+element.setAttribute("attr", "val");	// сменить значение атрибута выбранного элемента
+
+// Создать элемент с текстом
+var newElem = document.createElement("tag");		// объект появляется в отрыве от структуры DOM
+var myText = document.createTextNode("Some text");	// создать текстовую ноду
+element.appendChild(newElem);						// добавить элемент в качестве ребёнка выбранного элемента
+newElemю.appendChild(myText);						// newElemю.innerHTML = "Some text";
+element.insertBefore(newElem, beforeElem)			// вставить как дочерний элемент newElem перед beforeElem
+
+// События (свойства объектов)
+window.onload = function () {};	// действие при загрузке страницы
+element.onclick		// действие при клике на объект
+element.onmouseover	// действие при наведении курсора на объект
+element.onfocus		// действие при фокусировке на объекте (поле для ввода)
+element.onblur		// действие при снятии фокусировки с объекта (поле для ввода)
+// Также можно добавлять события, которые слушаются объектом, с помощью метода
+element.addEventListener('click', someAction, false);	// в IE: element.attachEvent('onclick', someAction);
+// И, впоследствие, убрать
+element.removeEventListener('click', someAction, false);
+
+// Таймеры
+var timeoutHandle = setTimeout(someAction, 5000);	// выполнение действия через 5 секунд
+var intervalHandle = setInterval(someAction, 5000);	// выполнение действия каждые 5 секунд
+clearTimeout(timeoutHandle);		// прервать работу timeoutHandle
+clearInteterval(intervalHandle);	// прервать работу intervalHandle
