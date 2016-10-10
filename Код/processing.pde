@@ -1,6 +1,7 @@
-/*
-	http://fyprocessing.tumblr.com
+// Processing
 
+
+/*
 	Можно посмотреть примеры программ: cmd+shift+O
 
 	Также можно подключить целую кучу библиотек (Sketch > Import Library > Add Library...) и посмотреть их описание на сайте.
@@ -188,7 +189,7 @@ void mousePressed() {
 
 // Цикл
 for (int i = 0; i < 1000; ++i) {
-	
+
 }
 
 
@@ -197,3 +198,10 @@ import java.util.*;
 
 Integer[] nums = {1, 2, 3, 4, 5};
 Collection.shuffle(Arrays.asList(nums));	// Перемешать элементы массива
+
+
+
+// Источники
+/*
+	[ ] http://fyprocessing.tumblr.com
+*/

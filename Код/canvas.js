@@ -1,9 +1,5 @@
-// Примеры проектов на Canvas
-// http://alteredqualia.com/canvasmol/
-// http://raphaeljs.com — не работает
-// http://www.thewildernessdowntown.com
-// https://sketch.io/sketchpad/
-// http://www.pirateslovedaisies.com
+// Canvas
+
 
 // Начало отсчёта в верхнем левом углу, ось абсцисс направлена вправо, а ординат — влево.
 // Для работы нужно расположить тег <canvas width="400" height="300">Ваш браузер не поддерживает Canvas<canvas> в нужном месте
@@ -17,7 +13,7 @@ window.onload = function () {
 	var ctx = canvas.getContext("2d");
 	if (ctx) {
 		// Примитивы
-		
+
 		// Прямоугольник
 		// Линия
 		// Дуга
@@ -39,3 +35,11 @@ window.onload = function () {
 		// Пиксели
 	} else {}
 };
+
+// Примеры проектов
+// http://alteredqualia.com/canvasmol/
+// http://raphaeljs.com — не работает
+// http://www.thewildernessdowntown.com
+// https://sketch.io/sketchpad/
+// http://www.pirateslovedaisies.com
+

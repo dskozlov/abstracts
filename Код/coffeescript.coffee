@@ -1,8 +1,4 @@
-# http://coffeescript.org
-# A Little Book on CoffeeScript
-# CoffeeScript: Accelerated JavaScript Development
-# h ttp://coffeescript-cookbook.github.io
-
+# CpffeeScript
 
 
 `js-code syntax`
@@ -177,3 +173,13 @@ class Male extends Person
 	describe: ->
 		console.log Male.sex
 		super # становится также методом класса Person
+
+
+# Источники
+###
+	[V] https://www.codeschool.com/courses/coffeescript
+	[ ] http://coffeescript.org
+	[ ] A Little Book on CoffeeScript
+	[ ] CoffeeScript: Accelerated JavaScript Development
+	[ ] http://coffeescript-cookbook.github.io
+###

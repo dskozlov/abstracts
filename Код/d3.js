@@ -1,7 +1,10 @@
+// D3
+
+
 // CDN для HTML:
 // <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-/*global d3:false */	// нужно для того, чтобы не ругался JSHint 
+/*global d3:false */	// нужно для того, чтобы не ругался JSHint
 
 // Выбор элемента
 // d3.select('.item').text('select');
@@ -241,8 +244,13 @@ var text =d3.selectAll('g.slice')
 		return 'translate(' + arc.centroid(d) + ')';
 	})
 
-// Про масштабирование —> https://github.com/d3/d3/wiki/Scales
-// Про анимацию —> https://github.com/d3/d3/wiki/Transitions
-// Про оси —> https://github.com/d3/d3/wiki/SVG-Axes
-// Про отступы —> http://bl.ocks.org/mbostock/3019563
-// Куча примеров —> http://bl.ocks.org/mbostock
+
+// Источники
+/*
+	[V] https://www.lynda.com/D3js-tutorials/Data-Visualization-D3js/162449-2.html
+	[ ] https://github.com/d3/d3/wiki/Scales (Про масштабирование)
+	[ ] https://github.com/d3/d3/wiki/Transitions (Про анимацию)
+	[ ] https://github.com/d3/d3/wiki/SVG-Axes (Про оси)
+	[ ] http://bl.ocks.org/mbostock/3019563 (Про отступы)
+	[ ] http://bl.ocks.org/mbostock (Куча примеров)
+*/

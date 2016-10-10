@@ -1,12 +1,8 @@
 -- AppleScript
-(*
-https://developer.apple.com/library/content/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html
-http://macscripter.net
-http://hints.macworld.com
-http://dougscripts.com/itunes/index.php
 
-После того, как скрипт написан, следует нажать кнопку "скомпилировать" и тогда будет видно, не допущены ли ошибки в коде. Если нет, то скрипт можно уже и запустить.
-*)
+
+-- После того, как скрипт написан, следует нажать кнопку "скомпилировать" и тогда будет видно, не допущены ли ошибки в коде. Если нет, то скрипт можно уже и запустить.
+
 
 -- Переменные
 set intVar to 5
@@ -141,3 +137,12 @@ osascript -e "display dialog \"hi\""
 osascript << EOF
 ---- Выполнить скрипт из файла
 osascript filename.scpt
+
+
+-- Источники
+(*
+	[ ] https://developer.apple.com/library/content/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html
+	[ ] http://macscripter.net
+	[ ] http://hints.macworld.com
+	[ ] http://dougscripts.com/itunes/index.php
+*)

@@ -1,15 +1,5 @@
-// Источники
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
-// Douglas Crockford - JavaScript: The Good Parts
-// http://crockford.com/javascript/javascript
-// Apple: Developer Tools for Safari Overview
-// Google: Chrome Developer Tools
-// https://developers.google.com/chrome-developer-tools
-// Firefox: Firebug Wiki
-// getfirebug.com/wiki
-// QuirksMode.org
-// Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming
-// javascriptjabber.com
+// JavaScript
+
 
 // Язык чувствителен к регистру
 // Точку с запятой МОЖНО не ставить, но крайне желательно
@@ -257,3 +247,15 @@ $	// конец строки
 
 // Примеры
 /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/	// правильный e-mail
+
+
+// Источники
+// [V] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
+// [ ] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+// [ ] Douglas Crockford - JavaScript: The Good Parts __ http://crockford.com/javascript/javascript
+// [ ] Apple: Developer Tools for Safari Overview
+// [ ] Google: Chrome Developer Tools __ https://developers.google.com/chrome-developer-tools
+// [ ] Firefox: Firebug Wiki __ getfirebug.com/wiki
+// [ ] QuirksMode.org
+// [ ] Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming
+// [ ] javascriptjabber.com

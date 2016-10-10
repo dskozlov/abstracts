@@ -1,7 +1,4 @@
-# ruby-lang.org
-# ruby-doc.org
-# ruby-doc.org/core
-# https://www.ozon.ru/context/detail/id/5704300/
+# Ruby
 
 # можно ставить сколько угодно пробелов
 
@@ -303,3 +300,12 @@ end
 name
 ## подгрузить файл (например, с методами)
 require "methods.rb" # => true (если файл найден и исполняем)
+
+
+# Источники
+=begin
+	[ ] ruby-lang.org
+	[ ] ruby-doc.org
+	[ ] ruby-doc.org/core
+	[ ] https://www.ozon.ru/context/detail/id/5704300/
+=end

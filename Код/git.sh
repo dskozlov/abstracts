@@ -1,5 +1,5 @@
-# Полезное приложение: https://desktop.github.com
-# Книжка по git: http://habrahabr.ru/company/enterra/blog/241525/
+# Git
+
 
 # Команды
 ## Документация по командам
@@ -117,3 +117,8 @@ fi
 # Мои команды
 ## Время создания коммита
 git show -s --date=iso-strict-local --pretty=format:'%ad' <commit_id>
+
+
+# Источники
+# [] https://desktop.github.com (Полезное приложение)
+# [] http://habrahabr.ru/company/enterra/blog/241525/ (Книжка по git)

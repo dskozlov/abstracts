@@ -1,4 +1,6 @@
-# Bash (Bourne Again Shell) — основной язык терминала
+# bash (Bourne Again Shell) — основной язык терминала
+
+
 # В терминал можно перетащить папку и тогда введётся путь к этой папке.
 # cmd + T — создать новую вкладку в терминале
 
@@ -57,4 +59,8 @@ tail <file.txt> # только нижняя часть файла
 
 # Программы
 ## Midnight Commander (файловый менеджер внутри терминала)
-http://www.vivapage.info/midnight-commander-mac-os-x/
+# http://www.vivapage.info/midnight-commander-mac-os-x/
+
+
+# Источники
+# [ ] https://www.lynda.com/Bash-tutorials/Up-Running-Bash-Scripting/142989-2.html

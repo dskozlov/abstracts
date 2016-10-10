@@ -1,12 +1,15 @@
+% TikZ
+
+
 % Рисунок должен находиться в окружении,
 \begin{tikzpicture}
-	
+
 \end{tikzpicture}
 % либо же внутри команды
 \tikz
 % Части картинок можно группировать внутри окружения
 \begin{scope}[shift={(0,0)}, rotate=0, scale=1]
-	
+
 \end{scope}
 % {tikzpicture} — тот же {scope}
 % также можно использовать только команду
@@ -38,7 +41,7 @@ style name/.default=red]
 .style n args={<number of args>}{<style>}
 % Тогда параметры задаются так:
 \draw[style name={blue}{2cm}{thick}] (0,0) -- (45:1);
-% также стиль можно дополнить (в конце) с помощью такой конструкции 
+% также стиль можно дополнить (в конце) с помощью такой конструкции
 style name/.append style={}
 % для дополнения стиля в начале используется
 style name/.prefix style={}
@@ -224,7 +227,7 @@ huge mindmap
 	wrud/What R U doin? ->
 	"..."[text depth=.25ex,text height=1.25ex] ->
 	p1/;
-	
+
 	"..." ->[bend left] Hi!;
 };
 % Опции для графов
@@ -307,7 +310,7 @@ cos()
 
 % Прямоугольник
 \draw (0,0)
-	rectangle +(1,2); 
+	rectangle +(1,2);
 
 % Сетка
 \draw[step=.5cm] (0,0)	% xstep, ystep
@@ -326,7 +329,7 @@ cos()
 	parabola (1,2);
 % Парабола (более гибкий вариант — можно указать экстремум)
 \draw (-1,0)
-	parabola bend (0,1) (1,0);	
+	parabola bend (0,1) (1,0);
 % Синус
 \draw (0,0)
 	sin (1,2);
@@ -423,3 +426,8 @@ execute at end scope=
 
 % для \tikzset{}
 every picture/.style={line width=1pt}
+
+
+% Источники
+% [ ] http://mirror.macomnet.net/pub/CTAN/graphics/pgf/base/doc/pgfmanual.pdf
+% [ ] http://www.texample.net/tikz/

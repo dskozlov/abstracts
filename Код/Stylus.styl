@@ -1,3 +1,6 @@
+// Stylus
+
+
 // В stylus можно опускать синтаксис как частично, так и полностью
 
 a {
@@ -10,21 +13,21 @@ p {
 
 *
 	color #a
-	
+
 // Наследование стилей как в SASS
 
 p
 	color black
 	a
 		text-decoration none
-		&:hover 
+		&:hover
 		&:visited
 			text-decoration underline
-			
+
 p
 	&:before:after
 		content "dd"
-		
+
 // Переменные
 
 $color = #58BFF7
@@ -42,11 +45,11 @@ zebra(even_color = #eee, odd_color =#ddd, child = "&")
 table
 	tr
 		zebra()
-		
+
 .table
 	tr
-		zebra(#FFB062, #CDA948)		
-		
+		zebra(#FFB062, #CDA948)
+
 #table
 	zebra(#FFB062, #CDA948, "> ") // для всех детей
 
@@ -55,7 +58,7 @@ table
 .centered
 	width 10px
 	height 20px
-	// можно создать функцию из следующего кода 
+	// можно создать функцию из следующего кода
 	position absolute
 	top 50%
 	left 50%
@@ -66,3 +69,9 @@ table
 $font_size = 1.1
 	if $font_size != 1
 		font-size unit($font_size, em)
+
+
+// Источники
+/*
+	[ ] http://stylus-lang.com
+*/
