@@ -1,12 +1,39 @@
+// Источники
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+// Douglas Crockford - JavaScript: The Good Parts
 // http://crockford.com/javascript/javascript
+// Apple: Developer Tools for Safari Overview
+// Google: Chrome Developer Tools
+// https://developers.google.com/chrome-developer-tools
+// Firefox: Firebug Wiki
+// getfirebug.com/wiki
+// QuirksMode.org
+// Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming
+// javascriptjabber.com
+
 // Язык чувствителен к регистру
 // Точку с запятой МОЖНО не ставить, но крайне желательно
+// Крайне полезно пользоваться отладчиком Firebug в Firefox
 
 // Как американцы различают скобки:
 // (parentheses)
 // [brackets]
 // {braces}
+
+// Рекомендуемый стиль программирования
+	// Используй camelCase для имён переменных, функций и методов
+	// Открывающиеся фигурные скобки должны стоять на на той же строке
+	// Всегда используй фигурные скобки (даже если они необязательны для 1й команды)
+	// Определяй функции ПЕРЕД их вызовом
+	// Всегда ставь точку с запятой в конце команды
+	// Всегда используй var для объявления переменной
+// Хорошие рекомендации также дают Yahoo, Google и Mozilla (js style guidelines)
+
+// CDN популярных библиотек
+// https://developers.google.com/discovery/libraries
+
+// Кроссбаузерные фичи ---> Modernizr
+
 
 alert("Hello, World!");	// всплывающее окно с сообщением
 
@@ -123,8 +150,15 @@ for (var i = 0; i < 10; i++) {
 
 // Функции (не важно, где их вызывать (поскольку перед компиляцией код просматривается браузером 1 раз на наличие функций), но крайне желательно делать это перед их объявлением)
 function functionName(argument) {
-	// body...
+	// Можно использовать ключевые слова
+	this;		// объект, к которому применяется функция
+	arguments;	// аргументы, заданные в функции
 }
+// самовызывающаяся функция
+(function () {
+	// body...
+})();
+
 
 	// Функции
 // Операции над числами
@@ -173,6 +207,11 @@ element.onclick		// действие при клике на объект
 element.onmouseover	// действие при наведении курсора на объект
 element.onfocus		// действие при фокусировке на объекте (поле для ввода)
 element.onblur		// действие при снятии фокусировки с объекта (поле для ввода)
+element.onchange	// действие при изменении объекта (формы)
+element.onkeypress	// действие при нажатии клавиши
+element.onkeydown	// действие при нажатии клавиши (но не отпускании)
+element.onkeyup		// действие при отпускании клавиши
+element.onsubmit	// действие при подтверждении отправки формы
 // Также можно добавлять события, которые слушаются объектом, с помощью метода
 element.addEventListener('click', someAction, false);	// в IE: element.attachEvent('onclick', someAction);
 // И, впоследствие, убрать
@@ -183,3 +222,38 @@ var timeoutHandle = setTimeout(someAction, 5000);	// выполнение дей
 var intervalHandle = setInterval(someAction, 5000);	// выполнение действия каждые 5 секунд
 clearTimeout(timeoutHandle);		// прервать работу timeoutHandle
 clearInteterval(intervalHandle);	// прервать работу intervalHandle
+
+// Формы
+myTextField.value				// значение
+myCheckBox.checked				// стоит ли галочка
+mySelect.type					// тип селектора (select-one или select-multiple)
+mySelect.selectedIndex			// номер выбранного элемента (для select-one)
+mySelect.options[i].selected	// выбран ли элемент (для select-omultiplene)
+
+// Работа с CSS
+element.style	// объект со стилями CSS
+	.color
+	.backgroundColor	// всё, что через дефис, теперь через camelCase
+	...
+element.className		// класс стилей объекта
+
+
+// Регулярные выражения
+var myRE = /str/;		// var myRE = new RegExp("hello");
+myRE.test("string");	// содержится ли это выражение в строке?
+myRE.search("string");	// позиция выражения, найденного в строке
+
+// Операторы
+^	// начало строки
+$	// конец строки
++	// >=1
+*	// >=0
+?	// 0 || 1
+|	// ||
+.	// любой символ
+\w	// буква, цифра или _
+\b	//
+[crnld]	// диапазон символов
+
+// Примеры
+/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/	// правильный e-mail
