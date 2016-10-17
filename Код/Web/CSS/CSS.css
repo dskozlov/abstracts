@@ -18,9 +18,61 @@ p {
 }
 /*тогда как в таблицах следует оставлять обычное начертание.*/
 
+{
+	/* Трансформации */
+	/* Сдвиг */
+	transform: translate(10px, 10px);
+	transform: translateX(10px);
+	transform: translateY(10px);
+
+	/* Масштаб */
+	transform: scale(.5, .5);
+	transform: scaleX(2);
+	transform: scaleY(.75, .5);
+
+	/* Поворот */
+	transform: rotate(15deg);
+
+	/* Искажение */
+	transform: skewX(-25deg);
+	transform: skewY(10deg);
+
+	/* Расположение опорной точки */
+	transform-origin: 50% 50%;	/* По умолчанию */
+					10px 0
+					left bottom
+}
+
+/* Анимация */
+a {
+	background-color: orange;
+
+	/* Необходимые параметры для анимации */
+	transition-property: background;	/* То, что будет анимироваться */
+	transition-duration: 1s;			/* Длительность анимации */
+	transition-delay: 500ms;			/* Задержка перед анимацией */
+
+	/* Для кроссбраузерности */
+	-webkit-transition-property: background;
+	   -moz-transition-property: background;
+	    -ms-transition-property: background;
+	     -o-transition-property: background;
+	        transition-property: background;
+
+	/* Изинг */
+	transition-timing-function: ease;	/* По умолчанию */
+								linear
+								ease-in
+								ease-out
+								ease-in-out
+								cubic-bezier(x1, y1, x2, y2)
+}
+a:hover { background-color: blue; }
+
 
 /* Источники */
 /*
 	https://css-tricks.com/how-nth-child-works/
 	Нормализация документа: http://necolas.github.io/normalize.css/
+	Для проверки совместимости caniuse.com
 */
