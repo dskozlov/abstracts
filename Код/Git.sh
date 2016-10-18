@@ -242,6 +242,18 @@ git push --recurse-submodules=on-demand
 
 ???????????????????
 
+
+
+# Мои команды
+## Быстрый доступ к состоянию реопзитория
+git config --global alias.s "status -s"
+## Отображение дерева коммитов в удобном виде
+git config --global alias.lg "log --oneline --decorate --all --graph"
+## Время создания коммита
+git show -s --date=iso-strict-local --pretty=format:'%ad' <SHA>
+
+
+
 # Игнорирование файлов
 ## Информация об игнорируемых файлах содержится в файле проекта .gitignore
 ## В нём перечисляются все файлы и папки
@@ -270,14 +282,6 @@ mv ~/git-completion.bash ~/.git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
 	sourse ~/.git-completion.bash
 fi
-
-# Мои команды
-## Быстрый доступ к состоянию реопзитория
-git config --global alias.s "status -s"
-## Отображение дерева коммитов в удобном виде
-git config --global alias.lg "log --oneline --decorate --all --graph"
-## Время создания коммита
-git show -s --date=iso-strict-local --pretty=format:'%ad' <SHA>
 
 
 # Источники
