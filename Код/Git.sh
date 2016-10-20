@@ -12,7 +12,7 @@ git help
 git config
 	--list					# перечень параметров
 	--local					# для текущего репозитория (.git/config)
-	--system				# для всех проектов на компьютере
+	--system				# для всех проектов на компьютере (/etc/gitconfig)
 	--global				# для всех проектов пользователя (~/.gitconfig)
 		user.name "Igor Polyakov"
 		user.email igor_polyakov@phystech.edu
@@ -53,6 +53,7 @@ git status
 ## Посмотреть историю коммитов
 git log
 	-n <num>			# num коммитов
+	-<num>				# num коммитов
 	--since=2016-09-23	# все коммиты, начиная с указанной даты
 	--until=2016-09-23	# все коммиты, до указанной даты
 		1.day.ago	# minute, hour, month, week
@@ -68,8 +69,10 @@ git log
 		%d	# ссылки
 	-p		# добавляет данные из diff
 	--stat	# добавляется информация о количестве изменений в коммите
+	--summary	# статистика изменений
 	--graph	# графическое представление коммитов
 	--walk-reflogs	# для отслеживания перемещения указателя HEAD
+	<SHA>.. <file>	# первый коммит, в котором появляется файл <file>, начиная с коммита <SHA>
 
 ## Посмотреть изменения
 git diff	# все
@@ -148,6 +151,8 @@ git branch	# посмотреть имеющиеся ветки
 	<branch_name> <SHA>	# создать ветку c версией указанного коммита (можно ссылаться и на коммиты удалённых веток)
 	-a					# список всех веток
 	-r					# список удалённых веток
+	--merged			# показывает соединённые ветки
+	-m <branch_name_old> <branch_name_new>	# переименовать ветку
 
 ## Перейти к определённой версии
 git checkout
@@ -162,7 +167,14 @@ git checkout
 git merge
 	<branch_name>
 	--no-ff <branch_name>	# не fast-forward merge, а recursive merge (сохраняет все коммиты)
-
+## Существует множество инструментов для слития веток
+git mergetool
+## Также для сокращения количества возможных конфликтов следует
+### строчки кода писать короткими
+### коммиты делать маленькими и сфокусированными
+### избегать лишних пробелов, табов и окончания строк
+### чаще мерджить
+### периодически подхватывать изменения из мастера
 
 ## Вернуться к коммиту
 git revert <SHA || part_of_the_commit_id>
@@ -294,8 +306,26 @@ if [ -f ~/.git-completion.bash ]; then
 	sourse ~/.git-completion.bash
 fi
 
+## Отображение ветки и рабочей папки в терминале (работает при наличии .git-completion)
+export PS1='\W$(__git_ps1 "(%s)")> '
 
 # С помощью GitHub API можно обращаться к возможностям сайта из терминала
+
+# Клиенты git с графическим интерфейсом
+# # Mac
+# http://gitx.org
+# http://mac.github.com
+# http://sourcetreeapp.com
+# http://git-tower.com
+# http://gitboxapp.com
+# # Windows
+# http://code.google.com/p/tortoisegit
+# http://code.google.com/p/gitextensions
+# http://windows.github.com
+# # Multiplatform
+# syntevo.com/smartgit
+# https://git.wiki.kernel.org/index.php/Gitweb
+
 
 # Источники
 # [V] https://try.github.io (введение в Git)
