@@ -1,17 +1,50 @@
 <!-- AngularJS -->
 
 
-<!-- выражения задаются прямо в html в двойных фигурных скобках: -->
-{{}}
-<!-- https://docs.angularjs.org/guide/expression -->
+<!--
+	Нужно знать:
+	- HTML
+	- JavaScript
 
-<!-- для работы скрипта необходимо html-тегу присвоить директиву (свойство) -->
-ng-app="moduleName"
+	Angular помогает грамотно организовать js-код и создать отзывчивый веб-сайт (ощущается как обычное приложение).
+	Управление сайтом ведётся через описанные в HTML директивы (атрибуты типа ng-...), которые вызывают работу контроллеров, описанных в js-коде.
 
-<!-- управление содержимого страницы ведется через модули. если присвоить тегу директиву -->
-ng-controller="controllerName as moduleName"
-<!-- то внутри тега могут быть использованы свойства объекта контроллера -->
-{{moduleName.object.property}}
+	Части приложения на Angular описываются в так называемых модулях, что делает код читабельным, а также более пригодным к поддержке и тестированию.
+	Кроме того, модули могут использовать функционал друг от друга.
+-->
+<script>	// app.js
+	// Оборачивать код в замыкание — хорошая привычка
+	(function () {
+		// Создание модуля
+		var app = angular.module('appName', []);	// в квадратных скобках указываются зависимости при необходимости
+
+		// Создание контроллера
+		app.controller('controllerName', function(){
+			// Создаём в качестве свойства контроллера объект, к которому можно будет получить доступ в HTML
+			this.user = {
+				name: "iGor",
+				surname: "Polyakov"
+			}
+		});
+	})();
+</script>
+<!-- При этом нужно подключить модуль в теге html -->
+<html ng-app="appName">
+	<!-- Содержимое воспринимается как часть приложения, написанного на Angular. -->
+	<!-- Поэтому в этом месте имеют смысл выражения, записанные в двойных фигурных скобках. -->
+	<!-- Например: -->
+	{{4 + 6}}				<!-- => 10 -->
+	{{"Hello, " + "World!"}}	<!-- => Hello, World! -->
+
+	<!-- Воспользуемся теперь созданным контроллером -->
+	<body ng-controller="controllerName as aliasName">	<!-- таким образом можно воспользоваться любым удобным именем переменной -->
+		<h1>{{aliasName.user.name + aliasName.user.surname}}</h1>
+		<!-- Доступ к этой переменной сохраняется только внутри этого тега. -->
+	</body>
+</html>
+
+
+
 
 <!-- если тегу присвоен атрибут -->
 ng-show="moduleName.object.boolean"
@@ -48,9 +81,12 @@ orderBy:'-price'	<!-- сортировка по цене -->
 
 <!-- Источники -->
 <!--
+	[ ] https://docs.angularjs.org/guide/expression
 	[ ] https://www.codeschool.com/courses/shaping-up-with-angular-js
 	[ ] https://www.codeschool.com/courses/staying-sharp-with-angular-js
 	[ ] https://habrahabr.ru/post/149060/
-	[ ] Angular 2	https://angular.io/docs/ts/latest/tutorial/
+
+	Angular 2
+	[ ] https://angular.io/docs/ts/latest/tutorial/
 	[ ] https://www.codeschool.com/courses/accelerating-through-angular-2
 -->
