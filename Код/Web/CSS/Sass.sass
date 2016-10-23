@@ -7,17 +7,17 @@
 $color: gray;
 
 html {
-	background: $color;
+  background: $color;
 }
 
 // Вложенность
 html {
-	background: $color;
+  background: $color;
 
-	h1 {
-		font-size: 24pt;
-		color: blue;
-	}
+  h1 {
+    font-size: 24pt;
+    color: blue;
+  }
 }
 
 // Разбивка файла на части
@@ -36,24 +36,24 @@ html {
 }
 
 .box {
-	border: 1px solid black;
-	margin: 10px;
-	text-align: center;
-	@include border-radius(10px);
+  border: 1px solid black;
+  margin: 10px;
+  text-align: center;
+  @include border-radius(10px);
 }
 
 // Функции с содержимым
 @mixin par($border) {
-	border: $border solid black;
-	margin: 10px;
+  border: $border solid black;
+  margin: 10px;
 
-	@content;
+  @content;
 }
 
 .box {
-	@include par($border) {
-		text-align: center;
-	}
+  @include par($border) {
+    text-align: center;
+  }
 }
 
 // Элемент массива (первый)
@@ -61,45 +61,45 @@ nth($array, 1);
 
 // Расширение классов
 %class {
-	border: 1px solid black;
-	margin: 10px;
-	text-align:center;
+  border: 1px solid black;
+  margin: 10px;
+  text-align:center;
 }
 
 .class1 {
-	@extend: %class;
-	color: red;
+  @extend: %class;
+  color: red;
 }
 
 .class2 {
-	@extend: %class;
-	color: green;
+  @extend: %class;
+  color: green;
 }
 
 // Операции с псевдоклассами
 .class {
-	border: 1px solid black;
-	margin: 10px;
-	text-align:center;
+  border: 1px solid black;
+  margin: 10px;
+  text-align:center;
 
-	&:hover {
-		color: red;
-	}
+  &:hover {
+    color: red;
+  }
 }
 
 // Для тех p, у которых родитель .box
 p {
-	font-size: 18pt;
+  font-size: 18pt;
 
-	.box & {
-		font-size: 24pt
-	}
+  .box & {
+    font-size: 24pt
+  }
 }
 
 // Комментарии
-	/* Стандартные комментарии */
-	/*! Комментарии, которые сохранятся даже после компрессии */
-	// Комментарии только для SASS-кода
+  /* Стандартные комментарии */
+  /*! Комментарии, которые сохранятся даже после компрессии */
+  // Комментарии только для SASS-кода
 
 
 // Математические операции
@@ -111,9 +111,9 @@ if(true, 1px, 2px) => 1px
 if(false, 1px, 2px) => 2px
 
 @if $x==2 { // ( … and … )
-	color: red;
+  color: red;
 } @else {
-	lighten(blue, 25%);
+  lighten(blue, 25%);
 }
 
 // Циклы
@@ -135,17 +135,17 @@ $i: 6;
 
 // Map data type (типа двумерных массивов)
 $color-btns: (
-	default: $color-main,
-	hot: $red,
-	cool: $blue,
-	awesome: $purple
+  default: $color-main,
+  hot: $red,
+  cool: $blue,
+  awesome: $purple
 );
 
 @each $key, $value in $color-btns {
-	.btn-#{$key} {
-		@extend %btn;
-		background-color: $value;
-	}
+  .btn-#{$key} {
+    @extend %btn;
+    background-color: $value;
+  }
 }
 
 // Готовые функции

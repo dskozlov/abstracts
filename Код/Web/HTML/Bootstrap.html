@@ -6,20 +6,20 @@
 
 <!-- Вёрстка -->
 <!-- Контейнер позволяет создавать внутри себя сетку (для размещения информации). При этом padding: 15px. -->
-container-fluid	<!-- контейнер размещается по всей ширине страницы -->
-container		<!-- границы контейнера фиксированы в некоторых контрольных точках -->
+container-fluid <!-- контейнер размещается по всей ширине страницы -->
+container       <!-- границы контейнера фиксированы в некоторых контрольных точках -->
 <!-- Внутри могут располагаться строки (убирает padding: 15px контейнера - теперь отступы есть в колонках) -->
 row
 <!-- внутри которых обязательно должны быть колонки -->
-col-SIZE-SPAN	<!-- в SPAN задаётся количество занимаемых колонок (от 1 до 12) для соответствующего размера монитора SIZE (xs, sm, md, lg); можно задавать сразу несколько классов col одному и тому же элементу (для разных экранов). При xs колонки будут оставаться даже при узком формате. -->
+col-SIZE-SPAN   <!-- в SPAN задаётся количество занимаемых колонок (от 1 до 12) для соответствующего размера монитора SIZE (xs, sm, md, lg); можно задавать сразу несколько классов col одному и тому же элементу (для разных экранов). При xs колонки будут оставаться даже при узком формате. -->
 
 <!-- Для колонки также можно обозначить отступ от левого края -->
 col-SIZE-offset-SPAN
 <!-- при этом для бОльших размеров экрана следует задавать -->
 col-SIZE-offset-0
 <!-- Также можно изменять порядок столбцов для разных размеров экрана с помощью -->
-col-SIZE-push-SPAN	<!-- вперёд -->
-col-SIZE-pull-SPAN	<!-- назад -->
+col-SIZE-push-SPAN <!-- вперёд -->
+col-SIZE-pull-SPAN <!-- назад -->
 
 <!-- Если часть информации наезжает на другую, то перед ней стоит прописать -->
 clearfix
@@ -27,22 +27,22 @@ clearfix
 visible-SIZE
 hidden-SIZE
 
-visible-SIZE(-DISPLAY)	<!-- показать; DISPLAY: block, inline, inline-block, print; также для SIZE может быть указан print — в случае, когда пользователь собирается печатать документ -->
-hidden-SIZE(-DISPLAY)	<!-- спрятать -->
-invisible				<!-- сделать невидимым -->
-show					<!-- показать -->
-sr-only					<!-- показывать только на "screen-reader" устройствах -->
-sr-only-focusable		<!-- показывать только на "screen-reader" устройствах -->
+visible-SIZE(-DISPLAY) <!-- показать; DISPLAY: block, inline, inline-block, print; также для SIZE может быть указан print — в случае, когда пользователь собирается печатать документ -->
+hidden-SIZE(-DISPLAY)  <!-- спрятать -->
+invisible              <!-- сделать невидимым -->
+show                   <!-- показать -->
+sr-only                <!-- показывать только на "screen-reader" устройствах -->
+sr-only-focusable      <!-- показывать только на "screen-reader" устройствах -->
 
 
 <!-- Если нужно присвоить определённые значения для конкретных размеров экрана, то для этого нужно воспользоваться прописать CSS -->
 @media(min-width: 1200px) {
-	h3 {
-		margin-top:0;
-	}
-	section {
-		text-align: left;
-	}
+  h3 {
+    margin-top:0;
+  }
+  section {
+    text-align: left;
+  }
 }
 
 
@@ -51,47 +51,47 @@ text-left
 text-right
 text-center
 text-justify
-text-nowrap		<!-- в одну строку -->
+text-nowrap     <!-- в одну строку -->
 
 text-lowercase
 text-uppercase
 text-capitalize
 
-text-hide		<!-- спрятать текст (например, если нужно заменить заголовок изображением) -->
+text-hide       <!-- спрятать текст (например, если нужно заменить заголовок изображением) -->
 
-text-muted		<!-- приглушённый текст -->
-text-primary	<!-- синий текст -->
-text-success	<!-- зелёный текст -->
-text-info		<!-- голубой текст -->
-text-warning	<!-- жёлтый текст -->
-text-danger		<!-- красный текст -->
+text-muted      <!-- приглушённый текст -->
+text-primary    <!-- синий текст -->
+text-success    <!-- зелёный текст -->
+text-info       <!-- голубой текст -->
+text-warning    <!-- жёлтый текст -->
+text-danger     <!-- красный текст -->
 
-bg-primary		<!-- синий фон -->
-bg-success		<!-- зелёный фон -->
-bg-info			<!-- голубой фон -->
-bg-warning		<!-- жёлтый фон -->
-bg-danger		<!-- красный фон -->
+bg-primary      <!-- синий фон -->
+bg-success      <!-- зелёный фон -->
+bg-info         <!-- голубой фон -->
+bg-warning      <!-- жёлтый фон -->
+bg-danger       <!-- красный фон -->
 
 <!-- Аббревиатуры -->
 <abbr title="Union of Soviet Socialist Republics" class="initialism">USSR</abbr>
 
-<span class="small"></span> 	<!-- Применяет стиль как <small></small> -->
-<span class="h1"></span>		<!-- Применяет стиль как <h1></h1> -->
+<span class="small"></span> <!-- Применяет стиль как <small></small> -->
+<span class="h1"></span>    <!-- Применяет стиль как <h1></h1> -->
 
 <!-- Помогает выделять текст относительно остального класс -->
 lead
 
 
 <!-- Кроме того изменены стандартные стили тегов -->
-<blockquote class="blockquote-reverse">	<!-- класс изменяет выключку текста и оформления -->
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam cupiditate consequuntur laboriosam nobis, inventore qui. Quas natus corporis, dolores voluptatibus id, eligendi quos aliquam vero odit molestias repudiandae officiis. Quidem.</p>
-	<footer>iGor</footer>
+<blockquote class="blockquote-reverse"> <!-- класс изменяет выключку текста и оформления -->
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam cupiditate consequuntur laboriosam nobis, inventore qui. Quas natus corporis, dolores voluptatibus id, eligendi quos aliquam vero odit molestias repudiandae officiis. Quidem.</p>
+  <footer>iGor</footer>
 </blockquote>
 
-<code>&lt;em&gt;</code>				<!-- отображение кода -->
-<kbd>control-c</kbd>				<!-- отображение комбинации клавиш -->
-<pre class="pre-scrollable"></pre>	<!-- отображение большой группы кода -->
-<samp></samp>						<!-- отображение html-кода -->
+<code>&lt;em&gt;</code>            <!-- отображение кода -->
+<kbd>control-c</kbd>               <!-- отображение комбинации клавиш -->
+<pre class="pre-scrollable"></pre> <!-- отображение большой группы кода -->
+<samp></samp>                      <!-- отображение html-кода -->
 <mark></mark>
 <s></s>
 <del></del>
@@ -100,55 +100,55 @@ lead
 
 
 <!-- Классы для списков -->
-list-unstyled	<!-- без маркеров -->
-list-inline		<!-- в одну строку -->
-dl-horizontal	<!-- маркеры выключены вправо, а текст — влево (используется для списков-определений) -->
-breadcrumb		<!-- в строку через "/" (типа путь к папке) -->
+list-unstyled <!-- без маркеров -->
+list-inline   <!-- в одну строку -->
+dl-horizontal <!-- маркеры выключены вправо, а текст — влево (используется для списков-определений) -->
+breadcrumb    <!-- в строку через "/" (типа путь к папке) -->
 list-group
 <!-- тогда каждый элемент списка должен обозначаться так -->
 list-group-item
-	list-group-item-success
-	list-group-item-info
-	list-group-item-warning
-	list-group-item-danger
-	list-group-item-heading	<!-- для отображения заголовка -->
-	list-group-item-text	<!-- для отображения текста -->
+  list-group-item-success
+  list-group-item-info
+  list-group-item-warning
+  list-group-item-danger
+  list-group-item-heading <!-- для отображения заголовка -->
+  list-group-item-text    <!-- для отображения текста -->
 
 
 <!-- можно сделать такую штуку (как чатики в мобильных устройствах) -->
 <div class="list-group">
-	<a href="#" class="list-group-item list-group-item-success">Алёна</a>
-	<a href="#" class="list-group-item disabled">Даша</a>
-	<a href="#" class="list-group-item">
-		<h3 class="list-group-item-heading">Света</h3>
-		<p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, itaque! Aliquid nihil nostrum rem, reiciendis iusto, possimus assumenda esse culpa error officia. Autem molestiae recusandae optio, nisi eaque mollitia natus.</p>
-	</a>
-	<a href="#" class="list-group-item active">Маша <span class="badge">1</span></a>
+  <a href="#" class="list-group-item list-group-item-success">Алёна</a>
+  <a href="#" class="list-group-item disabled">Даша</a>
+  <a href="#" class="list-group-item">
+    <h3 class="list-group-item-heading">Света</h3>
+    <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, itaque! Aliquid nihil nostrum rem, reiciendis iusto, possimus assumenda esse culpa error officia. Autem molestiae recusandae optio, nisi eaque mollitia natus.</p>
+  </a>
+  <a href="#" class="list-group-item active">Маша <span class="badge">1</span></a>
 </div>
 
 
 <!-- Кнопки -->
 btn
-	<!-- Стили кнопок (в дополнение к основному классу) -->
-	btn-default
-	btn-primary
-	btn-success
-	btn-info
-	btn-warning
-	btn-danger
-	active		<!-- нажатая кнопка -->
-	disabled	<!-- невозможно нажать кнопку -->
+  <!-- Стили кнопок (в дополнение к основному классу) -->
+  btn-default
+  btn-primary
+  btn-success
+  btn-info
+  btn-warning
+  btn-danger
+  active   <!-- нажатая кнопка -->
+  disabled <!-- невозможно нажать кнопку -->
 
-	<!-- Размеры кнопок (в дополнение к основному классу) -->
-	btn-block
-	btn-xs
-	btn-sm
-	btn-lg
+  <!-- Размеры кнопок (в дополнение к основному классу) -->
+  btn-block
+  btn-xs
+  btn-sm
+  btn-lg
 
-	<!-- Кнопки можно объединять в группы -->
-	btn-group
-	btn-group-vertical
-	btn-group-justified
+  <!-- Кнопки можно объединять в группы -->
+  btn-group
+  btn-group-vertical
+  btn-group-justified
 
 
 <!-- Для отображения в режиме для чтения следует добавить атрибуты -->
@@ -157,86 +157,86 @@ role="group" aria-label="..."
 
 <!-- Таблицы -->
 table
-	<!-- Стили -->
-	table-striped	<!-- в полосочку -->
-	table-bordered	<!-- в виде сетки -->
-	table-hover		<!-- строки подсвечиваются при наведении -->
-	table-condensed	<!-- уменьшенный вариант -->
+  <!-- Стили -->
+  table-striped   <!-- в полосочку -->
+  table-bordered  <!-- в виде сетки -->
+  table-hover     <!-- строки подсвечиваются при наведении -->
+  table-condensed <!-- уменьшенный вариант -->
 
-	<!-- для того, чтобы размер таблицы соответствовал размеру блока, таблицу следует окружит тегом -->
-	table-responsive
+  <!-- для того, чтобы размер таблицы соответствовал размеру блока, таблицу следует окружит тегом -->
+  table-responsive
 
-		<!-- Цвета, применяемые к строкам таблицы (может и к ячейкам тоже) -->
-		active	<!-- серый -->
-		primary	<!-- синий -->
-		success	<!-- зелёный -->
-		info	<!-- голубой -->
-		warning	<!-- оранжевый -->
-		danger	<!-- красный -->
+    <!-- Цвета, применяемые к строкам таблицы (может и к ячейкам тоже) -->
+    active  <!-- серый -->
+    primary <!-- синий -->
+    success <!-- зелёный -->
+    info    <!-- голубой -->
+    warning <!-- оранжевый -->
+    danger  <!-- красный -->
 
 
 <!-- Изображения -->
-img-responsive	<!-- картинка подстраивается под размеры экрана (но не больше собственного размера) -->
-img-rounded		<!-- скруглённые края -->
-img-circle		<!-- становится кругом -->
-img-thumbnail	<!-- появляется небольшая окантовка -->
-pull-left		<!-- плавающий элемент слева -->
-pull-right		<!-- плавающий элемент справа -->
-center-block	<!-- расположение по центру как блочный элемент -->
+img-responsive <!-- картинка подстраивается под размеры экрана (но не больше собственного размера) -->
+img-rounded    <!-- скруглённые края -->
+img-circle     <!-- становится кругом -->
+img-thumbnail  <!-- появляется небольшая окантовка -->
+pull-left      <!-- плавающий элемент слева -->
+pull-right     <!-- плавающий элемент справа -->
+center-block   <!-- расположение по центру как блочный элемент -->
 
 <!-- Рисунок с подписью снизу -->
 <div class="thumbnail">
-	<img src="" alt="">
-	<div class="caption">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores adipisci recusandae dolor corrupti esse totam voluptatibus perspiciatis, officia, earum vel accusamus dolores quos libero est quaerat accusantium eum similique ipsum.</p>
-	</div>
+  <img src="" alt="">
+  <div class="caption">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores adipisci recusandae dolor corrupti esse totam voluptatibus perspiciatis, officia, earum vel accusamus dolores quos libero est quaerat accusantium eum similique ipsum.</p>
+  </div>
 </div>
 
 <!-- Подпись сбоку (справа) -->
 <div class="media">
-	<div class="media-left"><img src="" alt=""></div><!-- этому элементу можно задавать классы, указанные ниже -->
-	<div class="media-body">
-		<h3 class="media-heading">Header</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, placeat incidunt molestiae quis. Vitae necessitatibus, consectetur quisquam facilis voluptatibus! Veritatis officia consequatur blanditiis quasi vitae, rerum obcaecati quas ratione et.</p>
-	</div>
+  <div class="media-left"><img src="" alt=""></div><!-- этому элементу можно задавать классы, указанные ниже -->
+  <div class="media-body">
+    <h3 class="media-heading">Header</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, placeat incidunt molestiae quis. Vitae necessitatibus, consectetur quisquam facilis voluptatibus! Veritatis officia consequatur blanditiis quasi vitae, rerum obcaecati quas ratione et.</p>
+  </div>
 </div>
-media-right	<!-- подпись слева -->
-	media-middle	<!-- ориентация картинки по середине -->
-	media-bottom	<!-- ориентация картинки внизу -->
+media-right <!-- подпись слева -->
+  media-middle <!-- ориентация картинки по середине -->
+  media-bottom <!-- ориентация картинки внизу -->
 
 <!-- также можно сделать это элементом списка с классом -->
-media-list	- (для ul, ol)
+media-list  - (для ul, ol)
 
 
 <!-- Видео -->
 <div class="embed-responsive embed-responsive-4by3">
-	<video src="" class="embed-responsive-item" autoplay controls></video><!-- для видео, расположенного на локальном сервере -->
+  <video src="" class="embed-responsive-item" autoplay controls></video><!-- для видео, расположенного на локальном сервере -->
 </div>
 
 
 <!-- Формы -->
-form-control	<!-- задаёт ширину полей для ввода, соответствующей ширине экрана -->
-form-group		<!-- объединяет элементы формы в группы (например, label + input) -->
-checkbox		<!-- группа для чекбокса -->
-radio			<!-- группа для radio-кнопки -->
-radio-inline	<!-- строчная группа для radio-кнопки -->
-form-inline		<!-- группы формы — строчные элементы -->
+form-control <!-- задаёт ширину полей для ввода, соответствующей ширине экрана -->
+form-group   <!-- объединяет элементы формы в группы (например, label + input) -->
+checkbox     <!-- группа для чекбокса -->
+radio        <!-- группа для radio-кнопки -->
+radio-inline <!-- строчная группа для radio-кнопки -->
+form-inline  <!-- группы формы — строчные элементы -->
 
 <!-- Для того, чтобы полям для ввода можно было задавать ширину, как колонкам, ну присвоить форме класс -->
 form-horizontal
-control-label	<!-- выключка пометки вправо -->
+control-label <!-- выключка пометки вправо -->
 
 <!-- Окраска полей для ввода в разные цвета (указывать в группе) -->
 has-success
 has-warning
 has-danger
 <!-- Обратная связь (то, что написано прямо в форме для ввода) -->
-has-feedback	<!-- указать в группе -->
+has-feedback <!-- указать в группе -->
 
 <!-- Иконки glyphicons (из glyphicons.com) -->
-<span class="glyphicon glyphicon-ok" aria-hidden="true" aria-label="OK"></span>	<!-- aria - для отображения в режиме чтения -->
-form-control-feedback	<!-- добавить иконку в поле для ввода (если она находится в соответствующей группе) -->
-aria-hidden="true"		<!-- скрывает иконку в девайсах. вместо этого следует написать -->
+<span class="glyphicon glyphicon-ok" aria-hidden="true" aria-label="OK"></span> <!-- aria - для отображения в режиме чтения -->
+form-control-feedback <!-- добавить иконку в поле для ввода (если она находится в соответствующей группе) -->
+aria-hidden="true"    <!-- скрывает иконку в девайсах. вместо этого следует написать -->
 <span id="inputIdStatus" class="sr-only">(success)</span>
 <!-- при этом полю для ввода должен быть присвоен следующий атрибут -->
 aria-describedby="inputIdStatus"
@@ -247,10 +247,10 @@ aria-describedby="inputIdStatus"
 
 <!-- простейшая строка поиска -->
 <div class="input-group">
-	<input type="text" class="form-control" placeholder="search smth...">
-	<span class="input-group-btn">
-		<button class="btn btn-default">Search</button>
-	</span>
+  <input type="text" class="form-control" placeholder="search smth...">
+  <span class="input-group-btn">
+    <button class="btn btn-default">Search</button>
+  </span>
 </div>
 <!-- почти для всех элементов формы доступны атрибуты -->
 disabled
@@ -266,103 +266,105 @@ form-group-lg
 
 <!-- подменю (dropdown) -->
 <div class="dropdown">
-	<div class="btn-group">
-		<button type="button"
-			class="btn btn-info dropdown-toggle"
-			data-toggle="dropdown"
-			id="pettype"
-			aria-haspopup="true"
-			aria-expanded="true">Pet Type
-			<span class="caret"></span>
-		</button>
+  <div class="btn-group">
+    <button type="button"
+            class="btn btn-info dropdown-toggle"
+            data-toggle="dropdown"
+            id="pettype"
+            aria-haspopup="true"
+            aria-expanded="true">Pet Type
+      <span class="caret"></span>
+    </button>
 
-		<ul class="dropdown-menu" aria-labelledby="pettype">
-			<li class="dropdown-header">Common</li>
-			<li><a href="#">Cat</a></li>
-			<li><a href="#">Dog</a></li>
-			<li><a href="#">Fish</a></li>
-			<li><a href="#">Birds</a></li>
-			<li role="separator" class="divider"></li>
-			<li class="dropdown-header">Exotic</li>
-			<li><a href="#">Amphibian</a></li>
-			<li><a href="#">Reptile</a></li>
-			<li><a href="#">Other</a></li>
-		</ul>
-	</div>
+    <ul class="dropdown-menu" aria-labelledby="pettype">
+      <li class="dropdown-header">Common</li>
+      <li><a href="#">Cat</a></li>
+      <li><a href="#">Dog</a></li>
+      <li><a href="#">Fish</a></li>
+      <li><a href="#">Birds</a></li>
+      <li role="separator" class="divider"></li>
+      <li class="dropdown-header">Exotic</li>
+      <li><a href="#">Amphibian</a></li>
+      <li><a href="#">Reptile</a></li>
+      <li><a href="#">Other</a></li>
+    </ul>
+  </div>
 </div>
 
 
 <!-- Навигация -->
 nav
-	nav-tabs	<!-- закладки -->
-	nav-pills	<!-- кнопки -->
-	navbar-nav	<!-- простые надписи -->
-		nav-stacked		<!-- для расположения друг над другом -->
-		nav-justified	<!-- для расположения в один ряд на всю ширину страницы -->
+  nav-tabs    <!-- закладки -->
+  nav-pills   <!-- кнопки -->
+  navbar-nav  <!-- простые надписи -->
+    nav-stacked     <!-- для расположения друг над другом -->
+    nav-justified   <!-- для расположения в один ряд на всю ширину страницы -->
 <!-- для активных элементов списка -->
 active
 <!-- для корректного отображения в режиме для чтения каждому элементу списка можно присвоить атрибут -->
 role="presentation"
 <!-- альтернатива — засунуть список в тег nav -->
 <nav class="navbar navbar-default">
-	navbar-inverse	<!-- для тёмной навигации -->
-	<!-- расположение навигации -->
-	navbar-fixed-top
-	navbar-fixed-bottom
+  navbar-inverse  <!-- для тёмной навигации -->
+  <!-- расположение навигации -->
+  navbar-fixed-top
+  navbar-fixed-bottom
 </nav>
 
 <!-- прикольная навигация -->
 <nav class="navbar navbar-default">
-	<div class="container">
-		<!-- Логотип -->
-		<div class="navbar-header">
-			<button type="button"
-				class="navbar-toggle collapsed"
-				data-toggle="collapse"
-				data-target="#collapsemenu"
-				aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="#" class="navbar-brand">Логотип</a>
-		</div>
+  <div class="container">
+    <!-- Логотип -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#collapsemenu"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Логотип</a>
+    </div>
 
-		<!-- Навигация -->
-		<div class="collapse navbar-collapse" id="collapsemenu">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Mission</a></li>
-				<li><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"
-					role="button"
-					aria-haspopup="true"
-					aria-expanded="false">Services
-					<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">One</a></li>
-						<li><a href="#">Two</a></li>
-						<li><a href="#">Three</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Staff</a></li>
-				<li><a href="#">F.A.Q.</a></li>
-			</ul>
+    <!-- Навигация -->
+    <div class="collapse navbar-collapse" id="collapsemenu">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Mission</a></li>
+        <li>
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">Services
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Staff</a></li>
+        <li><a href="#">F.A.Q.</a></li>
+      </ul>
 
-			<!-- Поиск -->
-			<form action="" class="navbar-form navbar-right" role="search">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="поиск...">
-					<span class="input-group-btn">
-						<button class="btn btn-default">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
-					</span>
-				</div>
-			</form>
-		</div>
-	</div>
+      <!-- Поиск -->
+      <form action="" class="navbar-form navbar-right" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="поиск...">
+          <span class="input-group-btn">
+            <button class="btn btn-default">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
 </nav>
 
 <!-- Для реализации "следящей" навигации следует добавить атрибуты -->
@@ -375,103 +377,102 @@ data-offset="80"
 
 <!-- Постраничная навигация -->
 <nav>
-	<ul class="pager">
-		<li class="previous disabled">
-			<a href="#">
-				<span aria-hidden="true">&larr;</span>
-				Назад
-			</a>
-		</li>
-		<li class="next">
-			<a href="#">
-				Вперёд
-				<span aria-hidden="true">&rarr;</span>
-			</a>
-		</li>
-	</ul>
+  <ul class="pager">
+    <li class="previous disabled">
+      <a href="#">
+        <span aria-hidden="true">&larr;</span>
+        Назад
+      </a>
+    </li>
+    <li class="next">
+      <a href="#">
+        Вперёд
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+  </ul>
 </nav>
 
 <!-- Ещё один вариант -->
 <nav>
-	<ol class="pagination pagination-sm">
-		<li><a href="#" aria-label="Previous">&laquo;</a></li>
-		<li><a href="#"></a>1</li>
-		<li><a href="#"></a>2</li>
-		<li><a href="#"></a>3</li>
-		<li><a href="#" aria-label="Next">&raquo;</a></li>
-	</ol>
+  <ol class="pagination pagination-sm">
+    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+    <li><a href="#"></a>1</li>
+    <li><a href="#"></a>2</li>
+    <li><a href="#"></a>3</li>
+    <li><a href="#" aria-label="Next">&raquo;</a></li>
+  </ol>
 </nav>
 
 
 <!-- Заголовки страниц -->
 <div class="page-header">
-	<h2>Header</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam et dolorum accusantium, sequi officiis est, quas commodi expedita tempora! Delectus laudantium laboriosam non unde placeat ab esse voluptates fugiat fuga.</p>
+  <h2>Header</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam et dolorum accusantium, sequi officiis est, quas commodi expedita tempora! Delectus laudantium laboriosam non unde placeat ab esse voluptates fugiat fuga.</p>
 </div>
 <div class="jumbotron">
-	<div class="container">	<!-- желательно вынести за основной контейнер (чтобы фон был во всю ширину) -->
-		<h2>Header</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam et dolorum accusantium, sequi officiis est, quas commodi expedita tempora! Delectus laudantium laboriosam non unde placeat ab esse voluptates fugiat fuga.</p>
-	</div>
+  <div class="container"> <!-- желательно вынести за основной контейнер (чтобы фон был во всю ширину) -->
+    <h2>Header</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam et dolorum accusantium, sequi officiis est, quas commodi expedita tempora! Delectus laudantium laboriosam non unde placeat ab esse voluptates fugiat fuga.</p>
+  </div>
 </div>
 
 
 <!-- Подписи (например, в теге span к заголовку ) -->
 label
-	label-default
-	label-primary
-	label-success
-	label-info
-	label-warning
-	label-danger
-badge	<!-- можно использовать внутри цветных кнопок (будет выделяться на фоне); хорошо подходит для указания количества [сообщений, статей, ...] -->
+  label-default
+  label-primary
+  label-success
+  label-info
+  label-warning
+  label-danger
+badge   <!-- можно использовать внутри цветных кнопок (будет выделяться на фоне); хорошо подходит для указания количества [сообщений, статей, ...] -->
 
 <!-- Панели (блоки информации для организации контента) -->
 panel
-	panel-default
-	panel-primary
-	panel-success
-	panel-info
-	panel-warning
-	panel-danger
-	внутри могут быть
+  panel-default
+  panel-primary
+  panel-success
+  panel-info
+  panel-warning
+  panel-danger
+  внутри могут быть
 panel-heading
 panel-body
 panel-footer
 
 <!-- Заметки -->
 well
-	well-lg
-	well-sm
+  well-lg
+  well-sm
 
 
 <!-- Слайдер (карусель) -->
 <div class="carousel slide" id="featured">
+  <ol class="carousel-indicators"><!-- точки в низу слайдера -->
+    <li data-target="#featured" data-slide-to="0" class="active"></li>
+    <li data-target="#featured" data-slide-to="1"></li>
+  </ol>
 
-	<ol class="carousel-indicators"><!-- точки в низу слайдера -->
-		<li data-target="#featured" data-slide-to="0" class="active"></li>
-		<li data-target="#featured" data-slide-to="1"></li>
-	</ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="img/1.jpg" alt="">
+      <div class="carousel-caption">
+        <h3>World of Money</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, aut iste repellat ratione molestiae corrupti dignissimos eveniet vitae, error magnam possimus fugit, quos est vel et reprehenderit, mollitia ipsum laudantium?</p>
+      </div>
+    </div>
 
-	<div class="carousel-inner">
-		<div class="item active">
-			<img src="img/1.jpg" alt="">
-			<div class="carousel-caption">
-				<h3>World of Money</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, aut iste repellat ratione molestiae corrupti dignissimos eveniet vitae, error magnam possimus fugit, quos est vel et reprehenderit, mollitia ipsum laudantium?</p>
-			</div>
-		</div>
+    <div class="item"><img src="img/2.jpg" alt=""></div>
+  </div>
 
-		<div class="item"><img src="img/2.jpg" alt=""></div>
-	</div>
+  <a href="#featured" class="left carousel-control" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
 
-	<a href="#featured" class="left carousel-control" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left"></span>
-	</a>
-
-	<a href="#featured" class="right carousel-control" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right"></span>
-	</a>
+  <a href="#featured" class="right carousel-control" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>
 
 
@@ -480,100 +481,99 @@ well
 <!-- Модальное окно -->
 </button>
 <div class="modal fade" id="policy" tabindex="-1" role="dialog" aria-labelledby="modallabel">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modallabel">Модальное окно</h3>
-			</div>
-			<div class="modal-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae illo earum tenetur cum inventore, dolor, quos numquam dicta aut vel magnam reiciendis eligendi doloremque velit sed amet deleniti iure iusto.</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" data-dismiss="modal" class="btn btn-default">
-					Закрыть
-				</button>
-			</div>
-		</div>
-	</div>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="modallabel">Модальное окно</h3>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae illo earum tenetur cum inventore, dolor, quos numquam dicta aut vel magnam reiciendis eligendi doloremque velit sed amet deleniti iure iusto.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">
+          Закрыть
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!-- Вкладки -->
 <ul class="nav nav-tabs" role=tablist>
-	<li role="presentation" class="active">
-		<a href="#tab_1" role="tab" data-toggle="tab">Tab_1</a>
-	</li>
-	<li role="presentation">
-		<a href="#tab_2" role="tab" data-toggle="tab">Tab_2</a>
-	</li>
-	<li role="presentation">
-		<a href="#tab_3" role="tab" data-toggle="tab">Tab_3</a>
-	</li>
+  <li role="presentation" class="active">
+    <a href="#tab_1" role="tab" data-toggle="tab">Tab_1</a>
+  </li>
+  <li role="presentation">
+    <a href="#tab_2" role="tab" data-toggle="tab">Tab_2</a>
+  </li>
+  <li role="presentation">
+    <a href="#tab_3" role="tab" data-toggle="tab">Tab_3</a>
+  </li>
 </ul>
 <div class="tab-content">
-	<div class="tab-pane active" role="tabpanel" id="tab_1">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere voluptate nulla illo ipsa quaerat eum quas eligendi suscipit nesciunt dolor error hic nisi at natus non, laudantium temporibus numquam dignissimos.
-	</div>
-	<div class="tab-pane" role="tabpanel" id="tab_2">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore minus distinctio libero pariatur magni doloremque iusto beatae cupiditate consectetur, tempora voluptate eveniet, ipsa unde asperiores quasi praesentium quia excepturi quod dolores, facilis maiores eos possimus. Consequuntur cupiditate obcaecati eius nesciunt nihil placeat voluptatibus dicta, in veritatis aut deserunt perferendis libero veniam odit ipsam error, nisi magni laboriosam ipsa tempora alias voluptate? Maiores fugiat odit, tempore hic inventore iste consequatur natus.
-	</div>
-	<div class="tab-pane" role="tabpanel" id="tab_3">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, similique!
-	</div>
+  <div class="tab-pane active" role="tabpanel" id="tab_1">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere voluptate nulla illo ipsa quaerat eum quas eligendi suscipit nesciunt dolor error hic nisi at natus non, laudantium temporibus numquam dignissimos.
+  </div>
+  <div class="tab-pane" role="tabpanel" id="tab_2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore minus distinctio libero pariatur magni doloremque iusto beatae cupiditate consectetur, tempora voluptate eveniet, ipsa unde asperiores quasi praesentium quia excepturi quod dolores, facilis maiores eos possimus. Consequuntur cupiditate obcaecati eius nesciunt nihil placeat voluptatibus dicta, in veritatis aut deserunt perferendis libero veniam odit ipsam error, nisi magni laboriosam ipsa tempora alias voluptate? Maiores fugiat odit, tempore hic inventore iste consequatur natus.
+  </div>
+  <div class="tab-pane" role="tabpanel" id="tab_3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, similique!
+  </div>
 </div>
 
 
 <!-- Аккордеон -->
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingOne">
-			<h4 class="panel-title">
-				<a class="collapsed" href="#tab_11" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="tab_11">Exotic Pets</a>
-			</h4>
-		</div>
-		<div class="panel-collapse collapse" id="tab_11" role="tabpanel" aria-labelledby="headingOne">
-			<div class="panel-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque similique veniam quam quas, et? Earum adipisci, hic officiis? Maiores aspernatur beatae commodi, nulla voluptate minus incidunt illum consequatur laudantium consectetur.</p>
-			</div>
-		</div>
-	</div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a class="collapsed" href="#tab_11" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="tab_11">Exotic Pets</a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" id="tab_11" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque similique veniam quam quas, et? Earum adipisci, hic officiis? Maiores aspernatur beatae commodi, nulla voluptate minus incidunt illum consequatur laudantium consectetur.</p>
+      </div>
+    </div>
+  </div>
 
-	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingTwo">
-			<h4 class="panel-title">
-				<a class="collapsed" href="#tab_22" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="tab_22">Exotic Pets</a>
-			</h4>
-		</div>
-		<div class="panel-collapse collapse in" id="tab_22" role="tabpanel" aria-labelledby="headingTwo">
-			<div class="panel-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque similique veniam quam quas, et? Earum adipisci, hic officiis? Maiores aspernatur beatae commodi, nulla voluptate minus incidunt illum consequatur laudantium consectetur.</p>
-			</div>
-		</div>
-	</div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" href="#tab_22" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="tab_22">Exotic Pets</a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse in" id="tab_22" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque similique veniam quam quas, et? Earum adipisci, hic officiis? Maiores aspernatur beatae commodi, nulla voluptate minus incidunt illum consequatur laudantium consectetur.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!-- Подсказки -->
 <a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip">Tooltip</a><!-- при этом нужно добавить в js: $('[data-toggle="tooltip"]').tooltip(); -->
 <a class="btn btn-info"
-		tabindex="0"
-		type="button"
-		data-container="body"
-		data-toggle="popover"
-		data-trigger="focus"
-		data-placement="bottom"
-		data-title="Popover"
-		data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua.">
-	Popover
+   tabindex="0"
+   type="button"
+   data-container="body"
+   data-toggle="popover"
+   data-trigger="focus"
+   data-placement="bottom"
+   data-title="Popover"
+   data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+  Popover
 </a><!-- при этом нужно добавить в js: $('[data-toggle="popover"]').popover(); -->
 
 
 
 <!-- Источники -->
 <!--
-	[ ] http://www.bootply.com
-	[ ] http://expo.getbootstrap.com
+  [ ] http://www.bootply.com
+  [ ] http://expo.getbootstrap.com
