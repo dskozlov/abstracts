@@ -21,11 +21,10 @@
 {n,} | количество от n | /[ijk]{2,}/ | ij; ikijki; kjj; ...
 . | любой символ, кроме переноса строки |  |
 ? | может быть, а может и не быть | /вы?ход/ | вход; выход
-^ | начало строки | /^foo\w+/ | football; food; ...
-$ | конец строки (исключая перенос строки) | /\w+bar$/ | foobar; woobar; ...
 \b | граница слова | /\b\w+\b/g | все слова
+$ | конец строки (исключая перенос строки) | /\w+bar$/ | foobar; woobar; ...
+^ | начало строки | /^foo\w+/ | football; food; ...
 ^ | не (в диапазоне) | /[^\d]+/ | всё, пока не встретится число
- |  | // |
 
 Все перечисленные кванторы становятся символами, если они экранируются слешем **\\**.
 
@@ -57,15 +56,17 @@ m | многострочность | /^[\w\s]+end$/gm | <ins>The end</ins><br>Al
 Назначение | Выражение
 ---------- | ---------
 Имя | /[\w\s]+/
-E-Mail | /^\w+@\w+\.(com\|net\|org\|edu)$/i
+E-Mail | /^[\w_\.]+@\w+\.\w{2,6}$/i
+Пароль, в котором хотя бы 1 цифра, 1 строчная и 1 заглавная буквы | /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}/
 
 ## Источники
-- https://www.codeschool.com/courses/breaking-the-ice-with-regular-expressions
-- https://regex101.com
-- http://rubular.com
-- http://learnpython.org/en/Regular_Expressions
-- http://eloquentjavascript.net/09_regexp.html
-- http://www.w3schools.com/jsref/jsref_obj_regexp.asp
-- http://www.lunametrics.com/blog/2006/08/13/regular-expressions-part-i-escaping-with-a-backslash/
-- Oracle Regular Expressions Pocket Reference
-- https://www.pluralsight.com/search?q=regex&categories=all
+- [V] https://www.codeschool.com/courses/breaking-the-ice-with-regular-expressions
+- [ ] https://regex101.com
+- [ ] http://rubular.com
+- [ ] http://learnpython.org/en/Regular_Expressions
+- [ ] http://eloquentjavascript.net/09_regexp.html
+- [ ] http://www.w3schools.com/jsref/jsref_obj_regexp.asp
+- [ ] http://www.lunametrics.com/blog/2006/08/13/regular-expressions-part-i-escaping-with-a-backslash/
+- [ ] Oracle Regular Expressions Pocket Reference
+- [ ] https://www.pluralsight.com/search?q=regex&categories=all
+- [V] http://www.exlab.net/tools/sheets/regexp.html
