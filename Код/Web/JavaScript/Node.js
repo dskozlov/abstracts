@@ -21,13 +21,13 @@ npm init
 
 
 // Работа с файлами
-var fs = require('fs');	// file system
+var fs = require('fs'); // file system
 
 fs.readFile("./data.json", "utf-8 ", function(err, data) {
-	console.log(data);
+  console.log(data);
 
-	// Для того, чтобы содержимое JSON-файла превратить в объект, делаем
-	data = JSON.parse(data);
+  // Для того, чтобы содержимое JSON-файла превратить в объект, делаем
+  data = JSON.parse(data);
 });
 // То же самое можно сделать более простым способом:
 var data = require("./data.json");
@@ -39,5 +39,5 @@ fs.writeFile("new_file.json", JSON.stringify({prop: "val"}));
 
 // Чтение папки
 fs.readdir("path/to/dir", function(err, data) {
-	console.log(data)
+  console.log(data)
 });
