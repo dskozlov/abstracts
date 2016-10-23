@@ -240,12 +240,12 @@ git stash
 
 # Редактирование истории
 git filter-branch
-  [f] --tree-filter "bash_command"
+  [-f] --tree-filter # ко всему дереву применяется команда Bash
     "rm -f passwords.txt"                 # удаление нежелательного файла
     "find . -name '*.mp4' -exec rm {} \;" # удаление нежелательных файлов
   --tree-filter "bash_command" -- --all # применение команды ко всем веткам и коммитам
   --tree-filter "bash_command" -- HEAD  # применение команды к текущей ветке
-  [f] --index-filter "git rm --cached --ignore-unmatch passwords.txt" # гораздо более быстрое выполнение команды для большого репозитория
+  [-f] --index-filter "git rm --cached --ignore-unmatch passwords.txt" # гораздо более быстрое выполнение команды для большого репозитория
   -f --prune-empty -- --all             # удалить все пустые коммиты
 
 
