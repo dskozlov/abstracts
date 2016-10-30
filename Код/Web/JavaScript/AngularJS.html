@@ -1,9 +1,10 @@
-<!-- AngularJS -->
+ AngularJS -->
 
 
 <!--
   Нужно знать:
   - HTML
+  - CSS
   - JavaScript
 
   Angular помогает грамотно организовать js-код и создать отзывчивый веб-сайт (ощущается как обычное приложение).
@@ -16,7 +17,7 @@
   // Оборачивать код в замыкание — хорошая привычка
   (function () {
     // Создание модуля
-    var app = angular.module('appName', []);  // в квадратных скобках указываются зависимости при необходимости
+    var app = angular.module('appName', ['dep-module-1', 'dep-module-2'...]); // при необходимости в квадратных скобках указываются зависимости (модули, в которых описан необходимый функционал: контроллеры, директивы...), которые находятся в другом замыкании (например, в другом файле)
 
     // Создание контроллера
     app.controller('controllerName', function(){
@@ -91,20 +92,97 @@
 
     <!-- Директивы -->
     <div ng-click="action"></div> <!-- действие по щелчку по объекту -->
-    <div ng-class="{ className:condition }"></div>  <!-- добавление класса при определённом условии -->
+    <div ng-class="{ className:condition }"></div> <!-- добавление класса при определённом условии -->
+    <!-- Работа с формами -->
+    <form name="formName" ng-controller="ctrl as c" novalidate ng-submit="formName.$valid && c.myFunc()"> <!-- отменяем стандартную валидацию; при отправке формы (если она прошла валидацию) происходит действие, соответствующее функции myFunc, объявленной в теле контроллера -->
+      <input ng-model="variable"> <!-- при изменении полей формы меняется и переменная -->
+
+      <input required> <!-- так помечаются обязательные поля -->
+      <!-- при этом полю присваиваются классы соответственно (их можно настроить в CSS) -->
+      .ng-pristine.ng-invalid <!-- до печатания, невалидное поле -->
+      .ng-dirty.ng-invalid <!-- после печатания, невалидное поле -->
+      .ng-dirty.ng-valid <!-- после печатания, валидное поле -->
+      <div>Форма прошла валидацию: {{formName.$valid}}</div>
+      <!-- Встроенные поля с валидацией -->
+      <input type="email">
+      <input type="url">
+      <input type="number"> <!-- дополнительные атрибуты: min=1 max=10 -->
+    </form>
+
+    <!-- Подгрузка куска HTML-кода из файла -->
+    <div ng-include="'included.html'"></div>
+    <!-- то же самое можно сделать следующим способом: -->
+    <!-- Создание собственных директив -->
+    <script>
+      app.directive("directiveName", function() {
+        return {
+          restrict: 'E', // создаётся HTML-элемент (тег) directive-name; или атрибут (если указать A) с тем же именем
+          templateUrl: 'included.html',
+          controller: function(){...}, // можно также описать здесь контроллер, чтобы упростить HTML код; либо описать его в другом месте, а здесь просто сослаться на него
+          controllerAs: 'aliasName' // также нужно указать имя переменной, используемой в файле 'included.html'
+        };
+      });
+    </script>
   </body>
 </html>
 
+<!-- Расширить функциональность Angular позволяют так называемые сервисы. -->
+<script>
+  // Разберём принцип работы с сервисами на примере сервиса $http (асинхронный запрос к серверу)
+  $http({ method: "GET", url: '/data.json' }); // $http.get('/data.json', { apiKey: 'myApiKey' });
+    // этот запрос возвращает объект Promise (см. функционал jQuery) c .success() и .error()
+    // в результате данные будут преобразованы в объекты и массивы js
+
+  // для того, чтобы воспользоваться сервисом в контроллере, нужно инъектировать зависимость с помощью массива:
+  app.controller('ctrl', [ '$http', function($http){...} ]);
+  app.controller('ctrl', [ '$http', '$log', function($http, $log){...} ]);
+
+  // Итак
+  app.controller('ctrl', [ '$http', function($http){
+    var objName = this;
+    objName.data = []; // так как скрипт начнёт работать до загрузки страницы, нужно передать свойству хотя бы пустой массив
+    $http.get('/data.json').success(function(data){
+      objName.data = data;
+    });
+
+    // основные методы
+    $http.get // получить данные
+    $http.post // создать данные
+    $http.put // обновить данные
+    $http.delete // удалить данные
+  }]);
+</script>
+
+
+<!-- Разбиение проекты на страницы -->
+<div ng-view></div> <!-- здесь меняется контент от страницы к странице -->
+<script>
+  // Для удобства каждый контроллер описывается в своём модуле
+  // подключаем этот модуль, чтобы была возможность работать со страницами
+  angular.module('moduleName', ['ngRoute']).config(function($routeProvider){
+    // добавляется страница по ссылке
+    $routeProvider.when('/notes', {
+      templateUrl: '/path/to/pages/notes/index.html'
+    })
+    .when('/edit', {
+      templateUrl: '/path/to/pages/edit/index.html'
+    })
+    .otherwise({ redirectTo: '/' }); // что делать, если ничего из перечисленного не подошло
+  });
+</script>
 
 
 <!-- Источники -->
 <!--
-  [ ] https://docs.angularjs.org/guide/expression
+  [ ] https://docs.angularjs.org/api
   [ ] https://www.codeschool.com/courses/shaping-up-with-angular-js
   [ ] https://www.codeschool.com/courses/staying-sharp-with-angular-js
   [ ] https://habrahabr.ru/post/149060/
+  https://egghead.io/technologies/angularjs
+  https://thinkster.io/topics/angular
 
   Angular 2
   [ ] https://angular.io/docs/ts/latest/tutorial/
   [ ] https://www.codeschool.com/courses/accelerating-through-angular-2
--->
+  https://egghead.io/technologies/angular2
+ -->
