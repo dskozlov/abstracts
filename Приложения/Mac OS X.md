@@ -37,7 +37,7 @@ force exit | alt + cmd + esc
 « | alt + \
 » | alt + shift + \
 ‹ | alt + shift + 3
-› | alt + shift + +4
+› | alt + shift + 4
 † | alt + t
 ‡ | alt + shift + 7
 ° | alt + shift + 8
