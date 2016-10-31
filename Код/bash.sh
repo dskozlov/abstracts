@@ -55,6 +55,10 @@ more <file.txt> # с указанием прогресса
 head <file.txt> # только верхняя часть файла
 tail <file.txt> # только нижняя часть файла
 
+## скрыть файл или папку
+chflags hidden <path/to/file/or/folder>
+## показать файл или папку
+chflags nohidden <path/to/file/or/folder>
 
 
 # Программы
