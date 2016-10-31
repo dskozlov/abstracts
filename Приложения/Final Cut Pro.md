@@ -1,4 +1,4 @@
-# Final Cut Pro X
+# Final Cut Pro
 
 #### Импортировать контент
 ⌘ + I

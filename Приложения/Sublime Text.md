@@ -1,4 +1,4 @@
-# Sublime Text 2, 3
+# Sublime Text
 
 ## Команды
 
