@@ -5,22 +5,22 @@
 
 Команда | Сочетание
 ------- | ---------
-Actual pixel | ctrl + alt + 0
-Fit on screen | ctrl + 0
-Free transform | ctrl + T
-Отобразить или спрятать сетку | ctrl + "
-Сгруппировать с предыдущим слоем | ctrl + G
-Вывести или убрать направляющие | ctrl + ;
+Actual pixel | ⌘ + alt + 0
+Fit on screen | ⌘ + 0
+Free transform | ⌘ + T
+Отобразить или спрятать сетку | ⌘ + "
+Сгруппировать с предыдущим слоем | ⌘ + G
+Вывести или убрать направляющие | ⌘ + ;
 Размер изображения | F11
-Инвертирование выделения | ctrl + shift + I; shift + F7
-Invert | ctrl + I
-Layer/new/layer via copy | ctrl + J
-Layer/new/layer via cut | ctrl + shift + J
-Merge visible | ctrl + shift + E
-Merge down | ctrl + E
-Предварительный просмотр cmyk | ctrl + Y
-Select all | ctrl + A
-Select none | ctrl + D
+Инвертирование выделения | ⌘ + shift + I; shift + F7
+Invert | ⌘ + I
+Layer/new/layer via copy | ⌘ + J
+Layer/new/layer via cut | ⌘ + shift + J
+Merge visible | ⌘ + shift + E
+Merge down | ⌘ + E
+Предварительный просмотр CMYK | ⌘ + Y
+Select all | ⌘ + A
+Select none | ⌘ + D
 
 ### Рисование и редактирование
 
