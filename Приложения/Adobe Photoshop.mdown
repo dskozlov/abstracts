@@ -1,0 +1,36 @@
+# Adobe Photoshop
+
+
+## Команды
+
+Команда | Сочетание
+------- | ---------
+Actual pixel | ctrl + alt + 0
+Fit on screen | ctrl + 0
+Free transform | ctrl + T
+Отобразить или спрятать сетку | ctrl + "
+Сгруппировать с предыдущим слоем | ctrl + G
+Вывести или убрать направляющие | ctrl + ;
+Размер изображения | F11
+Инвертирование выделения | ctrl + shift + I; shift + F7
+Invert | ctrl + I
+Layer/new/layer via copy | ctrl + J
+Layer/new/layer via cut | ctrl + shift + J
+Merge visible | ctrl + shift + E
+Merge down | ctrl + E
+Предварительный просмотр cmyk | ctrl + Y
+Select all | ctrl + A
+Select none | ctrl + D
+
+### Рисование и редактирование
+
+Команда | Сочетание
+------- | ---------
+Установить курсор перекрестие | Caps Lock
+Карандаш | N
+Кисть | B
+Аэрограф | J
+Смена режимов кисти | shift + +; shift + -
+Возврат в режим нормальной кисти | shift + alt + N
+Отобразить или спрятать палитру brushes | F5
+Сменить форму кисти | [; ]
