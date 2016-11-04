@@ -112,22 +112,22 @@ UX — это копирайтинг.
 
 
 ## Источники
-- https://www.codeschool.com/courses/fundamentals-of-design
-- https://www.smashingmagazine.com/category/design/
-- https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/
-- https://www.lynda.com/Design-Color-tutorials/Foundations-Color/120601-2.html
-- https://hackdesign.org
-- https://pearsonified.com/typography/
-- https://color.adobe.com/ru/create/color-wheel/
-- https://webdesign.tutsplus.com/articles/understanding-the-z-layout-in-web-design--webdesign-28
-- http://www.creativebloq.com/net-magazine
-- http://www.workwithcolor.com/color-converter-01.htm
-- http://www.ravelrumba.com/photoshop-grids/
-- http://www.colourlovers.com/palettes/most-loved/all-time/meta
-- http://thinkingwithtype.com
-- http://typographica.org/typography-books/the-elements-of-typographic-style-4th-edition/
-- http://webtypography.net
-- http://gridpak.com
-- http://colorbrewer2.org
-- http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
-- http://fontsinuse.com
+- [V] https://www.codeschool.com/courses/fundamentals-of-design
+- [ ] https://www.smashingmagazine.com/category/design/
+- [ ] https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/
+- [ ] https://www.lynda.com/Design-Color-tutorials/Foundations-Color/120601-2.html
+- [ ] https://hackdesign.org
+- [ ] https://pearsonified.com/typography/
+- [ ] https://color.adobe.com/ru/create/color-wheel/
+- [ ] https://webdesign.tutsplus.com/articles/understanding-the-z-layout-in-web-design--webdesign-28
+- [ ] http://www.creativebloq.com/net-magazine
+- [ ] http://www.workwithcolor.com/color-converter-01.htm
+- [ ] http://www.ravelrumba.com/photoshop-grids/
+- [ ] http://www.colourlovers.com/palettes/most-loved/all-time/meta
+- [ ] http://thinkingwithtype.com
+- [ ] http://typographica.org/typography-books/the-elements-of-typographic-style-4th-edition/
+- [ ] http://webtypography.net
+- [ ] http://gridpak.com
+- [ ] http://colorbrewer2.org
+- [ ] http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
+- [ ] http://fontsinuse.com
