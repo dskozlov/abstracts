@@ -62,3 +62,6 @@ force exit | alt + cmd + esc
 ≤ | alt + ,
 √ | alt + v
 ÷ | alt + /
+
+## Источники
+- [Почта](http://macovod.com.ua/poleznyie-goryachie-klavishi-dlya-mail-na-mac-os-x/)
