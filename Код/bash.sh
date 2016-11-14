@@ -60,6 +60,13 @@ chflags hidden <path/to/file/or/folder>
 ## показать файл или папку
 chflags nohidden <path/to/file/or/folder>
 
+## Выключить компьютер
+sudo shutdown
+  -h # выключить
+  -r # перезагрузить
+  -s # сон
+    now # сейчас
+    +1  # через минуту
 
 # Программы
 ## Midnight Commander (файловый менеджер внутри терминала)
