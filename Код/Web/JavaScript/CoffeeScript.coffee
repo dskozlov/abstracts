@@ -182,4 +182,5 @@ class Male extends Person
   [ ] A Little Book on CoffeeScript
   [ ] CoffeeScript: Accelerated JavaScript Development
   [ ] http://coffeescript-cookbook.github.io
+  http://js2.coffee/
 ###
