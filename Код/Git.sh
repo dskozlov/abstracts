@@ -327,7 +327,7 @@ export PS1='\W$(__git_ps1 "(%s)")> '
 
 
 # Источники
-# [V] https://try.github.io (введение в Git)
+# [x] https://try.github.io (введение в Git)
 # [ ] https://www.codeschool.com/learn/git (практический курс)
 # [ ] https://www.lynda.com/Git-tutorials/Git-Essential-Training/100222-2.html (теоретический курс)
 # [ ] https://git-scm.com/book/en/v2 (лучшая книжка по Git)

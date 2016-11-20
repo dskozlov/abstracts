@@ -112,7 +112,7 @@ UX — это копирайтинг.
 
 
 ## Источники
-- [V] https://www.codeschool.com/courses/fundamentals-of-design
+- [x] https://www.codeschool.com/courses/fundamentals-of-design
 - [ ] https://www.smashingmagazine.com/category/design/
 - [ ] https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/
 - [ ] https://www.lynda.com/Design-Color-tutorials/Foundations-Color/120601-2.html

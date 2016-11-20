@@ -365,4 +365,4 @@ int main(void){ // Пустой список параметров. Можно (�
 
 
 // Источники
-// [V] https://www.lynda.com/C-tutorials/C-Essential-Training/164457-2.html
+// [x] https://www.lynda.com/C-tutorials/C-Essential-Training/164457-2.html

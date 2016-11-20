@@ -270,9 +270,9 @@ $       // конец строки
 
 
 // Источники
-// [V] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
-// [V] https://www.codeschool.com/courses/javascript-road-trip-part-1
-// [V] https://www.codeschool.com/courses/javascript-road-trip-part-2
+// [x] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
+// [x] https://www.codeschool.com/courses/javascript-road-trip-part-1
+// [x] https://www.codeschool.com/courses/javascript-road-trip-part-2
 // [ ] https://www.codeschool.com/courses/javascript-road-trip-part-3
 // [ ] http://eloquentjavascript.net/ (Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming)
 // [ ] http://crockford.com/javascript/javascript (Douglas Crockford - JavaScript: The Good Parts)

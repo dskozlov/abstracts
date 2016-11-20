@@ -177,7 +177,7 @@ class Male extends Person
 
 # Источники
 ###
-  [V] https://www.codeschool.com/courses/coffeescript
+  [x] https://www.codeschool.com/courses/coffeescript
   [ ] http://coffeescript.org
   [ ] A Little Book on CoffeeScript
   [ ] CoffeeScript: Accelerated JavaScript Development

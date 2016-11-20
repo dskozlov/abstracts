@@ -60,7 +60,7 @@ E-Mail | /^[\w_\.]+@\w+\.\w{2,6}$/i
 Пароль, в котором хотя бы 1 цифра, 1 строчная и 1 заглавная буквы | /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}/
 
 ## Источники
-- [V] https://www.codeschool.com/courses/breaking-the-ice-with-regular-expressions
+- [x] https://www.codeschool.com/courses/breaking-the-ice-with-regular-expressions
 - [ ] https://regex101.com
 - [ ] http://rubular.com
 - [ ] http://learnpython.org/en/Regular_Expressions
@@ -69,4 +69,4 @@ E-Mail | /^[\w_\.]+@\w+\.\w{2,6}$/i
 - [ ] http://www.lunametrics.com/blog/2006/08/13/regular-expressions-part-i-escaping-with-a-backslash/
 - [ ] Oracle Regular Expressions Pocket Reference
 - [ ] https://www.pluralsight.com/search?q=regex&categories=all
-- [V] http://www.exlab.net/tools/sheets/regexp.html
+- [x] http://www.exlab.net/tools/sheets/regexp.html
