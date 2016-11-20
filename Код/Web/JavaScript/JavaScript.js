@@ -25,7 +25,23 @@
 // Кроссбаузерные фичи ---> Modernizr
 
 
-alert("Hello, World!"); // всплывающее окно с сообщением
+
+// Конкатонация
+"Hello, " + "World!"
+"Hello, " + 42
+// => "Hello, 42"
+"\t"  // таб
+"\""  // Экранирование кавычки
+"\\"  // \
+"\n"  // перенос строки
+
+
+// Встроенные функции
+alert("Hello, World!");         // всплывающее окно с сообщением
+confirm("Have you got a dog?"); // окно с подтверждением. возвращает true или false
+prompt("What is your name?");   // окно с полем для ввода. возвращает результат ввода или null
+
+typeof anything // возвращает тип объекта
 
 // Переменные (должны не начинаться с цифр) могут быть любого типа
 var currentYear1992_$,
@@ -33,6 +49,10 @@ var currentYear1992_$,
   x = "String",
   boolean = true;
 // var также МОЖНО не ставить
+
+// Переменные могут быть как глобальными, так и локальными (внутри фигурных скобок (блока))
+// переменная становится локальной, если её вновь объявить внутри нового блока с помощью var
+
 
 // Массив (в javascript они все динамические)
 var array = [];
@@ -251,11 +271,16 @@ $       // конец строки
 
 // Источники
 // [V] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
+// [V] https://www.codeschool.com/courses/javascript-road-trip-part-1
+// [V] https://www.codeschool.com/courses/javascript-road-trip-part-2
+// [ ] https://www.codeschool.com/courses/javascript-road-trip-part-3
+// [ ] http://eloquentjavascript.net/ (Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming)
+// [ ] http://crockford.com/javascript/javascript (Douglas Crockford - JavaScript: The Good Parts)
 // [ ] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
-// [ ] Douglas Crockford - JavaScript: The Good Parts __ http://crockford.com/javascript/javascript
+// [ ] https://developers.google.com/chrome-developer-tools
 // [ ] Apple: Developer Tools for Safari Overview
-// [ ] Google: Chrome Developer Tools __ https://developers.google.com/chrome-developer-tools
-// [ ] Firefox: Firebug Wiki __ getfirebug.com/wiki
-// [ ] QuirksMode.org
-// [ ] Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming
-// [ ] javascriptjabber.com
+// [ ] https://getfirebug.com/wiki/index.php/Main_Page
+// [ ] http://quirksmode.org/
+// [ ] https://devchat.tv/js-jabber
+// [ ] https://jsfiddle.net/
+// [ ] http://dailyjs.com/
