@@ -131,3 +131,4 @@ UX — это копирайтинг.
 - [ ] http://colorbrewer2.org
 - [ ] http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
 - [ ] http://fontsinuse.com
+- [ ] http://zurb.com/patterntap
