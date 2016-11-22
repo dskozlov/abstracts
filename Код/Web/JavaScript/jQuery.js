@@ -43,3 +43,4 @@ $.getJSON("data.json", function(data) {
 
 
 // Источники
+// http://jquery.page2page.ru/index.php5/%D0%A1%D0%B5%D0%BB%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D1%8B

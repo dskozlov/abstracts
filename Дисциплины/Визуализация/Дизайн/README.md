@@ -124,3 +124,5 @@ UX — это копирайтинг.
 - [ ] http://zurb.com/patterntap
 - [ ] [Видеоуроки всего на свете](https://www.skillshare.com)
 - [ ] [Графические уроки](http://design.tutsplus.com/)
+- [ ] [Виделекции](https://uideo.net/)
+- [ ] [Виделекции на русском](https://uideo.ru/)

@@ -352,4 +352,7 @@ $       // конец строки
 // [ ] http://quirksmode.org/
 // [ ] https://devchat.tv/js-jabber
 // [ ] https://jsfiddle.net/
+// [ ] http://cssdeck.com/labs
 // [ ] http://dailyjs.com/
+// [ ] http://www.w3schools.com/xml/ajax_intro.asp
+// [ ] [jQuery](jQuery.js)

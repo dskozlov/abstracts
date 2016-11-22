@@ -11,4 +11,7 @@
 
   }
   while($tablename=mysql_fetch_array($tablename_query));
+
+  // Источники
+  // http://symfony.com/
 ?>
