@@ -346,6 +346,7 @@ $       // конец строки
 // [ ] http://crockford.com/javascript/javascript (Douglas Crockford - JavaScript: The Good Parts)
 // [ ] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 // [ ] https://developers.google.com/chrome-developer-tools
+// [ ] https://developers.google.com/web/tools/chrome-devtools/console/console-reference
 // [ ] Apple: Developer Tools for Safari Overview
 // [ ] https://getfirebug.com/wiki/index.php/Main_Page
 // [ ] http://quirksmode.org/

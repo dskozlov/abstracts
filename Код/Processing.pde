@@ -204,4 +204,5 @@ Collection.shuffle(Arrays.asList(nums));  // Перемешать элемент
 // Источники
 /*
   [ ] http://fyprocessing.tumblr.com
+  [ ] http://processingjs.org
 */

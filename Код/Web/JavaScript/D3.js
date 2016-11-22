@@ -247,6 +247,8 @@ var text =d3.selectAll('g.slice')
 
 // Источники
 /*
+  [x] https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/D3_barChart.js
+  [x] https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/D3_forceChart.js
   [x] https://www.lynda.com/D3js-tutorials/Data-Visualization-D3js/162449-2.html
   [ ] https://github.com/d3/d3/wiki/Scales (Про масштабирование)
   [ ] https://github.com/d3/d3/wiki/Transitions (Про анимацию)
