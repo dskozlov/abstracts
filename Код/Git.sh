@@ -341,6 +341,7 @@ export PS1='\W$(__git_ps1 "(%s)")> '
 # [ ] http://ndpsoftware.com/git-cheatsheet.html (шпаргалка)
 # [ ] http://ftp.newartisans.com/pub/git.from.bottom.up.pdf
 # [ ] https://github.com/pluralsight/git-internals-pdf
+# [ ] Jon Loeliger — Version Control with Git
 # Статьи
 # [ ] http://nvie.com/posts/a-successful-git-branching-model/
 # [ ] http://scottchacon.com/2011/08/31/github-flow.html

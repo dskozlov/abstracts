@@ -145,4 +145,5 @@ osascript filename.scpt
   [ ] http://macscripter.net
   [ ] http://hints.macworld.com
   [ ] http://dougscripts.com/itunes/index.php
+  [ ] Hanaan Rosenthal, Hamish Sanderson — Learn AppleScript The Comprehensive Guide to Scripting
 *)
