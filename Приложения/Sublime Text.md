@@ -62,3 +62,7 @@
 - ColorPicker
 - [Trailing Spaces](https://github.com/SublimeText/TrailingSpaces)
 - [Как открывать файлы саблаймом из терминала](http://stackoverflow.com/questions/16199581/opening-sublime-text-on-command-line-as-subl-on-mac-os)
+
+## Источники
+- Wes Bos — Sublime Text Power User
+- http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html

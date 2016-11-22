@@ -110,7 +110,6 @@ UX — это копирайтинг.
 
 Не боимся экспериментировать!
 
-
 ## Источники
 - [ ] [Барахолка](Барахолка.md)
 - [x] https://www.codeschool.com/courses/fundamentals-of-design
@@ -119,18 +118,8 @@ UX — это копирайтинг.
 - [ ] https://www.lynda.com/Design-Color-tutorials/Foundations-Color/120601-2.html
 - [ ] https://hackdesign.org
 - [ ] https://pearsonified.com/typography/
-- [ ] https://color.adobe.com/ru/create/color-wheel/
 - [ ] https://webdesign.tutsplus.com/articles/understanding-the-z-layout-in-web-design--webdesign-28
 - [ ] http://www.creativebloq.com/net-magazine
-- [ ] http://www.workwithcolor.com/color-converter-01.htm
-- [ ] http://www.ravelrumba.com/photoshop-grids/
-- [ ] http://www.colourlovers.com/palettes/most-loved/all-time/meta
-- [ ] http://thinkingwithtype.com
-- [ ] http://typographica.org/typography-books/the-elements-of-typographic-style-4th-edition/
-- [ ] http://webtypography.net
-- [ ] http://gridpak.com
-- [ ] http://colorbrewer2.org
-- [ ] http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
 - [ ] http://fontsinuse.com
 - [ ] http://zurb.com/patterntap
 - [ ] [Видеоуроки всего на свете](https://www.skillshare.com)
