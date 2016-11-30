@@ -70,3 +70,4 @@ E-Mail | /^[\w_\.]+@\w+\.\w{2,6}$/i
 - [ ] Oracle Regular Expressions Pocket Reference
 - [ ] https://www.pluralsight.com/search?q=regex&categories=all
 - [x] http://www.exlab.net/tools/sheets/regexp.html
+- [ ] https://ru.wikipedia.org/wiki/Символы-джокеры

@@ -75,6 +75,14 @@ greeting + ' ' + target # => "Hello world!"
 "Hello".upcase         # => "HELLO"
 "Hello".length         # => 5
 "H,e,l,l,o".split(',') # => ["H", "e", "l", "l", "o"]
+"One two three two two three"['two'] = 'four' # => "One two three two two three"
+"One
+two
+three".lines.to_a
+# => ["One\
+#     ", "two\
+#     ", "three"]
+
 #### Можно навешивать цепочки методов
 "Hello".reverse.upcase
 
@@ -105,9 +113,11 @@ data_set.delete("b")  # => ["a", "c"]
 ["c", "a", "b"].sort  # => ["a", "b", "c"]
 [1, 1, 2, 3].uniq     # => [1, 2, 3]
 [1, 1, 2, 3].uniq!    # => [1, 2, 3] (с обновлением массива)
+[12, 47, 35].max      # => 47
 
 ## Хэши, Ассоциативные массивы (Hashes)
 ## Значения элементов массива можно определять по ключу (как в объектах)
+Hash.new(0) # пустой хэш
 person = {'first_name'=>'iGor', 'last_name'=>'Polyakov'}
 person['first_name']      # => "iGor"
 person.index('iGor')      # => 'first_name'
@@ -290,9 +300,23 @@ a <=> b # передвинуть влево (a < b); оставить на ме�
 [*1..10].inject(100) {|memo, n| memo + n} # => 155 (memo = 100; memo += 2; ...)
 
 
+# Работа с файловой системой
+Dir.entries "/" # Выводит массив из всех файлов и папок в корневой директории
+Dir["./*.txt"]  # массив с файлами в текущей папке с расширением .txt
+File.read("./file.txt") # прочесть файл
+# альтернативный способ
+File.open(­"./file.txt", "a") do |f|
+  f << "New line"
+end
+FileUtils.cp('./from.txt', './to.txt')  # копировать файл
+File.mtime("./file.txt")  # дата создания файла
+# из времени можно вынуть отдельные значения:
+.hour # час
+
 
 # Методы
-def name
+def name(param)
+# def name
   # тело функции
   puts "Hello, World!"
 end
@@ -304,8 +328,10 @@ require "methods.rb" # => true (если файл найден и исполня
 
 # Источники
 =begin
+  http://tryruby.org/
   [ ] ruby-lang.org
   [ ] ruby-doc.org
   [ ] ruby-doc.org/core
   [ ] https://www.ozon.ru/context/detail/id/5704300/
+  http://www.rubyinside.com/media/poignant-guide.pdf
 =end
