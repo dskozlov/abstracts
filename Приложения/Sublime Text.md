@@ -66,6 +66,7 @@
 - SyncedSideBar
 - [Trailing Spaces](https://github.com/SublimeText/TrailingSpaces)
 - SublimeLinter
+- [Spell Check](https://github.com/titoBouzout/Dictionaries)
 - [Как открывать файлы саблаймом из терминала](http://stackoverflow.com/questions/16199581/opening-sublime-text-on-command-line-as-subl-on-mac-os)
 
 ## Источники
