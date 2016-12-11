@@ -18,14 +18,56 @@
 // - освещение
 // - актёры и декорации
 
+
 // Сцена
 var scene = new THREE.Scene();
+
 
 // Визуализатор
 var renderer = new THREE.WebGLRenderer();
 // Визуализатор сообщает библиотеке, каким образом будет отображаться контент
 // Для отображения сцены в тех браузерах, в которых нет поддержки WebGL:
 var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
+
+// Задание размер области визуализатора (будущей сцены) и прикрепить к элементу DOM
+renderer.setSize(width, height);
+document.getElementById("tag_id").appendChild(renderer.domElement);
+
+// Отображение сцены через камеру
+renderer.render(scene, camera);
+
+
+// Свет
+var light = new THREE.AmbientLight(0xffffff);
+// Добавление на сцену
+scene.add(light);
+
+
+// Камера
+var camera = new THREE.PerspectiveCamera(FOV, aspect_ratio, near_plane, far_plane);
+// обычно FOV (Field of View) ∈ [35, 45] — поле зрения
+// aspect_ratio = width / height — соотношение сторон
+// near_plane [int] — расстояние до плоскости, ближе которой объекты не будут видны
+// far_plane [int] — расстояние до плоскости, дальше которой объекты не будут видны
+
+// Расположение камеры
+camera.position.x = 10;
+camera.position.y = 10;
+camera.position.z = 10;
+// Добавление на сцену
+scene.add(camera);
+
+
+// Примитивы
+// Общая методика создания объекта
+// Создаём геометрическую модель объекта
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+// Готовим для него материал
+var material = new THREE.MeshBasicMaterial({color: 0xff0000});
+// Натягиваем материал на объект и получаем Mesh
+var box = THREE.Mesh(geometry, material);
+// Добавляем на сцену
+scene.add(box);
 
 
 // Инструменты
