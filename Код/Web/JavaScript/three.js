@@ -26,8 +26,6 @@ var scene = new THREE.Scene();
 // Визуализатор
 var renderer = new THREE.WebGLRenderer();
 // Визуализатор сообщает библиотеке, каким образом будет отображаться контент
-// Для отображения сцены в тех браузерах, в которых нет поддержки WebGL:
-var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
 
 // Задание размер области визуализатора (будущей сцены) и прикрепить к элементу DOM
 renderer.setSize(width, height);
