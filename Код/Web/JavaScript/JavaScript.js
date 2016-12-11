@@ -340,6 +340,9 @@ $       // конец строки
 /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/ // правильный e-mail
 
 
+// Инструменты
+// https://c9.io/
+
 // Источники
 // [x] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-1
