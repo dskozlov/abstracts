@@ -82,6 +82,7 @@ myGeometry.vertices.push(new THREE.Vector3(0, 1, 0));
 myGeometry.vertices.push(new THREE.Vector3(-1, -1, 0));
 myGeometry.vertices.push(new THREE.Vector3(1, -1, 0));
 // образуем грань из точек
+myGeometry.faces.push(new THREE.Face3(0, 1, 2));
 // Дополнительно можно задать цвет вершинам (тогда грань раскрасится по градиенту)
 myGeometry.faces[0].vertexColors[0] = new THREE.Color(0xff0000);
 myGeometry.faces[0].vertexColors[1] = new THREE.Color(0x00ff00);
