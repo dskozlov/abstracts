@@ -41,12 +41,6 @@ document.getElementById("tag_id").appendChild(renderer.domElement);
 renderer.render(scene, camera);
 
 
-// Свет
-var light = new THREE.AmbientLight(0xffffff);
-// Добавление на сцену
-scene.add(light);
-
-
 // Камера
 var camera = new THREE.PerspectiveCamera(FOV, aspect_ratio, near_plane, far_plane);
 // обычно FOV (Field of View) ∈ [35, 45] — поле зрения
@@ -56,6 +50,42 @@ var camera = new THREE.PerspectiveCamera(FOV, aspect_ratio, near_plane, far_plan
 
 // Добавление на сцену
 scene.add(camera);
+
+
+// Благодаря материалам и свету можно видеть объекты по-разному.
+// Свет и материал тесно связаны друг с другом, поэтому требуется понимать их взаимодействие.
+
+
+// Свет
+// Свет окружения (действует на все объекты одинаково)
+var light = new THREE.AmbientLight(color);
+// смягчается серыми тонами,
+// используется совместно с другими типами света
+
+// Точечный (сверит во всех направлениях)
+var light = new THREE.PointLight(color, intensity, distance);
+// intensity [1] — интенсивность (яркость) света
+// distance [] — расстояние, на котором яркость становится нулевой
+
+// Направленный свет (как солнечный свет)
+var light = new THREE.DirectionalLight(color, intensity);
+
+// Прожекторный свет (свет из одной точки в одном направлении)
+var light = new THREE.SpotLight(color, intensity, distance, angle);
+// angle — угол распространения света
+
+// Добавление на сцену
+scene.add(light);
+
+// Подключение теней
+renderer.shadowMapEnabled = true;
+// От этого света отбрасывается тень
+light.castShadow = true;
+// Разрешение теней
+light.shadowMapWidth = 2048;
+light.shadowMapHeight = 2048;
+// Этот объект отбрасывает тень
+obj.castShadow = true;
 
 
 // Общая методика создания объекта
@@ -106,10 +136,39 @@ loader.load("./obj.js", function (geometry) {
 
 // Материалы
 // если материал не указывается, то объекту присваивается произвольный цвет
-.MeshBasicMaterial({ // не взаимодействует со светом
+.MeshBasicMaterial({ // не взаимодействует со светом, подходит для отладки
+  // опции
+  color:
+  side: THREE.DoubleSide, // THREE.FrontSide, THREE.BackSide
+  map: texture,  // текстура
+  bumpMap: bumpTexture, // карта выпуклостей
+  bumpScale: // размер выпуклости
+  transparency: false, // прозрачность
+  opacity: 1,   // непрозрачность
+  visible:      // видимость
+  wireframe:    // видны ли только рёбра
   vertexColors: THREE.VertexColors,
-  side: THREE.DoubleSide
 });
+.MeshLambertMaterial({ // матовая поверхность
+  // опции те же, плюс
+  ambient:  // цвет при попадании света
+  emissive: // собственное свечение
+});
+.MeshPhongMaterial({ // глянцевая (блестящая) поверхность
+  // опции те же, плюс
+  specular:  // цвет блеска
+  shinines:  // степень блеска
+});
+
+// Текстуры
+// импортирование
+var texture = THREE.ImageUtils.loadTexture("./img.png");
+// повторение паттерна текстуры
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+// количество повторений
+texture.repeat.set(10, 10);
+// для более сложных моделей используется UV редактор текстур
 
 // Примитивы, камеры, свет являются объектами класса Object3D.
 // Для объектов Object3D характерны следующие свойства
@@ -157,6 +216,28 @@ document.getElementById("tag_id").appendChild(stats.domElement);
 // обновление статистики
 stats.update();
 
+// Взаимодействие со сценой
+// - DeviceOrientation
+// - Editor
+// - Fly
+// - FirstPerson
+// - Oculus
+// - Orbit
+// - Path
+// - PointerLock
+// - Trackball
+// - Transform
+
+
+// Отслеживание положения курсора
+// https://threejs.org/docs/#Reference/Core/Raycaster
+
+// Пересечения
+// https://threejs.org/docs/#Reference/Math/Box3
+
+// Физика
+// https://github.com/chandlerprall/Physijs
+// https://github.com/kripken/ammo.js
 
 
 // Инструменты
@@ -208,9 +289,9 @@ stats.update();
 // Источники
 // [ ] https://threejs.org/docs/
 // [ ] http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0
-// [ ] https://www.pluralsight.com/courses/webgl-threejs-fundamentals
+// [x] https://www.pluralsight.com/courses/webgl-threejs-fundamentals
 // [ ] Jos Dirksen - Three.js Essentials - 2014
-// [ ] Dirksen J. - Learning Three.js The JavaScript 3D Library for WebGL (2nd Edition) - 2015
+// [ ] Jos Dirksen - Learning Three.js The JavaScript 3D Library for WebGL (2nd Edition) - 2015
 // [ ] Frahaan Hussain - Three js and WebGL 3D Programming
 // [ ] https://www.udemy.com/threejs-programming/
 // [ ] Jos Dirksen - Three.js Cookbook - 2015
@@ -226,6 +307,11 @@ stats.update();
 
 // Стеки моделей
 // http://tf3dm.com/
+
+// Стеки текстур
+// http://opengameart.org/
+// https://www.arroway-textures.ch
+// http://www.textures.com/
 
 // Альтернативные библиотеки для WebGL
 // [Babylon.js](babylonjs.com)
