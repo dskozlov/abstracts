@@ -57,6 +57,7 @@ scene.add(camera);
 
 
 // Свет
+// http://i.stack.imgur.com/3udUJ.gif
 // Свет окружения (действует на все объекты одинаково)
 var light = new THREE.AmbientLight(color);
 // смягчается серыми тонами,
@@ -135,14 +136,19 @@ loader.load("./obj.js", function (geometry) {
 
 
 // Материалы
+// https://developer.apple.com/reference/scenekit/scnmaterial/1655321-lighting_models
 // если материал не указывается, то объекту присваивается произвольный цвет
 .MeshBasicMaterial({ // не взаимодействует со светом, подходит для отладки
   // опции
   color:
   side: THREE.DoubleSide, // THREE.FrontSide, THREE.BackSide
   map: texture,  // текстура
-  bumpMap: bumpTexture, // карта выпуклостей
+  bumpMap: bumpTexture, // карта выпуклостей (чёрно-белая; тон характеризует возвышения)
   bumpScale: // размер выпуклости
+  normalMap: // карта нормалей (синеватая текстура, задающая ориентацию каждого пикселя)
+  normalScale: // размер выпуклости
+  specularMap: // карта отражений (белый — отражается; чёрный — не отражается)
+  specular: // цвет отражения
   transparency: false, // прозрачность
   opacity: 1,   // непрозрачность
   visible:      // видимость
@@ -216,7 +222,11 @@ document.getElementById("tag_id").appendChild(stats.domElement);
 // обновление статистики
 stats.update();
 
+// GUI (настройка параметров прямо в браузере)
+// https://code.google.com/p/ dat-gui/
+
 // Взаимодействие со сценой
+// https://github.com/mrdoob/three.js/tree/dev/examples/js/controls
 // - DeviceOrientation
 // - Editor
 // - Fly
@@ -227,7 +237,6 @@ stats.update();
 // - PointerLock
 // - Trackball
 // - Transform
-
 
 // Отслеживание положения курсора
 // https://threejs.org/docs/#Reference/Core/Raycaster
@@ -287,7 +296,11 @@ stats.update();
 // https://throughthedark.withgoogle.com/
 
 // Источники
+// Дисклеймер: большинство источников как правило повторяют и как исключение взаимодополняют друг друга.
+// Более того очень многие книги рассчитаны на аудиторию, не занимающуюся ни программированием, ни моделированием.
+// Так что лучший способ освоить технологию, как библиотеку к JavaScript — это всего на всего прочесть официальную документацию:
 // [ ] https://threejs.org/docs/
+// Если же технологию осваивает начинающий программист, то однозначно лучшим решением будет освоение следующей литературы:
 // [ ] http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0
 // [x] https://www.pluralsight.com/courses/webgl-threejs-fundamentals
 // [ ] Jos Dirksen - Three.js Essentials - 2014
@@ -312,6 +325,9 @@ stats.update();
 // http://opengameart.org/
 // https://www.arroway-textures.ch
 // http://www.textures.com/
+
+// Скайбоксы
+// http://www.custommapmakers.org/skyboxes.php
 
 // Альтернативные библиотеки для WebGL
 // [Babylon.js](babylonjs.com)
