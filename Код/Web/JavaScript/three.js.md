@@ -24,6 +24,21 @@
 - отсутствие света
 - маленький масштаб
 
+Всем объектам, принадлежащим классу Object3D (моделям, камерам, свету), характерны следующие свойства:
+- `.id`
+- `.uuid`
+- `.name`
+- `.position`
+- `.userData`
+- `.parent`
+- `.children`
+
+и следующие методы:
+- `.getObjectByName()`
+- `.getObjectById()`
+- `.lookAt()`
+
+
 ## Сцена
 ```js
 var scene = new THREE.Scene();
@@ -48,16 +63,6 @@ renderer.render(scene, camera);
 ```
 
 
-## Свет
-```js
-var light = new THREE.AmbientLight(0xffffff);
-```
-Добавление на сцену
-```js
-scene.add(light);
-```
-
-
 ## Камера
 ```js
 var camera = new THREE.PerspectiveCamera(FOV, aspect_ratio, near_plane, far_plane);
@@ -70,6 +75,60 @@ var camera = new THREE.PerspectiveCamera(FOV, aspect_ratio, near_plane, far_plan
 Добавление на сцену
 ```js
 scene.add(camera);
+```
+
+Благодаря материалам и свету можно видеть объекты по-разному.
+Свет и материал тесно связаны друг с другом, поэтому требуется понимать их взаимодействие.
+
+
+## Свет
+Выделяют несколько [типов источников света](http://i.stack.imgur.com/3udUJ.gif).
+### Свет окружения (действует на все объекты одинаково)
+```js
+var light = new THREE.AmbientLight(color);
+```
+- смягчается серыми тонами,
+- используется совместно с другими типами света
+
+### Точечный (сверит во всех направлениях)
+```js
+var light = new THREE.PointLight(color, intensity, distance);
+```
+- `intensity` [1] — интенсивность (яркость) света
+- `distance` [] — расстояние, на котором яркость становится нулевой
+
+### Направленный свет (как солнечный свет)
+```js
+var light = new THREE.DirectionalLight(color, intensity);
+```
+
+### Прожекторный свет (свет из одной точки в одном направлении)
+```js
+var light = new THREE.SpotLight(color, intensity, distance, angle);
+```
+- `angle` — угол распространения света
+
+Добавление на сцену
+```js
+scene.add(light);
+```
+
+#### Подключение теней
+```js
+renderer.shadowMapEnabled = true;
+```
+От этого света отбрасывается тень
+```js
+light.castShadow = true;
+```
+Разрешение теней
+```js
+light.shadowMapWidth = 2048;
+light.shadowMapHeight = 2048;
+```
+Этот объект отбрасывает тень
+```js
+obj.castShadow = true;
 ```
 
 
@@ -126,8 +185,7 @@ myMesh = new THREE.Mesh(myGeometry);
 ```
 
 ### Импортированные модели
-https://github.com/mrdoob/three.js/tree/dev/src/loaders
-Для загрузки каждого из форматов (допустимы практические любые известные) требуется специальный загрузчик (loader), который можно взять из проекта three.js.
+Для загрузки каждого из форматов (допустимы практические любые известные) требуется специальный загрузчик ([loader](https://github.com/mrdoob/three.js/tree/dev/src/loaders)), который можно взять из проекта three.js.
 Стандартный (родной) формат — three.js
 ```js
 var loader = THREE.JSONLoader();
@@ -141,36 +199,12 @@ loader.load("./obj.js", function (geometry) {
 производится с помощью вспомогательных библиотек GeometryExporter.js или SceneExporter.js
 
 
-## Материалы
-если материал не указывается, то объекту присваивается произвольный цвет
-```js
-.MeshBasicMaterial({ // не взаимодействует со светом
-  vertexColors: THREE.VertexColors,
-  side: THREE.DoubleSide
-});
-```
-
-Примитивы, камеры, свет являются объектами класса Object3D.
-Для объектов Object3D характерны следующие свойства
-- `.id`
-- `.uuid`
-- `.name`
-- `.position`
-- `.userData`
-- `.parent`
-- `.children`
-
-и методы
-- `.getObjectByName()`
-- `.getObjectById()`
-- `.lookAt()`
-
-
 ## Трансформации
 - `.position` — перемещение (в координатах)
 - `.scale` — масштабирование (в коэффициентах)
 - `.rotate` — вращение (вокруг соответствующей оси в радианах = градусы * pi / 180)
-все трансформации родителей также распространяются и на детей
+
+Все трансформации родителей также распространяются и на детей.
 
 Трансформации могут задаваться тремя различными способами
 ```js
@@ -188,21 +222,88 @@ obj.geometry.vertices[0].z = 1;
 http://evanw.github.io/csg.js/
 
 
-## Вспомогательные элементы
-### Отображение статистики
-https://github.com/mrdoob/stats.js
+## Материалы
+Если материал не указывается, то объекту присваивается произвольный цвет.
+
+Обычно используется [несколько основных типов материалов](https://developer.apple.com/reference/scenekit/scnmaterial/1655321-lighting_models):
+### Стандартная (не взаимодействует со светом, подходит для отладки)
 ```js
-var stats = new Stats();
-stats.setMode(0);
-stats.domElement.style({
-  position: "absolute",
-  left: 0,
-  top: 0
+.MeshBasicMaterial({
+  // опции
+  color:
+  side: THREE.DoubleSide, // THREE.FrontSide, THREE.BackSide
+  map: texture,  // текстура
+  bumpMap: bumpTexture, // карта выпуклостей (чёрно-белая; тон характеризует возвышения)
+  bumpScale: // размер выпуклости
+  normalMap: // карта нормалей (синеватая текстура, задающая ориентацию каждого пикселя)
+  normalScale: // размер выпуклости
+  specularMap: // карта отражений (белый — отражается; чёрный — не отражается)
+  specular: // цвет отражения
+  transparency: false, // прозрачность
+  opacity: 1,   // непрозрачность
+  visible:      // видимость
+  wireframe:    // видны ли только рёбра
+  vertexColors: THREE.VertexColors,
 });
-document.getElementById("tag_id").appendChild(stats.domElement);
-// обновление статистики
-stats.update();
 ```
+
+#### Текстуры
+Идут в дополнение к материалам и накладываются поверх них, определяя внешний вид модели.
+По сути, это картинка, наклеенная на объект.
+Импортирование производится следующим способом:
+```js
+var texture = THREE.ImageUtils.loadTexture("./img.png");
+```
+Повторение паттерна текстуры:
+```js
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+```
+Количество повторений:
+```js
+texture.repeat.set(10, 10);
+```
+Для более сложных моделей используется UV редактор текстур.
+
+### Матовая поверхность
+```js
+.MeshLambertMaterial({
+  // опции те же, плюс
+  ambient:  // цвет при попадании света
+  emissive: // собственное свечение
+});
+```
+
+### Глянцевая (блестящая) поверхность
+```js
+.MeshPhongMaterial({
+  // опции те же, плюс
+  specular:  // цвет блеска
+  shinines:  // степень блеска
+});
+```
+
+
+## Вспомогательные элементы
+- [Отображение статистики](https://github.com/mrdoob/stats.js)
+- [GUI](https://code.google.com/p/dat-gui/) (настройка параметров прямо в браузере)
+- [Взаимодействие со сценой](https://github.com/mrdoob/three.js/tree/dev/examples/js/controls)
+    + DeviceOrientation
+    + Editor
+    + Fly
+    + FirstPerson
+    + Oculus
+    + Orbit
+    + Path
+    + PointerLock
+    + Trackball
+    + Transform
+- [Отслеживание положения курсора](https://threejs.org/docs/#Reference/Core/Raycaster)
+- [Пересечения](https://threejs.org/docs/#Reference/Math/Box3)
+- Физика
+    + https://github.com/chandlerprall/Physijs
+    + https://github.com/kripken/ammo.js
+
 
 ## Инструменты
 - [Текстовый онлайн редактор](https://threejs.org/editor/)
@@ -251,7 +352,12 @@ stats.update();
 - https://throughthedark.withgoogle.com/
 
 ## Источники
+__Дисклеймер__: большинство источников как правило повторяют и как исключение взаимодополняют друг друга.
+Более того очень многие книги рассчитаны на аудиторию, не занимающуюся ни программированием, ни моделированием.
+Так что лучший способ освоить технологию, как библиотеку к JavaScript — это всего на всего прочесть официальную документацию:
 - [ ] https://threejs.org/docs/
+
+Если же технологию осваивает начинающий программист, то однозначно лучшим решением будет освоение следующей литературы:
 - [ ] http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0
 - [x] https://www.pluralsight.com/courses/webgl-threejs-fundamentals
 - [ ] Jos Dirksen - Three.js Essentials - 2014
@@ -271,6 +377,14 @@ stats.update();
 
 ## Стоки моделей
 - http://tf3dm.com/
+
+## Стеки текстур
+- http://opengameart.org/
+- https://www.arroway-textures.ch
+- http://www.textures.com/
+
+## [Скайбоксы](https://ru.wikipedia.org/wiki/Скайбокс)
+- http://www.custommapmakers.org/skyboxes.php
 
 ## Альтернативные библиотеки для WebGL
 - [Babylon.js](babylonjs.com)
