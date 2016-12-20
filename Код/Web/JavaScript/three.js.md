@@ -359,7 +359,7 @@ __Дисклеймер__: большинство источников как п�
 
 Если же технологию осваивает начинающий программист, то однозначно лучшим решением будет освоение следующей литературы:
 - [ ] http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0
-- [x] https://www.pluralsight.com/courses/webgl-threejs-fundamentals
+- [x] [Alex Mackey — WebGL and Three.js Fundamentals](https://www.pluralsight.com/courses/webgl-threejs-fundamentals)
 - [ ] Jos Dirksen - Three.js Essentials - 2014
 - [ ] Dirksen J. - Learning Three.js The JavaScript 3D Library for WebGL (2nd Edition) - 2015
 - [ ] Frahaan Hussain - Three js and WebGL 3D Programming
