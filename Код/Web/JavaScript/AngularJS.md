@@ -181,13 +181,13 @@ angular.module('moduleName', ['ngRoute']).config(function($routeProvider){
 
 ## Источники
 - [ ] https://docs.angularjs.org/api
-- [ ] https://www.codeschool.com/courses/shaping-up-with-angular-js
+- [x] https://www.codeschool.com/courses/shaping-up-with-angular-js
 - [ ] https://www.codeschool.com/courses/staying-sharp-with-angular-js
 - [ ] https://habrahabr.ru/post/149060/
-- https://egghead.io/technologies/angularjs
-- https://thinkster.io/topics/angular
+- [ ] https://egghead.io/technologies/angularjs
+- [ ] https://thinkster.io/topics/angular
 
 ### Angular 2
 - [ ] https://angular.io/docs/ts/latest/tutorial/
 - [ ] https://www.codeschool.com/courses/accelerating-through-angular-2
-- https://egghead.io/technologies/angular2
+- [ ] https://egghead.io/technologies/angular2
