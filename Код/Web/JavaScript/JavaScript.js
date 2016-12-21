@@ -349,6 +349,7 @@ $       // конец строки
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-2
 // [ ] https://www.codeschool.com/courses/javascript-road-trip-part-3
 // [ ] http://eloquentjavascript.net/ (Marijn Haverbeke - Elequent JavaScript: A Modern Introduction to Programming)
+// [ ] https://addyosmani.com/resources/essentialjsdesignpatterns/book/
 // [ ] http://crockford.com/javascript/javascript (Douglas Crockford - JavaScript: The Good Parts)
 // [ ] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 // [ ] https://developers.google.com/chrome-developer-tools
