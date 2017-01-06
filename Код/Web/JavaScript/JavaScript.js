@@ -343,6 +343,11 @@ $       // конец строки
 // Инструменты
 // https://c9.io/
 
+// Полезные фишки для сайтов
+// http://scrollmagic.io/
+// https://css-tricks.com/snippets/jquery/smooth-scrolling/
+// https://greensock.com/tweenmax
+
 // Источники
 // [x] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-1
