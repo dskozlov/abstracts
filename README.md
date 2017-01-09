@@ -20,3 +20,4 @@
 
 ## Дополнительные источники
 - [Группа поддержки ВК](https://vk.com/ip.knowledgebase)
+- [Подборка __потрясающих__ источников информации](https://github.com/sindresorhus/awesome)
