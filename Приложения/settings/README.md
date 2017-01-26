@@ -2,14 +2,13 @@
 
 Настройки ПО, которые формировались довольно длительное время путём проб и ошибок.
 На мой взгляд они способствуют наиболее эффективному использованию программных продуктов.
-На текущий момент присутсвтуют настройки для:
+На текущий момент присутствуют настройки для:
 - [iTerm2](https://github.com/noggatur/settings/blob/master/com.googlecode.iterm2.plist)
 - [Sublime Text](https://github.com/noggatur/settings/blob/master/Preferences.sublime-settings)
 - [Bash](https://github.com/noggatur/settings/blob/master/.bash_profile)
 - [Git](https://github.com/noggatur/settings/blob/master/.gitconfig)
-- [Орфографический словарь](https://github.com/noggatur/settings/blob/master/russian_english.dic)
 
-## Программы, которые необходимы для установки:
+## Программы для комфортной работы:
 - AppCleaner
 - Google Chrome
 - Google Диск
@@ -30,10 +29,3 @@
 - Wolfram Mathematica
 - Lingvo Dictionary
 - Steam
-
-## Шрифты, без которых мир не так прекрасен:
-- [Anonymous Pro](http://allfont.ru/download/anonymous-pro/)
-- [Tinos](http://allfont.ru/download/tinos/)
-- [DS-Digital](http://allfont.ru/download/ds-digital/)
-- [DS Greece](http://allfont.ru/download/ds-greece/)
-- [Petersburg Cyrillic](http://allfont.ru/download/petersburg-cyrillic/)
