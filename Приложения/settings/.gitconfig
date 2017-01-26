@@ -1,0 +1,18 @@
+[user]
+  name = Igor Polyakov
+  email = igor_polyakov@phystech.edu
+[core]
+  editor = subl -n -w
+  autocrlf = input
+  quotepath = false
+[color]
+  ui = true
+[alias]
+  s = "status -s"
+  lg = "log --oneline --decorate --all --graph"
+  co = checkout
+  c = commit -am
+[push]
+  default = simple
+[pull]
+  rebase = true

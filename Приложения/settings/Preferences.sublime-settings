@@ -1,0 +1,80 @@
+// ВНИМАНИЕ!
+// Следующие настройки принадлежат не только основной программе!
+// Следует быть аккуратным в этом плане: копировать настройки, принадлежащие только своему плагину.
+
+// Основные настройки (принадлежат основной программе)
+{
+	"added_words":
+	[
+		"Карандашова",
+		"ДЗЗ",
+		"Досрок",
+		"Карлова",
+		"равнозамедленное",
+		"равноускоренно",
+		"равнозамедленно",
+		"равнозамедленным",
+		"равнозамедленного",
+		"равнозамедленном",
+		"нерастянутому",
+		"обкладках",
+		"почленно",
+		"Инфографика",
+		"коммиты",
+		"коммиту",
+		"коммита",
+		"Запилить",
+		"коммитов",
+		"коммитить",
+		"коммитах",
+		"коммит",
+		"коммите",
+		"коммитам"
+	],
+	"afn_insert_dimensions": false,
+	"auto_complete_cycle": true,
+	"bold_folder_labels": true,
+	"caret_extra_bottom": 2,
+	"caret_extra_top": 2,
+	"caret_extra_width": 2,
+	"caret_style": "solid",
+	"color_scheme": "Packages/Theme - Cobalt2/cobalt2.tmTheme",
+	"dictionary": "Packages/User/russian_english.dic",
+	"draw_white_space": "all",
+	"fallback_encoding": "UTF-8",
+	"font_face": "Anonymous Pro",
+	"font_size": 18,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 4,
+	"open_files_in_new_window": false,
+	"origami_auto_zoom_on focus": true,
+	"save_on_focus_lost": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"spell_check": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"update_check": false,
+	"word_wrap": false
+}
+
+// Trailing Spaces
+{
+	"trailing_spaces_trim_on_save": true
+}
+
+// Markdown
+{
+  "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
+  "line_numbers": true,
+  "highlight_line": true
+}
