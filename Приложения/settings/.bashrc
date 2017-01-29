@@ -39,8 +39,8 @@ alias mkdir='mkdir -p'
 
 # git
 # автозаполнение — https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
-if [ -f ~/.git-completion.bash ]; then
-  source ~/.git-completion.bash
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 # папка(ветка)>
 if [ -f ~/.bash_git ]; then
