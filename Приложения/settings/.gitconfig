@@ -5,6 +5,7 @@
   editor = subl -n -w
   autocrlf = input
   quotepath = false
+  pager = "less -RN"
 [color]
   ui = true
 [alias]

@@ -30,7 +30,7 @@ export GREP_COLOR="34;47"
 export GREP_OPTOPNS="--color=auto" # раскрашивание по умолчанию
 
 # полезные сокращения
-alias ll='ls -lahG | cut -c 2-10,30-35,49-'
+alias ll='ls -lahG'
 alias home='cd ~'
 alias up='cd ..'
 alias h='history'
@@ -56,11 +56,13 @@ alias bs='subl ~/.bashrc' # настройки Bash
 
 # git
 # автозаполнение — https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
-if [ -f ~/.git-completion.bash ]; then
-  source ~/.git-completion.bash
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 # папка(ветка)>
-if [ -f ~/.bash_git ]; then
-  source ~/.bash_git
-  export PS1='\W$(__git_ps1 "(%s)")> '
+
+if [ ! -f ~/.bash_git ]; then
+  curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
 fi
+source ~/.bash_git
+export PS1='\W$(__git_ps1 "(%s)")> '
