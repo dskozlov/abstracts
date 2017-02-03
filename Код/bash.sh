@@ -30,7 +30,7 @@ declare -i d=123 # целое число
 declare -r e=234 # константа (только чтение)
 declare -l f="iGor" # igor
 declare -u g="iGor" # IGOR
-# системные переменные
+# системные переменные — http://www.tldp.org/LDP/abs/html/internalvariables.html
 $PATH # здесь находятся все пути к командам
 $PS1 # то, что находится перед стокой ввода
 $HOME # папка текущего пользователя
@@ -41,6 +41,19 @@ $HOSTNAME # имя системы
 $BASH_VERSION # версия Bash
 $SECONDS # время (в секундах), в течение которого работала сессия
 $0 # имя скрипта
+
+# Массивы
+arr=("item_1" "item_2" "item_3")
+${arr[0]} # обращение к элементу массива
+${arr[@]} # обращение ко всему массиву
+${arr[@]: -1} # обращение к последнему элементу массива
+arr[3]="item_4" # задать значение элементу массива
+arr+=("item_5") # добавить элемент в конец массива
+# Ассоциативные массивы
+declare -A arr
+arr[color]=blue
+arr["complicated key"]="complicated value"
+${arr["complicated key"]} # "complicated value"
 
 # Команды
 # команда — это, по сути, ссылка на программу, которая исполняется при вызове команды. вот 4 идентичные записи
@@ -91,7 +104,8 @@ echo
     'Hello World!'
     {1..10} # 1 2 3 4 5 6 7 8 9 10
     {A..D}  # A B C D
-
+# вывод с параметрами — http://wiki.bash-hackers.org/commands/builtin/printf
+printf "%s, %d" "String" "42"
 
 # путь к текущей папке (print (или present) working directory)
 pwd
@@ -332,6 +346,12 @@ sort < file.txt
 # чтение находится в приоритете перед записью. поэтому можно сделать так
 sort < file.txt > sorted_file.txt # отсортировать file.txt и записать в sorted_file.txt
 (sort < file.txt) > sorted_file.txt # то же самое
+# многострочный вывод (HERE)
+<<- EndOfText
+  Text
+  Text
+  Text
+EndOfText
 
 # pipe — поток (конвейер); поочерёдное выполнение команд, причём то, что получается на выходе одной команды цепочки, принимается на вход следующей
 echo "Hello World" | wc # посчитать слова и символы в "Hello World"
@@ -541,6 +561,41 @@ chmod +x script.sh
 *=
 /=
 
+# Цвет
+# Способ №1
+\033[31;43;5m Перекрашенный текст \033[0m
+# Цвет        Текст  Фон    Стиль        Код
+# чёрный      30     40     сбросить     0
+# красный     31     41     яркий        1
+# зелёный     32     42     тусклый      2
+# жёлтый      33     43     подчеркнуть  4
+# синий       34     44     мигать       5
+# малиновый   35     45     обратный     7
+# голубой     36     46     спрятать     8
+# белый       37     47
+
+# Способ №2
+tput
+  setaf [0-7] # цвет текста
+  setab [0-7] # цвет фона
+  sgv0 # сбросить
+  bold # яркий
+  dim # тусклый
+  smul # подчеркнуть
+  blink # мигать
+  rev # обратный
+man terminfo # узнать больше о цветах и стилях
+
+if [[ condition ]]; then
+  # expr_1
+elif [ condition ]; then
+  # expr_2
+elif condition
+  then
+  # expr_3
+else
+  # expr_4
+fi
 
 
 # Программы
@@ -550,6 +605,8 @@ chmod +x script.sh
 # Источники
 # [ ] [Базовые знания по работе в среде Unix и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
 # [ ] [Скрипты на Bash](https://www.lynda.com/Bash-tutorials/Up-Running-Bash-Scripting/142989-2.html)
-# [ ] [Системные переменные](http://www.tldp.org/LDP/abs/html/internalvariables.html)
+# [ ] [The Linux Documentation Project](http://www.tldp.org/LDP/abs/html/gotchas.html)
+# [ ] [](http://wiki.bash-hackers.org/doku.php)
+# [ ] [](http://www.gnu.org/software/bash/manual/bash.html)
 # [Регулярные выражения](Regular Expressions.md)
 # [AppleScript](AppleScript.scpt)
