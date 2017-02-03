@@ -544,9 +544,25 @@ sh script.sh
 # но поскольку в начале файла прописано "#!/bin/bash", то можно просто запустить следующим образом:
 ./script.sh # файл при этом должен быть исполняемым; если это не так, то делаем
 chmod +x script.sh
+# при этом скрипту как и команде можно послать аргументы, которые доступны в скрипте по переменным
+$1, $2, ... # каждый аргумент, соответственно
+$@ # все аргументы (массив)
+$# # число аргументов
+# Опции (флаги) для скрипта
+while getopts :a:b:cde option; do # далее комментарии будут касательно ":a:b:cde"
+  case $option in
+    a) varA=$OPTARG;; # Для символов "a:" — передаётся значение флага: "-a value"
+    b) varB=$OPTARG;; # Для символов "b:"
+    c) echo "Передана опция c";; # Для символа "c" — без значения
+    d) echo "Передана опция d";; # Для символа "d"
+    e) echo "Передана опция e";; # Для символа "e"
+    ?) echo "Не понимаю, о чём речь. Что ещё за $OPTARG?";; # Для первого символа ":" — если передана опция, не предусмотренная скриптом
+  esac
+done
+# ниже есть объяснение тому, что тут написано
 
 # Математические операции производятся внутри следующей конструкции
-(())
+(( expr ))
 # математические операторы
 + # сложение
 - # вычитание
@@ -560,6 +576,42 @@ chmod +x script.sh
 -=
 *=
 /=
+
+# Логические операции производятся внутри следующей конструкции
+[[ expr ]] # 1 — FALSE; 0 — TRUE (для проверки истинности выражения можно после него поставить echo $?)
+# Логические операторы
+# для сравнения строк
+<
+>
+<=
+>=
+==, =
+!=
+=~ # содержание в строке комбинации, соответствующей регулярному выражению (например, [[ "The 42 is the answer" =~ [0-9]+ ]])
+# для сравнения чисел
+-lt
+-gt
+-le
+-ge
+-eq
+-ne
+# другие операторы
+&& # и
+|| # или
+! # не
+-z # null? — переменная пустая?
+-n # не null? — переменная непустая?
+
+# Работа со строками
+# пусть STR — переменная со строкой. тогда
+${#STR} # количество символов
+${STR:3} # символы с 3-го по последний
+${STR: -3} # символы с 3-го с конца по последний
+${STR:3:4} # 4 символа, начиная с 3-го
+${STR/cat/dog} # замена первого cat на dog
+${STR//cat/dog} # замена всех cat на dog
+${STR/#cat/dog} # замена cat на dog, если cat стоит в начале строки
+${STR/%cat/dog} # замена cat на dog, если cat стоит в конце строки
 
 # Цвет
 # Способ №1
@@ -586,27 +638,82 @@ tput
   rev # обратный
 man terminfo # узнать больше о цветах и стилях
 
-if [[ condition ]]; then
+# Условный оператор
+if [[ condition ]]; then # условие можно записывать так
   # expr_1
-elif [ condition ]; then
+elif [ condition ]; then # так
   # expr_2
-elif condition
+elif condition # или так
   then
   # expr_3
 else
   # expr_4
 fi
+# case
+case $VAR in
+  regexp_1) echo 1;;
+  regexp_2) echo 2;;
+  *) echo 3;;
+esac
 
+# Циклы
+# while
+while [[ condition ]]; do
+  #statements
+done
+# until (while [[ ! condition ]])
+until [[ condition ]]; do
+  #statements
+done
+# for
+for i in 1 2 3; do # можно пользоваться интервалами, массивами или командами, например $(ls)
+  #statements
+done
+# другой вариант
+for (( i = 0; i < 10; i++ )); do
+  #statements
+done
+# отображение элементов ассоциативного массива
+for i in "${!arr[@]}"; do
+  echo "$i: ${arr[$i]}" # $i — ключ; ${arr[$i]} — значение
+done
+
+# Функции
+function funcname {
+  # body
+  $1 # первый аргумент
+  $2 # второй аргумент
+}
+funcname arg_1 arg_2 # использование функции
+# функция с любым числом переменных
+function funcname {
+  i=1
+  for j in $@; do
+    echo $i: $f # просто выводим все параметры
+    ((i+=1))
+  done
+}
+
+# ожидание ввода пользователя
+read varname # результат ввода запишется в переменную varname
+  -p "Сколько будет три плюс четыре? " answer # дополнительная информация при ожидании
+  -s password # вводимая информация не видна
+# предложение вариантов ответа
+select option in "apple" "windows"
+do
+  echo "You really like $option? Emm..."
+  break
+done
 
 # Программы
 # Midnight Commander (файловый менеджер внутри терминала) — http://www.vivapage.info/midnight-commander-mac-os-x/
 
 
 # Источники
-# [ ] [Базовые знания по работе в среде Unix и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
-# [ ] [Скрипты на Bash](https://www.lynda.com/Bash-tutorials/Up-Running-Bash-Scripting/142989-2.html)
+# [x] [Базовые знания по работе в среде Unix и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
+# [x] [Скрипты на Bash](https://www.lynda.com/Bash-tutorials/Up-Running-Bash-Scripting/142989-2.html)
 # [ ] [The Linux Documentation Project](http://www.tldp.org/LDP/abs/html/gotchas.html)
-# [ ] [](http://wiki.bash-hackers.org/doku.php)
-# [ ] [](http://www.gnu.org/software/bash/manual/bash.html)
+# [ ] [Bash Hackers](http://wiki.bash-hackers.org/doku.php)
+# [ ] [Bash manual](http://www.gnu.org/software/bash/manual/bash.html)
 # [Регулярные выражения](Regular Expressions.md)
 # [AppleScript](AppleScript.scpt)

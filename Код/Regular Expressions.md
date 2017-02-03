@@ -61,6 +61,7 @@ E-Mail | /^[\w_\.]+@\w+\.\w{2,6}$/i
 
 ## Источники
 - [x] https://www.codeschool.com/courses/breaking-the-ice-with-regular-expressions
+- [ ] https://www.lynda.com/Regular-Expressions-tutorials/Using-Regular-Expressions/85870-2.html
 - [ ] https://regex101.com
 - [ ] http://rubular.com
 - [ ] http://learnpython.org/en/Regular_Expressions
