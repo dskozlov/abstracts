@@ -1,6 +1,6 @@
 [user]
   name = iGor Polyakov
-  email = noggatur@ya.ru
+  email = igor_polyakov@phystech.edu
 [core]
   editor = subl -n -w
   autocrlf = input
