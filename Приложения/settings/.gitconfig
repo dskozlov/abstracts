@@ -1,11 +1,11 @@
 [user]
-  name = Igor Polyakov
-  email = igor_polyakov@phystech.edu
+  name = iGor Polyakov
+  email = noggatur@ya.ru
 [core]
   editor = subl -n -w
   autocrlf = input
   quotepath = false
-  pager = "less -RN"
+  pager = less -RN
 [color]
   ui = true
 [alias]
