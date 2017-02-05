@@ -28,8 +28,8 @@
 
 Спряжения глаголов
 
-. | être | avoir | aller | venir | prendre | connaître | vouloir
-- | ---- | ----- | ----- | ----- | ------- | --------- | -------
+ .  | être | avoir | aller | venir | prendre | connaître | vouloir
+--- | ---- | ----- | ----- | ----- | ------- | --------- | -------
 je, j’ | suis | ai | vais | viens | prends | connais | veux
 tu | es | as | vas | viens | prends | connais | veux
 il | est | a | va | vient | prend | connaît | veut
