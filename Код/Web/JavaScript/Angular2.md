@@ -2,9 +2,10 @@
 
 
 Нужно знать:
-- HTML
-- CSS
-- JavaScript
+- [HTML](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/HTML/HTML.html)
+- [CSS](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/CSS/CSS.css)
+- [JavaScript](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/JavaScript.js)
+
 Для того, чтобы овладеть фреймворком Angular 2 нет необходимости в том, чтобы знати ещё и первый Angular
 Вторая версия быстрее и проще в использовании.
 
