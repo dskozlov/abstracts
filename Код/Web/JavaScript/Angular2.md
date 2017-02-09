@@ -6,7 +6,7 @@
 - [CSS](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/CSS/CSS.css)
 - [JavaScript](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/JavaScript.js)
 
-Для того, чтобы овладеть фреймворком Angular 2 нет необходимости в том, чтобы знати ещё и первый Angular
+Для того, чтобы овладеть фреймворком Angular 2 нет необходимости в том, чтобы знать ещё и [первый Angular](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/AngularJS.md).
 Вторая версия быстрее и проще в использовании.
 
 Создаём произвольный тег HTML
