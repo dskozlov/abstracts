@@ -72,8 +72,9 @@
 	"trailing_spaces_trim_on_save": true
 }
 
-// Markdown
+// Markdown Editing (Markdown GFM Settings)
 {
+	"tab_size": 2,
   "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
   "line_numbers": true,
   "highlight_line": true

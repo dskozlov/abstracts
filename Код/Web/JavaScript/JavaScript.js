@@ -368,3 +368,8 @@ $       // конец строки
 // [ ] http://dailyjs.com/
 // [ ] http://www.w3schools.com/xml/ajax_intro.asp
 // [ ] [jQuery](jQuery.js)
+
+// Препроцессоры
+// http://www.typescriptlang.org/
+// http://babeljs.io/
+// http://coffeescript.org/
