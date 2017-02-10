@@ -315,7 +315,7 @@ __Dependency Injector__ создаёт (если нужно) и отправля
 
 Таким образом, чтобы улучшить сервис, следует выполнить следующее:
 
-1. Добавить Декоратор `@Injectable()` в `persons.service.ts`.
+1. Добавить декоратор `@Injectable()` в `persons.service.ts`.
 ```ts
 import { Injectable } from '@angular/core';
 
@@ -332,7 +332,7 @@ import { PersonsService } from './persons.service';
 })
 ```
 
-3. Осталось только внедрить зависимость туда, куда требуется.
+3. Осталось только внедрить зависимость в компоненту.
 ```ts
 import { PersonsService } from './persons.service';
 
@@ -348,8 +348,6 @@ export class PersonsComponent {
   }
 }
 ```
-
-
 
 
 ## Источники
