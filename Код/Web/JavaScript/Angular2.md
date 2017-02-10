@@ -18,7 +18,6 @@
 - Структурная (определяет содержание шаблонов)
 - Аттрибутная
 
-
 ### Компоненты
 
 Создаём произвольный тег HTML.
@@ -39,7 +38,7 @@ import { Component } from '@angular/core'; // функция для создан
   // если нужен шаблон в несколько строчек, то используются штришки ``
   template: `
     <h1>{{ title }}</h1>
-    <p>Какой-то текст</p>
+    <p>Дай пять! {{ giveFive() }}</p>
   `
   // если нужно отобразить массив, используется структурная директива *ngFor
   template: `<ul>
@@ -62,12 +61,17 @@ class AppComponent {
       name: "OYWO"
     }
   ]
+  // для задания методов (функций) также не требуется ключевого слова function
+  giveFive() {
+    // внутри же функции НУЖНО пользоваться ключевыми словами ES2015
+    let five = 5;
+    return five;
+  }
 }
 
 // Для отображения вызываем функцию bootstrap()
 bootstrap(AppComponent)
 ```
-
 
 ### Структурные директивы
 `*ngFor` — цикл
@@ -80,6 +84,63 @@ bootstrap(AppComponent)
 `*ngIf` — условие, при котором отображается тег
 ```html
   <div *ngIf="user === 'admin'">Секрет</div>
+```
+
+
+## Конвейер (pipe)
+
+В первом Angular его называли фильтром.
+Принцип работы такой же, как в [Bash](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Bash (UNIX).sh) — команды записываются поочерёдно через символ `|` и выходное значение любой команды используется на входе следующей.
+
+Пример использования:
+```html
+{{ "Заголовок" | uppercase }} <!-- ЗАГОЛОВОК -->
+```
+
+[Примеры пайпов]((https://angular.io/docs/ts/latest/api/#!?query=pipe)):
+- [uppercase](https://angular.io/docs/ts/latest/api/common/index/UpperCasePipe-pipe.html)
+- [lowercase](https://angular.io/docs/ts/latest/api/common/index/LowerCasePipe-pipe.html)
+- [date](https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html)
+- [currency](https://angular.io/docs/ts/latest/api/common/index/CurrencyPipe-pipe.html) — оформление цен
+- number
+- [decimal](https://angular.io/docs/ts/latest/api/common/index/DecimalPipe-pipe.html)
+- replace — замена определённых символов
+- [slice](https://angular.io/docs/ts/latest/api/common/index/SlicePipe-pipe.html) — выборка из массива или части строки
+- [json](https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html) — преобразует строку в JSON
+
+Можно также создавать свои пайпы.
+
+
+## Разбивка кода по модулям
+
+Главный файл `main.ts` должен содержать только подключать компоненты.
+```ts
+import { bootstrap } from '@angular/platform-browser-dynamic';
+// подключение компонент
+import { AppComponent } from './app.component'; // имя компоненты AppComponent должно быть везде одинаковым
+
+bootstrap(AppComponent)
+```
+
+Каждая компонента описывается в отдельном файле, например `app.component.ts`, (не забываем добавить `export`!).
+```ts
+import { Component } from '@angular/core';
+
+@Component({})
+export class AppComponent {} // теперь перед объявлением класса нужно ставить export
+```
+
+Для того, чтобы пользоваться компонентами внутри другой, нужно перечислить директивы внутри декоратора. К примеру, в файле `other.component.ts` это будет выглядеть следующим образом:
+```ts
+import { Component } from '@angular/core';
+import { AppComponent } from './app.component';
+
+@Component({
+  selector: 'other',
+  template: '...',
+  directives: [AppComponent]
+})
+export class NewComponent {}
 ```
 
 

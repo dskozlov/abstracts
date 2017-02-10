@@ -710,7 +710,7 @@ done
 
 
 # Источники
-# [x] [Базовые знания по работе в среде Unix и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
+# [x] [Базовые знания по работе в среде UNIX и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
 # [x] [Скрипты на Bash](https://www.lynda.com/Bash-tutorials/Up-Running-Bash-Scripting/142989-2.html)
 # [ ] [The Linux Documentation Project](http://www.tldp.org/LDP/abs/html/gotchas.html)
 # [ ] [Bash Hackers](http://wiki.bash-hackers.org/doku.php)
