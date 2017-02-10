@@ -322,12 +322,14 @@ import { Injectable } from '@angular/core';
 
 Затем подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
 ```ts
+...
 import { PersonsService } from './persons.service';
 
 @Component({
   ...
   providers: [PersonsService]
 })
+...
 ```
 
 Осталось только внедрить зависимость в компоненту.
@@ -348,8 +350,74 @@ export class PersonsComponent {
 ```
 
 
+## HTTP запросы
+
+Для того, чтобы пользоваться данными с сервера, прежде всего создадим JSON-файл.
+```json
+{
+  "data": [
+    { ... },
+    { ... },
+    { ... }
+  ]
+}
+```
+
+Теперь подключим провайдер HTTP в главном файле.
+```ts
+...
+import { HTTP_PROVIDERS } from '@angular/http';
+
+@Component({
+  ...
+  providers: [..., HTTP_PROVIDERS]
+})
+...
+```
+
+Создадим сервис для отработки HTTP-запроса.
+```ts
+...
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class PersonsComponent {
+  constructor(private http: Http) {}
+
+  getPersons() {
+    return this.http.get('file.json')
+      .map(response => <Person[]>response.json().data);
+  }
+}
+```
+
+Наконец, воспользуемся сервисом в компоненте.
+```ts
+...
+export class PersonsComponent {
+  constructor(private personsService: PersonsService) {}
+
+  ngOnInit() {
+    // в конце концов нужно подписаться о получении данных
+    this.personsComponent.getPersons()
+      .subscribe(person => this.person = person);
+  }
+}
+```
+> Если возникает ошибка из-за того, что какая-то переменная не определена, то это из-за того, что при первичной загрузке никакой информации с сервера не приходит до тех пор, пока не сделан запрос.
+> Решить эту проблему можно поставив в соответствующем месте проверку, содержит ли переменная информацию.
+> Например,
+> ```ts
+> if (Array.isArray(this.person)) {}
+> ```
+
+Теперь при разработке и тестировании можно просто подключить либо сервис с заглушкой, либо с HTTP-запросом.
+Для полноценной работы осталось описать правила обработки ошибок (404, 403, ...).
+
+
 ## Источники
 - [ ] [TypeScript](http://www.typescriptlang.org/)
-- [ ] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
-- [ ] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
+- [x] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
+- [x] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
 - [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
