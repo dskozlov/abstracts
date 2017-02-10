@@ -314,14 +314,12 @@ __Dependency Injector__ создаёт (если нужно) и отправля
 Для его работы требуется указать провайдеров (поставщиков зависимостей).
 
 Таким образом, чтобы улучшить сервис, следует выполнить следующее:
-
 1. Добавить декоратор `@Injectable()` в `persons.service.ts`.
 ```ts
 import { Injectable } from '@angular/core';
 
 @Injectable()
 ```
-
 2. Подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
 ```ts
 import { PersonsService } from './persons.service';
@@ -331,7 +329,6 @@ import { PersonsService } from './persons.service';
   providers: [PersonsService]
 })
 ```
-
 3. Осталось только внедрить зависимость в компоненту.
 ```ts
 import { PersonsService } from './persons.service';
