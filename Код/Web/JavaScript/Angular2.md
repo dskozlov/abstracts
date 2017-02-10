@@ -64,11 +64,11 @@ class AppComponent {
   title = 'Заголовок'
   links = [
     {
-      href: "http://polyakovin.ru"
+      href: "http://polyakovin.ru",
       name: "Мой сайт"
     },
     {
-      href: "http://oywo.ru"
+      href: "http://oywo.ru",
       name: "OYWO"
     }
   ]
@@ -211,6 +211,59 @@ export class PersonsComponent {
   }
 }
 ```
+
+
+## Связка данных (Data Binding)
+
+### По атрибутам (Property Binding)
+
+*JS —> HTML*
+
+При использовании квадратных скобок у атрибута фигурные скобки больше не нужны. При этом если изменится свойство в JS, то в HTML оно также поменяется.
+```html
+<img [src]="goods.image" [alt]="goods.description">
+<div [hidden]="!user.isAdmin">Администрирование</div>
+<button [disabled]="isDisabled">Заказать</button>
+```
+
+При помощи такой же техники можно добавлять класс элементу (`object.highlighted === true`) или убирать его (`object.highlighted === false`).
+```html
+<div [class.highlight]="object.highlighted">Администрирование</div>
+```
+
+### По событиям (Event Binding)
+
+*HTML —> JS*
+
+События активируются следующим образом:
+```html
+<button (click)="anyAction($event, anotherProperty)">Заказать</button>
+```
+Пользоваться можно любыми стандартными событиями JS.
+В функцию можно передавать любые параметры.
+Параметр `$event` (имеено со знаком `$`) передаёт всю информацию о событии (нажатая клавиша, положение курсора, ...).
+
+Функция также описывается в классе компоненты.
+```ts
+anyAction(event, anotherProperty) {
+  event.preventDefault(); // предотвратить стандартное действие
+  ...
+}
+```
+
+### Комбинированная связка (Two-Way Binding)
+
+*JS <–> HTML*
+
+Для того, чтобы информация синхронизировалась, следует задать тегу оба типа связок.
+```html
+<input type="text" [value]="user.name" (input)="user.name = $event.target.value">
+```
+То же самое можно записать в более простом виде:
+```html
+<input type="text" [(ngModel)]="user.name">
+```
+> Синтаксическую форму `[()]` иногда называют бананом в коробке.
 
 
 ## Источники
