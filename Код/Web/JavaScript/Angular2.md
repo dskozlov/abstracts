@@ -122,6 +122,61 @@ bootstrap(AppComponent)
 Можно также создавать свои пайпы.
 
 
+## Связка данных (Data Binding)
+
+### По атрибутам (Property Binding)
+
+> JS —> HTML
+
+При использовании квадратных скобок у атрибута фигурные скобки больше не нужны. При этом если изменится свойство в JS, то в HTML оно также поменяется.
+```html
+<img [src]="goods.image" [alt]="goods.description">
+
+<div [hidden]="!user.isAdmin">Админка</div>
+
+<button [disabled]="isDisabled">Заказать</button>
+```
+
+При помощи такой же техники можно добавлять класс элементу (`object.highlighted === true`) или убирать его (`object.highlighted === false`).
+```html
+<div [class.highlight]="object.highlighted">Супер-товар</div>
+```
+
+### По событиям (Event Binding)
+
+> HTML —> JS
+
+События активируются следующим образом:
+```html
+<button (click)="anyAction($event, anotherProperty)">Заказать</button>
+```
+Пользоваться можно любыми стандартными событиями JS.
+В функцию можно передавать любые параметры.
+Параметр `$event` (имеено со знаком `$`) передаёт всю информацию о событии (нажатая клавиша, положение курсора, ...).
+
+Функция также описывается в классе компоненты.
+```ts
+anyAction(event, anotherProperty) {
+  event.preventDefault(); // предотвратить стандартное действие
+  ...
+}
+```
+
+### Комбинированная связка (Two-Way Binding)
+
+> JS <–> HTML
+
+Для того, чтобы информация синхронизировалась, следует задать тегу оба типа связок.
+```html
+<input type="text" [value]="user.name" (input)="user.name = $event.target.value">
+```
+То же самое можно записать в более простом виде:
+```html
+<input type="text" [(ngModel)]="user.name">
+```
+> Синтаксическую форму `[()]` иногда называют бананом в коробке.
+
+
 ## Разбивка кода по модулям
 
 Главный файл `main.ts` должен содержать только подключать компоненты.
@@ -212,64 +267,93 @@ export class PersonsComponent {
 }
 ```
 
+Такой способ работы с данными практически не используется.
+Гораздо эффективнее применять сервисы.
 
-## Связка данных (Data Binding)
 
-### По атрибутам (Property Binding)
+## Сервисы
 
-> JS —> HTML
-
-При использовании квадратных скобок у атрибута фигурные скобки больше не нужны. При этом если изменится свойство в JS, то в HTML оно также поменяется.
-```html
-<img [src]="goods.image" [alt]="goods.description">
-
-<div [hidden]="!user.isAdmin">Админка</div>
-
-<button [disabled]="isDisabled">Заказать</button>
-```
-
-При помощи такой же техники можно добавлять класс элементу (`object.highlighted === true`) или убирать его (`object.highlighted === false`).
-```html
-<div [class.highlight]="object.highlighted">Супер-товар</div>
-```
-
-### По событиям (Event Binding)
-
-> HTML —> JS
-
-События активируются следующим образом:
-```html
-<button (click)="anyAction($event, anotherProperty)">Заказать</button>
-```
-Пользоваться можно любыми стандартными событиями JS.
-В функцию можно передавать любые параметры.
-Параметр `$event` (имеено со знаком `$`) передаёт всю информацию о событии (нажатая клавиша, положение курсора, ...).
-
-Функция также описывается в классе компоненты.
+Сервис — это набор методов для работы с компонентой.
+Создать сервис можно по аналогии с компонентой.
 ```ts
-anyAction(event, anotherProperty) {
-  event.preventDefault(); // предотвратить стандартное действие
-  ...
+import { PERSONS } from './mocks';
+
+export class PersonsService {
+  // создаём функцию, которая возвращает
+  getPersons() {
+    return PERSONS;
+  }
 }
 ```
 
-### Комбинированная связка (Two-Way Binding)
+Теперь воспользуемся сервисом в компоненте.
+```ts
+import { Component } from '@angular/core';
+import { Person } from './person';
+import { PersonsService } from './persons.service';
 
-> JS <–> HTML
+export class PersonsComponent {
+  persons: Person[];
 
-Для того, чтобы информация синхронизировалась, следует задать тегу оба типа связок.
-```html
-<input type="text" [value]="user.name" (input)="user.name = $event.target.value">
+  ngOnInit() {
+    // запоминаем сервис в переменной
+    let personsComponent = new PersonsComponent();
+
+    // пользуемся сервисом по назначению (задаём значение свойству данного класса)
+    this.persons = personsComponent.getPersons();
+  }
+}
 ```
-То же самое можно записать в более простом виде:
-```html
-<input type="text" [(ngModel)]="user.name">
+
+Таким образом сервис помог абстрагироваться в коде от данных.
+Однако пользоваться им всё ещё не удобно.
+
+### Внедрение зависимостей (Dependency Injection)
+
+__Dependency Injector__ создаёт (если нужно) и отправляет компоненте необходимые зависимости (классы).
+Для его работы требуется указать провайдеров (поставщиков зависимостей).
+
+Таким образом, чтобы улучшить сервис, следует выполнить следующее:
+
+1. Добавить Декоратор `@Injectable()` в `persons.service.ts`.
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable()
 ```
-> Синтаксическую форму `[()]` иногда называют бананом в коробке.
+
+2. Подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
+```ts
+import { PersonsService } from './persons.service';
+
+@Component({
+  ...
+  providers: [PersonsService]
+})
+```
+
+3. Осталось только внедрить зависимость туда, куда требуется.
+```ts
+import { PersonsService } from './persons.service';
+
+@Component({ ... }) // здесь провайдеры не указываются!
+export class PersonsComponent {
+  persons: Person[];
+
+  constructor(private personsService: PersonsService) {} // private автоматически определяет свойства компоненты на основании параметров
+
+  ngOnInit() {
+    // теперь можно воспользоваться сервисом
+    this.persons = this.personsComponent.getPersons();
+  }
+}
+```
+
+
 
 
 ## Источники
 - [ ] [TypeScript](http://www.typescriptlang.org/)
 - [ ] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
-- [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
 - [ ] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
+- [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
