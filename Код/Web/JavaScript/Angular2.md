@@ -155,6 +155,63 @@ export class NewComponent {}
 ```
 
 
+## Модели
+
+Модели позволяют пользоваться возможностями объектно-ориентированного программирования. Создадим модель в файле `person.ts`.
+```ts
+export class Person {
+  id: number;
+  firstName: string;
+  secondName: string;
+  age: number;
+}
+```
+Модели дают компилятору возможность проверить правильность обрабатываемой информации.
+
+Далее модель подключается к компоненте и используется в классе.
+```ts
+import { Component } from '@angular/core';
+import { Person } from './person';
+
+export class PersonsComponent {
+  persons: Person[] = [{ // такая запись сообщает компилятору о том, что persons — массив объектов класса Person
+    "id": 1,
+    "firstName": "iGor",
+    "secondName": "Polyakov",
+    "age": 23
+  }, { ... }, { ... }];
+}
+```
+
+При этом данные (заглушку) лучше держать в отдельном файле `mocks.ts`.
+```ts
+import { Person } from './person';
+
+// в данном случае используем const, поскольку эти данные не меняются
+export const PERSONS: Person[] = [{
+  "id": 1,
+  "firstName": "iGor",
+  "secondName": "Polyakov",
+  "age": 23
+}, { ... }, { ... }];
+```
+
+Тогда класс в файле компоненты будет выглядеть следующим образом:
+```ts
+import { Component } from '@angular/core';
+import { Person } from './person';
+import { PERSONS } from './mocks';
+
+export class PersonsComponent {
+  persons: Person[];
+
+  // функция вызывается после того, как будет собрана компонента
+  ngOnInit() {
+    this.persons = PERSONS;
+  }
+}
+```
+
 
 ## Источники
 - [ ] [TypeScript](http://www.typescriptlang.org/)
