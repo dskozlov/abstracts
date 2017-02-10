@@ -217,23 +217,25 @@ export class PersonsComponent {
 
 ### По атрибутам (Property Binding)
 
-*JS —> HTML*
+> JS —> HTML
 
 При использовании квадратных скобок у атрибута фигурные скобки больше не нужны. При этом если изменится свойство в JS, то в HTML оно также поменяется.
 ```html
 <img [src]="goods.image" [alt]="goods.description">
-<div [hidden]="!user.isAdmin">Администрирование</div>
+
+<div [hidden]="!user.isAdmin">Админка</div>
+
 <button [disabled]="isDisabled">Заказать</button>
 ```
 
 При помощи такой же техники можно добавлять класс элементу (`object.highlighted === true`) или убирать его (`object.highlighted === false`).
 ```html
-<div [class.highlight]="object.highlighted">Администрирование</div>
+<div [class.highlight]="object.highlighted">Супер-товар</div>
 ```
 
 ### По событиям (Event Binding)
 
-*HTML —> JS*
+> HTML —> JS
 
 События активируются следующим образом:
 ```html
@@ -253,7 +255,7 @@ anyAction(event, anotherProperty) {
 
 ### Комбинированная связка (Two-Way Binding)
 
-*JS <–> HTML*
+> JS <–> HTML
 
 Для того, чтобы информация синхронизировалась, следует задать тегу оба типа связок.
 ```html
