@@ -313,14 +313,14 @@ export class PersonsComponent {
 __Dependency Injector__ создаёт (если нужно) и отправляет компоненте необходимые зависимости (классы).
 Для его работы требуется указать провайдеров (поставщиков зависимостей).
 
-Таким образом, чтобы улучшить сервис, следует выполнить следующее:
-1. Добавить декоратор `@Injectable()` в `persons.service.ts`.
+Таким образом, чтобы улучшить сервис, в `persons.service.ts` следует добавить декоратор `@Injectable()`.
 ```ts
 import { Injectable } from '@angular/core';
 
 @Injectable()
 ```
-2. Подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
+
+Затем подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
 ```ts
 import { PersonsService } from './persons.service';
 
@@ -329,7 +329,8 @@ import { PersonsService } from './persons.service';
   providers: [PersonsService]
 })
 ```
-3. Осталось только внедрить зависимость в компоненту.
+
+Осталось только внедрить зависимость в компоненту.
 ```ts
 import { PersonsService } from './persons.service';
 
