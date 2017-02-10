@@ -363,6 +363,7 @@ $       // конец строки
 // [ ] https://getfirebug.com/wiki/index.php/Main_Page
 // [ ] http://quirksmode.org/
 // [ ] https://devchat.tv/js-jabber
+// [ ] https://plnkr.co/
 // [ ] https://jsfiddle.net/
 // [ ] http://cssdeck.com/labs
 // [ ] http://dailyjs.com/
