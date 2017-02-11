@@ -455,4 +455,6 @@ ng g c compоName
 - [x] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
 - [x] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
 - [ ] [Angular 2 - The Complete Guide](https://www.udemy.com/the-complete-guide-to-angular-2/)
+- [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
+- [ ] [Style Guide](https://angular.io/styleguide)
 - [ ] [TypeScript](http://www.typescriptlang.org/)
