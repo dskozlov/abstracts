@@ -416,8 +416,45 @@ export class PersonsComponent {
 Для полноценной работы осталось описать правила обработки ошибок (404, 403, ...).
 
 
+## Command Line Interface (CLI)
+
+Если установить фреймворк [по инструкции на сайте](https://angular.io/docs/ts/latest/quickstart.html), то в основном проекте будет довольно много лишних файлов — разобраться с таким проектом будет сложнее, чем если бы в нём содержалось минимум информации.
+
+Существует довольно удобный метод работы с Angular 2 — использование CLI, который можно установить из командной строки:
+```sh
+npm install -g angular-cli
+```
+
+После этого можно создавать новые приложения с помощью одной из следующих команд:
+```sh
+ng new <app-name> # в папке app-name
+
+ng init # в текущей папке
+```
+
+Как только приложение будет создано, его можно будет скомпилировать и запустить.
+```sh
+ng build # разовая компиляция
+
+ng serve # компиляция, создание сервера и отслеживание изменений в проекте
+```
+
+Можно создать новую компоненту с помощью одной из следующих команд:
+```sh
+ng generate component compName
+
+ng g c compоName
+  # Опции
+  --flat # не создавать новую папку
+  --inline-styles, -is # стили внутри скрипта
+  --inline-template, -it # шаблон внутри скрипта
+```
+
+
 ## Источники
 - [ ] [TypeScript](http://www.typescriptlang.org/)
 - [x] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
 - [x] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
 - [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
+- [ ] [Style Guide](https://angular.io/styleguide)
+- [ ] [Angular 2 - The Complete Guide](https://www.udemy.com/the-complete-guide-to-angular-2/)
