@@ -24,6 +24,7 @@
 ```html
 <my-app>Загрузка приложения...</my-app>
 ```
+Текст внутри тега будет замещён содержимым компоненты.
 
 Создадим компоненту (основной строительный элемент приложения на Angular 2, по сути информационный блок на веб-странице) для приложения в TypeScript-файле `app/main.ts`.
 ```ts
@@ -39,6 +40,11 @@ import { Component } from '@angular/core'; // функция для создан
   template: `
     <h1>{{ title }}</h1>
     <p>Дай пять! {{ giveFive() }}</p>
+  `
+  // если всё же нужно использовать контент, содержащийся внутри тега my-app, то в шаблоне компоненты следует добавить тег ng-content
+  template: `
+    <h1>{{ title }}</h1>
+    <ng-content></ng-content>
   `
   // если нужно отобразить массив, используется структурная директива *ngFor
   template: `<ul>
@@ -98,7 +104,18 @@ bootstrap(AppComponent)
 ```
 
 
-## Конвейер (pipe)
+## Связка данных (Data Binding)
+
+### Непосредственно в шаблоне (String Interpolation)
+
+В HTML можно пользоваться JS-выражения с помощью конструкции `{{ ... }}`:
+```html
+<div>
+  {{ expression }}
+</div>
+```
+
+#### Конвейер (pipe)
 
 В первом Angular его называли фильтром.
 Принцип работы такой же, как в [Bash](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Bash (UNIX).sh) — команды записываются поочерёдно через символ `|` и выходное значение любой команды используется на входе следующей.
@@ -120,9 +137,6 @@ bootstrap(AppComponent)
 - [json](https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html) — преобразует строку в JSON
 
 Можно также создавать свои пайпы.
-
-
-## Связка данных (Data Binding)
 
 ### По атрибутам (Property Binding)
 
