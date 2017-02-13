@@ -369,6 +369,7 @@ $       // конец строки
 // [ ] http://dailyjs.com/
 // [ ] http://www.w3schools.com/xml/ajax_intro.asp
 // [ ] [jQuery](jQuery.js)
+// [ ] [ToDoMVC](http://todomvc.com) — поможет определиться с фреймворками
 
 // Препроцессоры
 // http://www.typescriptlang.org/

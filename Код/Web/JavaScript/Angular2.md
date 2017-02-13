@@ -462,6 +462,15 @@ ng g c compоName
   --flat # не создавать новую папку
   --inline-styles, -is # стили внутри скрипта
   --inline-template, -it # шаблон внутри скрипта
+
+# помимо компоненты можно создать всё что угодно
+ng g
+  component
+  directive
+  pipe
+  service
+  class
+  module
 ```
 
 
