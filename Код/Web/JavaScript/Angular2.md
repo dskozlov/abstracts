@@ -138,7 +138,7 @@ bootstrap(AppComponent)
 
 Можно также создавать свои пайпы.
 
-### По атрибутам (Property Binding)
+### По атрибуту (Property Binding)
 
 > JS —> HTML
 
@@ -154,9 +154,30 @@ bootstrap(AppComponent)
 При помощи такой же техники можно добавлять класс элементу (`object.highlighted === true`) или убирать его (`object.highlighted === false`).
 ```html
 <div [class.highlight]="object.highlighted">Супер-товар</div>
+
+<!-- То же самое действие с помощью директивы ngClass -->
+<div [ngClass]="{highlight: true}">Супер-товар</div>
+<!-- Непосредственно стиль элементу можно задавать директивой ngStyle -->
+<div [ngStyle]="{color: 'red'}">Супер-товар</div>
 ```
 
-### По событиям (Event Binding)
+#### Создание собственной связки по атрибуту
+
+В классе любой компоненты может быть создана своя связка при помощи следующей конструкции:
+```ts
+import { Component, Input } from '@angular/core';
+
+@Component({ ... })
+export class compName {
+  @Input() someProperty = "";
+}
+```
+После этого вместе с компонентой становится доступной и связка.
+```html
+<compName [someProperty]="any value"></compName>
+```
+
+### По событию (Event Binding)
 
 > HTML —> JS
 
@@ -173,6 +194,35 @@ bootstrap(AppComponent)
 anyAction(event, anotherProperty) {
   event.preventDefault(); // предотвратить стандартное действие
   ...
+}
+```
+
+#### Создание собственной связки по событию
+
+В классе любой компоненты также может быть создана своя связка и по событию:
+```ts
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'compName',
+  template: '<button (click)="onClicked()">Кликни!</button>'
+})
+export class compName {
+  @Output() clicked = new EventEmitter();
+  onClicked() {
+    this.clicked.emit('По кнопке кликнули!');
+  }
+}
+```
+После этого вместе с компонентой становится доступной и связка.
+```html
+<compName (clicked)="onClicked($event)"></compName>
+```
+
+Теперь в любой компоненте можно обработать новое событие clicked
+```ts
+onClicked(value) {
+  alert(value);
 }
 ```
 
