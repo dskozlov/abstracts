@@ -170,6 +170,7 @@ import { Component, Input } from '@angular/core';
 @Component({ ... })
 export class compName {
   @Input() someProperty = "";
+  // для того, чтобы не писать ключевое слово @Input(), можно просто указывать названия свойств в @Component({ inputs: ['someProperty', ...] }) — тогда и импортировать Input не нужно
 }
 ```
 После этого вместе с компонентой становится доступной и связка.
