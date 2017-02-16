@@ -104,6 +104,39 @@ bootstrap(AppComponent)
 ```
 
 
+## Разбивка кода по модулям
+
+Главный файл `main.ts` должен содержать только подключать компоненты.
+```ts
+import { bootstrap } from '@angular/platform-browser-dynamic';
+// подключение компонент
+import { AppComponent } from './app.component'; // имя компоненты AppComponent должно быть везде одинаковым
+
+bootstrap(AppComponent)
+```
+
+Каждая компонента описывается в отдельном файле, например `app.component.ts`, (не забываем добавить `export`!).
+```ts
+import { Component } from '@angular/core';
+
+@Component({})
+export class AppComponent {} // теперь перед объявлением класса нужно ставить export
+```
+
+Для того, чтобы пользоваться компонентами внутри другой, нужно перечислить директивы внутри декоратора. К примеру, в файле `other.component.ts` это будет выглядеть следующим образом:
+```ts
+import { Component } from '@angular/core';
+import { AppComponent } from './app.component';
+
+@Component({
+  selector: 'other',
+  template: '...',
+  directives: [AppComponent]
+})
+export class NewComponent {}
+```
+
+
 ## Связка данных (Data Binding)
 
 ### Непосредственно в шаблоне (String Interpolation)
@@ -240,39 +273,6 @@ onClicked(value) {
 <input type="text" [(ngModel)]="user.name">
 ```
 > Синтаксическую форму `[()]` иногда называют бананом в коробке.
-
-
-## Разбивка кода по модулям
-
-Главный файл `main.ts` должен содержать только подключать компоненты.
-```ts
-import { bootstrap } from '@angular/platform-browser-dynamic';
-// подключение компонент
-import { AppComponent } from './app.component'; // имя компоненты AppComponent должно быть везде одинаковым
-
-bootstrap(AppComponent)
-```
-
-Каждая компонента описывается в отдельном файле, например `app.component.ts`, (не забываем добавить `export`!).
-```ts
-import { Component } from '@angular/core';
-
-@Component({})
-export class AppComponent {} // теперь перед объявлением класса нужно ставить export
-```
-
-Для того, чтобы пользоваться компонентами внутри другой, нужно перечислить директивы внутри декоратора. К примеру, в файле `other.component.ts` это будет выглядеть следующим образом:
-```ts
-import { Component } from '@angular/core';
-import { AppComponent } from './app.component';
-
-@Component({
-  selector: 'other',
-  template: '...',
-  directives: [AppComponent]
-})
-export class NewComponent {}
-```
 
 
 ## Модели
@@ -493,6 +493,7 @@ npm install -g angular-cli
 После этого можно создавать новые приложения с помощью одной из следующих команд:
 ```sh
 ng new <app-name> # в папке app-name
+  --prefix prefname # префикс для компонент
 
 ng init # в текущей папке
 ```
@@ -516,12 +517,17 @@ ng g c compоName
 
 # помимо компоненты можно создать всё что угодно
 ng g
-  component
-  directive
-  pipe
-  service
-  class
-  module
+  component (c)
+  directive ()
+  pipe ()
+  service ()
+  class (cl)
+  module ()
+```
+
+Также можно быстро удалить существующую компоненту (включая связи):
+```sh
+ng destroy component compName
 ```
 
 
