@@ -5,6 +5,7 @@
 - [HTML](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/HTML/HTML.html)
 - [CSS](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/CSS/CSS.css)
 - [JavaScript](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/JavaScript.js)
+- ООП
 
 Для того, чтобы овладеть фреймворком Angular 2 нет необходимости в том, чтобы знать ещё и [первый Angular](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/AngularJS.md).
 Вторая версия быстрее и проще в использовании.
@@ -12,11 +13,11 @@
 
 ## Директивы
 
-В Angular директивы позволяют в HTML задавать динамическое поведение.
+_Директивы — это инструкции_ для фреймворка, которые прописываются в HTML-разметке и позволяют задавать динамическое поведение элементов документа.
 Директивы бывают нескольких видов:
 - Компонентная (содержит шаблон отображения данных)
 - Структурная (определяет содержание шаблонов)
-- Аттрибутная
+- Атрибутная
 
 ### Компоненты
 
@@ -91,6 +92,7 @@ bootstrap(AppComponent)
 ```
 
 ### Структурные директивы
+
 `*ngFor` — цикл
 ```html
   <li *ngFor="let link of links">
@@ -101,6 +103,74 @@ bootstrap(AppComponent)
 `*ngIf` — условие, при котором отображается тег
 ```html
   <div *ngIf="user === 'admin'">Секрет</div>
+```
+
+### Атрибутные директивы
+
+`ngClass` позволяет включать и выключать классы
+```html
+<div [ngClass]="{className1: true, className2: false}"></div>
+<!-- Другой способ включать и выключать классы -->
+<div [сlass.className1]="true"></div>
+```
+`ngStyle` задаёт CSS-стиль
+```html
+<div [ngStyle]="{"color": "red"}"></div>
+```
+
+#### Создание собственной атрибутная директива
+
+Создаём директиву
+```ts
+import { Directive, ElementRef, Renderer } from '@angular/core';
+
+@Directive({
+  selector: '[highlight]'
+})
+export class HighlightDirective {
+  // Dependency Injection
+  constructor(private elementRef: ElementRef, private renderer: Renderer) {
+    // // Меняем стиль элемента (не самый лучший способ — иногда работает некорректно)
+    // this.elementRef.nativeElement.style.backgroundColor = 'green';
+
+    this.renderer.setElementStyle(this.elementRef.nativeElement, "background-color", 'green');
+  }
+}
+```
+
+И подключаем её к нужной компоненте
+```ts
+import { HighlightDirective } from './highlight.directive';
+
+@Component({
+  ...
+  directives: [ HighlightDirective ]
+})
+```
+
+Также можно создать интерактивную директиву (например, действие применяется к элементу при наведении мыши).
+```ts
+import { Directive, HostListener, HostBinding } from '@angular/core';
+
+@Directive({
+  selector: '[highlight]'
+})
+export class HighlightDirective {
+  // при наведении курсора элемент перекрашивается в зелёный
+  @HostListener('mouseenter') mouseover() {
+    this.backgroundColor = 'green';
+  };
+  // при убирании — в белый
+  @HostListener('mouseleave') mouseleave() {
+    this.backgroundColor = 'white';
+  };
+  // задаём параметры, которые будем изменять (вместо непосредственного прописывания пользуется этой функцией)
+  @HostBinding('style.backgroundColor') get setColor() {
+    return this.backgroundColor;
+  }
+
+  private backgroundColor = 'white';
+}
 ```
 
 
@@ -204,6 +274,9 @@ import { Component, Input } from '@angular/core';
 export class compName {
   @Input() someProperty = "";
   // для того, чтобы не писать ключевое слово @Input(), можно просто указывать названия свойств в @Component({ inputs: ['someProperty', ...] }) — тогда и импортировать Input не нужно
+
+  // при задании атрибутной директивы можно делать так:
+  @Input('attrName') anyVar = "any value";
 }
 ```
 После этого вместе с компонентой становится доступной и связка.
