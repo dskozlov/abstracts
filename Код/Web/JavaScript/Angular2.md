@@ -335,6 +335,8 @@ export class PersonsComponent {
 Такой способ работы с данными практически не используется.
 Гораздо эффективнее применять сервисы.
 
+[Подробнее](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html) о функциях типа `ngOnInit` (хуки жизненного цикла компоненты).
+
 
 ## Сервисы
 
