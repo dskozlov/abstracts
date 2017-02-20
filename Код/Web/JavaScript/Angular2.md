@@ -677,3 +677,4 @@ ng destroy component compName
 - [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
 - [ ] [Style Guide](https://angular.io/styleguide)
 - [ ] [TypeScript](http://www.typescriptlang.org/)
+- [ ] [Отладчик Angular 2](https://augury.angular.io/)
