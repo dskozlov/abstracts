@@ -517,7 +517,7 @@ export class PersonsService {
 Теперь воспользуемся сервисом в компоненте.
 ```ts
 import { Component } from '@angular/core';
-import { PersonsService } from './persons.service';
+import { PersonsService } from './persons.service'; // будет работать только в этой компоненте. чтобы использовать везде, импортировать следует в app.modules.js в массиве providers
 
 @Component({ ... })
 export class PersonsComponent {
@@ -598,6 +598,80 @@ export class MyComponent {
 
 Теперь при разработке и тестировании можно просто подключить либо сервис с заглушкой, либо с HTTP-запросом.
 Для полноценной работы осталось описать правила обработки ошибок (404, 403, ...).
+
+
+## Пути (Routes)
+
+Пути задавать будем в файле `app.routing.ts`:
+```ts
+import { Routes, RouterModule } from "@angular/router";
+
+// компоненты, к которым подключаемся
+import { MainComponent } from './main.component';
+import { UserComponent } from './user/user.component';
+
+// перечисляем пути
+const APP_ROUTES: Routes = [
+  { path: '', component: MainComponent }, // главная страница
+  { path: 'user', component: UserComponent } // /user
+];
+
+// передаём пути на экспорт
+export const routing = RouterModule.forRoot(APP_ROUTES);
+```
+
+Далее подключаем файл с путями в файл `app.modules.ts`:
+```ts
+import { routing } from "./app.routing";
+
+@NgModule({
+  imports: [ routing ]
+})
+```
+
+В шаблоне основной компоненте приложения `app.component.ts` указывается место, куда подключаются другие компоненты при переходе по ссылке; а также сами ссылки для быстрого перехода между страницами.
+```html
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Навигация -->
+      <a [routerLink]="['/']">Главная</a>
+      <a [routerLink]="['/user']">Моя страница</a><!-- абсолютный путь -->
+      <a [routerLink]="['../']">< Назад</a><!-- относительный путь -->
+      <hr>
+      <router-outlet><!-- сюда будут загружаться компоненты --></router-outlet>
+    </div>
+  </div>
+</div>
+```
+
+Навигацией также можно пользоваться в классе компоненты.
+```ts
+import { Router } from "@angular/router";
+
+@Component({
+  template: `<button (click)="onNavigate()">На главную</button>`
+})
+export class AnyComponent {
+  constructor(private router: Router) {}
+
+  onNavigate() {
+    this.router.navigate(['/']);
+  }
+}
+```
+
+### Параметризация пути
+
+Для пути могут быть заданы параметры. Объявим параметр в файле `app.routing.ts`:
+```ts
+{ path: 'user/:id', component: UserComponent } // /user/{{id}}
+```
+
+Тогда в шаблоне можно будет задать параметр так:
+```html
+<a [routerLink]="['/user', user.id]">Пользователь №{{ user.id }}</a>
+```
 
 
 ## Command Line Interface (CLI)
