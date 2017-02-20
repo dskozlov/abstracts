@@ -686,6 +686,8 @@ export class AnyComponent implements OnDestroy {
   id;
   private subscription: Subscription;
 
+  // param; // для queryParam
+
   constructor(private activatedRoute: ActivatedRoute) {
     /*
      * // применяется только при первой генерации страницы
@@ -696,12 +698,77 @@ export class AnyComponent implements OnDestroy {
     this.subscription = activatedRoute.params.subscribe(
       (param: any) => this.id = param['id']
     );
+
+
+    this.subscription = route.queryParams.subscribe(
+      (queryParam: any) => this.param = queryParam['anyParam'] // создаёт запрос /user?param=100
+    );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }
+```
+
+#### Запросы по параметру
+
+Создаём запрос `/user?anyParam=100` через HTML
+```html
+<a [routerLink]="['/user']" [queryParams]="{anyParam: 100}">Пользователь</a>
+```
+либо через класс компоненты
+```ts
+import { Router } from "@angular/router";
+
+@Component({ ... })
+export class AnyComponent {
+  constructor(private router: Router) {}
+
+  onNavigate() {
+    this.router.navigate(['/user'], {: {'anyParam': 100}}); // создаёт запрос
+  }
+}
+```
+
+И принимаем запрос
+```ts
+import { Component, OnDestroy } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs/Rx";
+
+@Component({ ... })
+export class AnyComponent implements OnDestroy {
+  private subscription: Subscription;
+
+  param;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.subscription = route.queryParams.subscribe(
+      (queryParam: any) => this.param = queryParam['anyParam'] // получение значения параметра anyParam
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+}
+```
+
+### Дочерние пути
+
+Для компоненты, доступной по пути, можно создать свой файл с путями, аналогичный `app.routing.ts` (при этом в шаблон следует добавить `<router-outlet></router-outlet>`, где будут отображаться компоненты).
+Тогда для доступа к этим путям следует в родительском `app.routing.ts` сказать об этом файле:
+```ts
+import { UserComponent } from './user/user.component';
+import { USER_ROUTES } from './user/user.routes';
+
+const APP_ROUTES: Routes = [
+  { path: 'user', component: UserComponent },
+  { path: 'user', component: UserComponent, children: USER_ROUTES }
+];
+```
+
 
 ## Command Line Interface (CLI)
 
