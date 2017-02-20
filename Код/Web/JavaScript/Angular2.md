@@ -41,18 +41,17 @@ import { AppComponent } from './app.component';
 
 // декоратор (метаданные) для класса AppModule
 @NgModule({
-  declarations: [ // здесь подключаем компоненты, директивы, сервисы, ...
+  declarations: [ // здесь подключаем компоненты, директивы
     AppComponent,
     MyComponent,
-    MyDirective,
-    MyService,
+    MyDirective
     ...
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ MyService ], // здесь подключаем сервисы
   bootstrap: [ AppComponent ] // основная компонента, внутри которой находится приложение
 })
 export class AppModule {}
