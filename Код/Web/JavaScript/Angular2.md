@@ -11,6 +11,54 @@
 Вторая версия быстрее и проще в использовании.
 
 
+## Организация структуры проекта
+
+
+
+Рядом с файлом `index.html` должен находиться и главный файл `main.ts` проекта на Angular 2, который содержит следующую структуру:
+```ts
+// Подключаем две библиотеки-модуля
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { environment } from './environments/environment';
+// и описание модулей приложения
+import { AppModule } from './app/app.module';
+
+// для отображения приложения пишем
+platformBrowserDynamic().bootstrapModule(AppModule); // ничего общего с фреймворком Bootstrap от Twitter
+```
+
+Разбивка кода по модулям
+только подключать компоненты.
+Теперь для того, чтобы воспользоваться компонентой, её нужно объявить её в файле `app.module.ts` (так другие компоненты будут знать об этой):
+```ts
+// модули, необходимые для работы приложения
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+// импортируем свои компоненты, директивы, сервисы, ...
+import { AppComponent } from './app.component';
+
+// декоратор (метаданные) для класса AppModule
+@NgModule({
+  declarations: [ // здесь подключаем компоненты, директивы, сервисы, ...
+    AppComponent,
+    MyComponent,
+    MyDirective,
+    MyService,
+    ...
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [ AppComponent ] // основная компонента, внутри которой находится приложение
+})
+export class AppModule {}
+```
+
+
 ## Директивы
 
 _Директивы — это инструкции_ для фреймворка, которые прописываются в HTML-разметке и позволяют задавать динамическое поведение элементов документа.
@@ -29,9 +77,8 @@ _Директивы — это инструкции_ для фреймворка
 
 Создадим компоненту (основной строительный элемент приложения на Angular 2, по сути информационный блок на веб-странице) для приложения в TypeScript-файле `app/main.ts`.
 ```ts
-// Подключаем две библиотеки-модуля
-import { bootstrap } from '@angular/platform-browser-dynamic'; // функция bootstrap используется для отображения приложения (ничего общего с Twitter Bootstrap)
-import { Component } from '@angular/core'; // функция для создания компоненты
+// функция для создания компоненты
+import { Component } from '@angular/core';
 
 // Метаданные или декоратор (класс, расширяющий функциональность другого класса без использования наследования) объявляется непосредственно перед классом; таким образом обычный класс JavaScript становится компонентой
 @Component({
@@ -66,7 +113,7 @@ import { Component } from '@angular/core'; // функция для создан
   styleUrls: ['app/main.css'] // стили всё ещё будут принадлежать только данной компоненте
 })
 // Класс
-class AppComponent {
+export class AppComponent { // export нужен для того, чтобы компоненту можно было использовать в других компонентах
   // Свойства, передаваемые в декоратор (для работы с переменными не нужно использовать ключевые слова var или let)
   title = 'Заголовок'
   links = [
@@ -79,16 +126,14 @@ class AppComponent {
       name: "OYWO"
     }
   ]
-  // для задания методов (функций) также не требуется ключевого слова function
+
+  // Метод (функция) также не требуется ключевого слова function
   giveFive() {
     // внутри же функции НУЖНО пользоваться ключевыми словами ES2015
     let five = 5;
     return five;
   }
 }
-
-// Для отображения вызываем функцию bootstrap()
-bootstrap(AppComponent)
 ```
 
 ### Структурные директивы
@@ -107,15 +152,53 @@ bootstrap(AppComponent)
 </li>
 
 <!-- Также можно воспользоваться индексом -->
-<li *ngFor="let link of links; let i = index">{{i}}: {{link.href}}</li>
+<li *ngFor="let link of links; let i = '0' + index ">{{i}}: {{link.href}}</li>
 ```
 
 `[ngSwitch]` — расширенная версия `*ngIf`
+```html
 <div [ngSwitch]="value">
   <p *ngSwitchCase="1">Один</p>
   <p *ngSwitchCase="2">Два</p>
   <p *ngSwitchDefault>По умолчанию</p>
 </div>
+```
+
+#### __*__ Создание собственной структурной директивы
+
+Создаём директиву
+```ts
+import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+
+@Directive({
+  selector: '[unless]'
+})
+export class UnlessDirective {
+  @Input() set unless(condition: boolean) {
+    if(condition) {
+      // спрятать контейнер
+      this.vcRef.clear();
+    } else {
+      // контент контейнер
+      this.vcRef.createEmbeddedView(this.templateRef);
+    }
+  }
+
+  constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef) {}
+}
+```
+
+И подключаем её в `app.module.ts`
+```ts
+import { UnlessDirective } from './unless.directive';
+
+@NgModule({
+  declarations: [
+    ...
+    UnlessDirective
+  ]
+})
+```
 
 ### Атрибутные директивы
 
@@ -132,7 +215,7 @@ bootstrap(AppComponent)
 <div [ngStyle]="{"color": "red"}"></div>
 ```
 
-#### Создание собственной атрибутная директива
+#### __*__ Создание собственной атрибутной директивы
 
 Создаём директиву
 ```ts
@@ -152,13 +235,15 @@ export class HighlightDirective {
 }
 ```
 
-И подключаем её к нужной компоненте
+И подключаем её в `app.module.ts`
 ```ts
 import { HighlightDirective } from './highlight.directive';
 
-@Component({
-  ...
-  directives: [ HighlightDirective ]
+@NgModule({
+  declarations: [
+    ...
+    HighlightDirective
+  ]
 })
 ```
 
@@ -188,48 +273,13 @@ export class HighlightDirective {
 ```
 
 
-## Разбивка кода по модулям
-
-Главный файл `main.ts` должен содержать только подключать компоненты.
-```ts
-import { bootstrap } from '@angular/platform-browser-dynamic';
-// подключение компонент
-import { AppComponent } from './app.component'; // имя компоненты AppComponent должно быть везде одинаковым
-
-bootstrap(AppComponent)
-```
-
-Каждая компонента описывается в отдельном файле, например `app.component.ts`, (не забываем добавить `export`!).
-```ts
-import { Component } from '@angular/core';
-
-@Component({})
-export class AppComponent {} // теперь перед объявлением класса нужно ставить export
-```
-
-Для того, чтобы пользоваться компонентами внутри другой, нужно перечислить директивы внутри декоратора. К примеру, в файле `other.component.ts` это будет выглядеть следующим образом:
-```ts
-import { Component } from '@angular/core';
-import { AppComponent } from './app.component';
-
-@Component({
-  selector: 'other',
-  template: '...',
-  directives: [AppComponent]
-})
-export class NewComponent {}
-```
-
-
 ## Связка данных (Data Binding)
 
 ### Непосредственно в шаблоне (String Interpolation)
 
 В HTML можно пользоваться JS-выражения с помощью конструкции `{{ ... }}`:
 ```html
-<div>
-  {{ expression }}
-</div>
+<div>{{ expression }}</div>
 ```
 
 #### Конвейер (pipe)
@@ -474,14 +524,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 ```
 
-Затем подключить все сервисы (провайдеры) в основном файле приложения `main.ts`.
+Затем подключить все сервисы (провайдеры) в основном файле приложения `app.module.ts`.
 ```ts
 ...
 import { PersonsService } from './persons.service';
 
 @Component({
   ...
-  providers: [PersonsService]
+  providers: [ PersonsService ]
 })
 ...
 ```
@@ -508,54 +558,54 @@ export class PersonsComponent {
 
 Для того, чтобы пользоваться данными с сервера, прежде всего создадим JSON-файл.
 ```json
-{
-  "data": [
-    { ... },
-    { ... },
-    { ... }
-  ]
-}
+[
+  { ... },
+  { ... },
+  { ... }
+]
 ```
 
-Теперь подключим провайдер HTTP в главном файле.
+Теперь подключим провайдер HTTP в файле.
 ```ts
-...
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 @Component({
-  ...
-  providers: [..., HTTP_PROVIDERS]
+  imports: [
+    HttpModule
+  ]
 })
-...
 ```
 
-Создадим сервис для отработки HTTP-запроса.
+Создадим сервис `http.service.ts` для отработки HTTP-запроса.
 ```ts
-...
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PersonsComponent {
+export class HttpService {
   constructor(private http: Http) {}
 
   getPersons() {
     return this.http.get('file.json')
-      .map(response => <Person[]>response.json().data);
+      .map(response => response.json());
   }
 }
 ```
 
 Наконец, воспользуемся сервисом в компоненте.
 ```ts
-...
-export class PersonsComponent {
-  constructor(private personsService: PersonsService) {}
+import { HttpService } from './http.service';
+
+export class MyComponent {
+  data: any;
+
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
     // в конце концов нужно подписаться о получении данных
-    this.personsService.getPersons()
-      .subscribe(person => this.person = person);
+    this.httpService.getPersons()
+      .subscribe(data => this.data = data);
   }
 }
 ```
