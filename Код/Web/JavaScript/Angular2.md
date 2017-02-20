@@ -412,6 +412,21 @@ onClicked(value) {
 > Синтаксическую форму `[()]` иногда называют бананом в коробке.
 
 
+## Обращение к элементу по ссылке
+
+Обращение к элементу компоненты проводится по ссылке через символ `#`. Например:
+```html
+<input type="text" #input>
+```
+
+Обращаться к элементу можно как в HTML-разметке
+```html
+<div>{{ input.value }}</div>
+```
+
+Так и в классе компоненты.
+
+
 ## Модели
 
 Модели позволяют пользоваться возможностями объектно-ориентированного программирования. Создадим модель в файле `person.ts`.
@@ -475,14 +490,23 @@ export class PersonsComponent {
 [Подробнее](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html) о функциях типа `ngOnInit` (хуки жизненного цикла компоненты).
 
 
-## Сервисы
+## Сервисы и внедрение зависимостей (Dependency Injection)
 
-Сервис — это набор методов для работы с компонентой.
-Создать сервис можно по аналогии с компонентой.
+Сервис — это набор методов для работы с компонентой (в итоге помогают писать меньше кода).
+__Dependency Injector__ создаёт (если нужно) и отправляет компоненте необходимые зависимости (классы).
+
+Создадим сервис в файле `persons.service.ts`
 ```ts
-import { PERSONS } from './mocks';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class PersonsService {
+  PERSONS = [
+    { ... },
+    { ... },
+    { ... }
+  ]
+
   // создаём функцию, которая возвращает
   getPersons() {
     return PERSONS;
@@ -493,61 +517,17 @@ export class PersonsService {
 Теперь воспользуемся сервисом в компоненте.
 ```ts
 import { Component } from '@angular/core';
-import { Person } from './person';
 import { PersonsService } from './persons.service';
 
+@Component({ ... })
 export class PersonsComponent {
   persons: Person[];
 
-  ngOnInit() {
-    // запоминаем сервис в переменной
-    let personsComponent = new PersonsComponent();
-
-    // пользуемся сервисом по назначению (задаём значение свойству данного класса)
-    this.persons = personsComponent.getPersons();
-  }
-}
-```
-
-Таким образом сервис помог абстрагироваться в коде от данных.
-Однако пользоваться им всё ещё не удобно.
-
-### Внедрение зависимостей (Dependency Injection)
-
-__Dependency Injector__ создаёт (если нужно) и отправляет компоненте необходимые зависимости (классы).
-Для его работы требуется указать провайдеров (поставщиков зависимостей).
-
-Таким образом, чтобы улучшить сервис, в `persons.service.ts` следует добавить декоратор `@Injectable()`.
-```ts
-import { Injectable } from '@angular/core';
-
-@Injectable()
-```
-
-Затем подключить все сервисы (провайдеры) в основном файле приложения `app.module.ts`.
-```ts
-...
-import { PersonsService } from './persons.service';
-
-@Component({
-  ...
-  providers: [ PersonsService ]
-})
-...
-```
-
-Осталось только внедрить зависимость в компоненту.
-```ts
-import { PersonsService } from './persons.service';
-
-@Component({ ... }) // здесь провайдеры не указываются!
-export class PersonsComponent {
-  persons: Person[];
-
+  // Dependency Injection
   constructor(private personsService: PersonsService) {} // private автоматически определяет свойства компоненты на основании параметров
 
   ngOnInit() {
-    // теперь можно воспользоваться сервисом
+    // пользуемся сервисом
     this.persons = this.personsComponent.getPersons();
   }
 }
