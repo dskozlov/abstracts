@@ -675,6 +675,33 @@ export class AnyComponent {
 <a [routerLink]="['/user', user.id]">Пользователь №{{ user.id }}</a>
 ```
 
+Этим параметром можно воспользоваться в компоненте следующим образом:
+```ts
+import { Component, OnDestroy } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs/Rx";
+
+@Component({ ... })
+export class AnyComponent implements OnDestroy {
+  id;
+  private subscription: Subscription;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    /*
+     * // применяется только при первой генерации страницы
+     * this.id = activatedRoute.snapshot.params['id'];
+     */
+
+    // применяется каждый раз при изменении параметра
+    this.subscription = activatedRoute.params.subscribe(
+      (param: any) => this.id = param['id']
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+}
 
 ## Command Line Interface (CLI)
 
