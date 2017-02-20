@@ -554,7 +554,7 @@ export class PersonsComponent {
 
   ngOnInit() {
     // в конце концов нужно подписаться о получении данных
-    this.personsComponent.getPersons()
+    this.personsService.getPersons()
       .subscribe(person => this.person = person);
   }
 }
