@@ -93,19 +93,33 @@ bootstrap(AppComponent)
 
 ### Структурные директивы
 
-`*ngFor` — цикл
-```html
-  <li *ngFor="let link of links">
-    <a href="{{ link.href }}">{{ link.name }}</a>
-  </li>
-```
+Структурные директивы изменяют структуру DOM.
 
 `*ngIf` — условие, при котором отображается тег
 ```html
   <div *ngIf="user === 'admin'">Секрет</div>
 ```
 
+`*ngFor` — цикл, согласно которому элемент будет дублироваться
+```html
+<li *ngFor="let link of links"> <!-- link — локальная для цикла переменная; links — свойство класса -->
+  <a href="{{ link.href }}">{{ link.name }}</a>
+</li>
+
+<!-- Также можно воспользоваться индексом -->
+<li *ngFor="let link of links; let i = index">{{i}}: {{link.href}}</li>
+```
+
+`[ngSwitch]` — расширенная версия `*ngIf`
+<div [ngSwitch]="value">
+  <p *ngSwitchCase="1">Один</p>
+  <p *ngSwitchCase="2">Два</p>
+  <p *ngSwitchDefault>По умолчанию</p>
+</div>
+
 ### Атрибутные директивы
+
+Атрибутные директивы меняют свойства элементов DOM.
 
 `ngClass` позволяет включать и выключать классы
 ```html
@@ -593,11 +607,11 @@ ng g c compоName
 # помимо компоненты можно создать всё что угодно
 ng g
   component (c)
-  directive ()
-  pipe ()
-  service ()
+  directive (d)
+  pipe (p)
+  service (s)
   class (cl)
-  module ()
+  module (m)
 ```
 
 Также можно быстро удалить существующую компоненту (включая связи):
