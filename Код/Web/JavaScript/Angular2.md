@@ -499,7 +499,7 @@ __Dependency Injector__ создаёт (если нужно) и отправля
 ```ts
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable() // декоратор необходим в том случае, если в сервис инжектируются другие сервисы. если этого не происходит, декоратор необязателен
 export class PersonsService {
   PERSONS = [
     { ... },
@@ -532,6 +532,8 @@ export class PersonsComponent {
   }
 }
 ```
+
+Сервисы могут быть использованы другими сервисами.
 
 
 ## HTTP запросы
