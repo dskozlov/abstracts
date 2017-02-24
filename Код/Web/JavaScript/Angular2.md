@@ -770,6 +770,78 @@ const APP_ROUTES: Routes = [
 ```
 
 
+## Работа с формами
+
+Для работы с формами требуется подключить модуль в файле `app.modules.ts`:
+```ts
+import { FormsModule } from "@angular/forms";
+
+@NgModule({
+  imports: [ FormsModule ]
+})
+```
+
+Управлять формой можно прямо в шаблоне или же в TypeScript.
+Рассмотрим далее оба этих метода.
+
+### Управление из шаблона
+
+Для этого метода обязательно нужно задать атрибуты `name` и `ngModel` полям формы, а также задать тегу `form` действие по событию `ngSubmit` и передать туда значение указателя на тег формы.
+```html
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <input type="text" name="animal" ngModel>
+</form>
+```
+
+После этого можно принять данные формы из параметра функции.
+```ts
+import { NgForm } from "@angular/forms";
+
+export class FormComponent {
+  onSubmit(form: NgForm) {
+    console.log(form);
+    // form.value — объект, в котором содержится вся переданная информация
+    // form.controls —
+    // form.valid — верно ли введены параметры в форму?
+  }
+}
+```
+
+> Данные из формы можно группировать, поместив нужные поля внутрь тега `ngModelGroup="groupName"`.
+> Тогда данные появятся в объекте `form.value` внутри одной группы.
+
+> Радио-кнопки удобно задавать следующим образом:
+> ```html
+> <label *ngFor="let lang of languages">
+>   <input type="radio" name="language"
+>     [(ngModel)]="user.nativeLang" [value]="lang">
+> </label>
+> ```
+
+#### Валидация формы
+
+С помощью атрибута `required` указывается поле, которое должно быть заполнено.
+```html
+<input type="text" name="animal" ngModel required>
+```
+
+Атрибут `pattern` задаёт [регулярным выражением](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Regular%20Expressions.md), какой вид должна иметь введённая в поле информация.
+```html
+<input type="text" name="animal" ngModel required
+  pattern="[\w\s]+">
+```
+
+> Задав ngModel, а также атрибут `#animal="ngModel"`, к полю можно будет обратиться по переменной `animal`. Например:
+> ```html
+> <div *ngIf="!animal.valid">Неверное значение поля</div>
+> ```
+
+В зависимости от состояния полей формы, им присваиваются CSS-классы, которые, в свою очередь можно стилизовать.
+- классы `.ng-touched` и `.ng-untouched` говорят о том, изменялось ли значение поля или нет;
+- `.ng-valid` и `.ng-invalid` — проходит ли информация, введённая в поле, валидацию;
+- `.ng-pristine` и `.ng-dirty` — стоит ли в поле значение по умолчанию (задаётся атрибутом `[ngModel]`).
+
+
 ## Command Line Interface (CLI)
 
 Если установить фреймворк [по инструкции на сайте](https://angular.io/docs/ts/latest/quickstart.html), то в основном проекте будет довольно много лишних файлов — разобраться с таким проектом будет сложнее, чем если бы в нём содержалось минимум информации.
