@@ -772,6 +772,9 @@ const APP_ROUTES: Routes = [
 
 ## Работа с формами
 
+- [Официальная документация](https://angular.io/docs/ts/latest/guide/forms.html)
+- [Руководство по формам](http://blog.ng-book.com/the-ultimate-guide-to-forms-in-angular-2/)
+
 Для работы с формами требуется подключить модуль в файле `app.modules.ts`:
 ```ts
 import { FormsModule } from "@angular/forms";
@@ -840,6 +843,224 @@ export class FormComponent {
 - классы `.ng-touched` и `.ng-untouched` говорят о том, изменялось ли значение поля или нет;
 - `.ng-valid` и `.ng-invalid` — проходит ли информация, введённая в поле, валидацию;
 - `.ng-pristine` и `.ng-dirty` — стоит ли в поле значение по умолчанию (задаётся атрибутом `[ngModel]`).
+
+### Управление из класса компоненты
+
+Для начала нужно подключить модуль `ReactiveFormModule` в `app.modules.ts`
+```ts
+import { ReactiveFormModule } from "@angular/forms";
+
+@NgModule({
+  imports: [ReactiveFormModule]
+})
+```
+
+В шаблоне указывается имя формы через атрибут `[formGroup]`, а также имена полей через атрибут `formControlName`.
+```html
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="username">
+  <input type="email" formControlName="email"><span *ngIf="!myForm.controls['email'].valid">Неверный формат e-mail</span>
+  <input type="password" formControlName="password">
+  <input type="submit" [disabled]="!myForm.valid">
+  <label *ngFor="let g of genders">
+    <input type="radio" formControlName="gender" [value]="g">
+  </label>
+</form>
+```
+
+Тогда в компоненте становятся доступными форма и её поля, которым можно задавать значения по умолчанию, а также валидацию (см. [встроенные валидаторы](https://angular.io/docs/ts/latest/api/forms/index/Validators-class.html))
+```ts
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+
+export class FormComponent {
+  myForm: FormGroup;
+
+  genders = [
+    'мужчина',
+    'женщина'
+  ];
+
+  constructor() {
+    this.myForm = new FormGroup({
+      'username': new FormControl('Ваня', Validators.required),
+      'email': new FormControl('example@ya.ru', [
+        Validators.required
+        Validators.pattern("^[\w_\.]+@\w+\.\w{2,6}$")
+      ]),
+      'password': new FormControl('', Validators.required),
+      'gender': new FormControl('мужчина')
+    });
+  }
+
+  onSubmit() {
+    console.log(this.myForm); // такой же объект, что и form из предыдущего подхода
+  }
+}
+```
+
+> Для группировки данных требуется объединить поля в HTML:
+> ```html
+> <div formGroupName="userData">
+>   <input type="text" formControlName="username">
+>   <input type="email" formControlName="email">
+> </div>
+> <input type="password" formControlName="password">
+> ```
+> а также в TS
+> ```ts
+> this.myForm = new FormGroup({
+>   'userData': new FormGroup({
+>     'username': new FormControl( ... ),
+>     'email': new FormControl( ... )
+>   }),
+>   'password': new FormControl( ... )
+> });
+> ```
+
+#### Массивы данных формы
+
+Данные из формы можно записывать в массив.
+Для этого добавим ещё один пункт в TS.
+```ts
+import { FormArray } from "@angular/forms";
+
+export class FormComponent {
+  constructor() {
+    this.myForm = new FormGroup({
+      'towns': new FormArray([
+        new FormControl('Москва')
+      ])
+    });
+  }
+
+  // метод для добавления новых элементов в массив
+  onAddTown() {
+    (<FormArray>this.myForm.controls['towns']).push(new FormControls(''));
+    // <FormArray> сообщает о том, что этот объект должен вести себя как массив (чтобы не ругался на применения метода push)
+  }
+}
+```
+
+В HTML создадим поля для добавления новых данных:
+```html
+<div formArrayName="towns">
+  <h3>Города</h3>
+  <div *ngFor="let town of myForm.controls['towns'].controls; let i = index">
+    <input type="text" formControlName="{{i}}">
+  </div>
+  <button (click)="onAddTown()">Добавить город</button>
+</div>
+```
+
+#### Упрощённый вариант
+
+Та же модель может быть реализована в другом стиле с помощью модуля `FormBuilder`.
+```ts
+import { FormBuilder } from "@angular/forms";
+
+export class FormComponent {
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = formBuilder.group({
+      'userData': formBuilder.group({
+        'username': ['Ваня', Validators.required],
+        'email': ['example@ya.ru', [
+          Validators.required
+          Validators.pattern("^[\w_\.]+@\w+\.\w{2,6}$")
+        ]]
+      }),
+      'password': ['', Validators.required],
+      'gender': ['мужчина'],
+      'towns': formBuilder.array([
+        ['Москва']
+      ])
+    });
+  }
+}
+```
+
+#### Создание собственного валидатора
+
+```ts
+export class FormComponent {
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = formBuilder.group({
+      'password': ['', [Validators.required, this.myValidator]]
+    });
+  }
+
+  myValidator(controls: FormControl): {[s: string]: boolean} {
+    if (control.value === '1234') {
+      return {'tooSimple': true};
+    }
+    return null; // иначе, форма валидна
+  }
+}
+```
+
+##### Создание асинхронного валидатора
+
+Для того, чтобы проверить вводимую информацию на сервере, можно воспользоваться асинхронным валидатором.
+```ts
+import { Observable } from "rxjs/Rx";
+
+export class FormComponent {
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = formBuilder.group({
+      'password': ['', Validators.required, this.myAsyncValidator]
+    });
+  }
+
+  myAsyncValidator(controls: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>(
+      (resolve, reject) => {
+        // создаём искусственную задержку
+        setTimeout(() => {
+          if (control.value === '1234') {
+            resolve({'tooSimple': true});
+          } else {
+            resolve(null);
+          }
+        }, 1500);
+      }
+    );
+    return promise;
+  }
+}
+```
+
+#### Отслеживание изменений формы
+
+```ts
+export class FormComponent {
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = formBuilder.group({ ... });
+
+    // отслеживание значений полей формы
+    this.myForm.valueChanges.subscribe(
+      (data: any) => console.log(data)
+    );
+
+    // отслеживание статуса формы
+    this.myForm.statusChanges.subscribe(
+      (data: any) => console.log(data)
+    );
+  }
+}
+```
+
+#### Сброс формы
+
+Данные формы можно сбросить с помощью метода `reset()`.
+```ts
+// сброс всей формы
+this.form.reset();
+
+// сброс конкретных полей
+this.form.reset({
+  'username': 'iGor',
+  'password': ''
+});
+```
 
 
 ## Command Line Interface (CLI)
