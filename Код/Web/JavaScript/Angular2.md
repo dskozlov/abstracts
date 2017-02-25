@@ -690,11 +690,49 @@ export class MyComponent {
 > Решить эту проблему можно поставив в соответствующем месте проверку, содержит ли переменная информацию.
 > Например,
 > ```ts
-> if (Array.isArray(this.person)) {}
+> if (Array.isArray(this.data)) {}
 > ```
 
-Теперь при разработке и тестировании можно просто подключить либо сервис с заглушкой, либо с HTTP-запросом.
-Для полноценной работы осталось описать правила обработки ошибок (404, 403, ...).
+Подробнее об объектах класса Observable:
+- [Официальная документация](http://reactivex.io/rxjs/)
+- [Введение в Observables](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+- [Ещё одной введение в Observables](https://medium.com/google-developer-experts/angular-introduction-to-reactive-extensions-rxjs-a86a7430a61f#.e0hw3jbdr)
+
+### Асинхронная загрузка данных
+
+Воспользуемся созданным сервисом и в метод компоненты запишем метод `getData()`.
+```ts
+asyncString = this.httpService.getData();
+```
+
+Теперь данные можно получить при помощи пайпа `async`.
+```html
+{{ asyncString | async }}
+```
+
+### Обработка ошибок
+
+Обрабатывать ошибки можно либо методом `catch()`:
+```ts
+import { Observable } from 'rxjs/Rx';
+
+export class HttpService {
+  this.httpService.sendData().catch(
+    error => {
+      console.log(error);
+      return Observable.throw(error.json());
+    }
+  );
+}
+```
+
+либо в методе `subscribe()`:
+```ts
+this.httpService.sendData().subscribe(
+  data => console.log(data),
+  error => console.log(error.json())
+);
+```
 
 
 ## Пути (Routes)
