@@ -75,28 +75,26 @@ platformBrowserDynamic().bootstrapModule(AppModule); // ничего общег�
 // модули, необходимые для работы приложения
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 // импортируем свои компоненты, директивы, сервисы, ...
 import { AppComponent } from './app.component';
 
 // декоратор (метаданные) для класса AppModule
 @NgModule({
-  declarations: [ // здесь подключаем компоненты, директивы
+  declarations: [ // компоненты, директивы, пайпы
     AppComponent,
     MyComponent,
     MyDirective
     ...
   ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [ MyService ], // здесь подключаем сервисы
+  imports: [ BrowserModule ], // самостоятельные модули, расширяющие функциональность приложения
+  providers: [ MyService ], // сервисы
   bootstrap: [ AppComponent ] // основная компонента, внутри которой находится приложение
 })
 export class AppModule {}
 ```
+
+[Подробнее о модулях...](https://angular.io/docs/ts/latest/guide/ngmodule.html)
 
 
 ## Директивы
@@ -616,6 +614,15 @@ export class PersonsComponent {
 }
 ```
 
+Сервис также может быть подключен для всего проекта
+```ts
+import { PersonsService } from './persons.service';
+
+@NgModule({
+  providers: [ PersonsService ]
+})
+```
+
 Сервисы могут быть использованы другими сервисами.
 
 
@@ -627,7 +634,7 @@ HTTP запросы нужны для взаимодействия с серве
 ```ts
 import { HttpModule } from '@angular/http';
 
-@Component({
+@NgModule({
   imports: [ HttpModule ]
 })
 ```
