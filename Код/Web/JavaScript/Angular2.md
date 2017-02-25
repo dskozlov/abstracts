@@ -621,39 +621,44 @@ export class PersonsComponent {
 
 ## HTTP запросы
 
-Для того, чтобы пользоваться данными с сервера, прежде всего создадим JSON-файл.
-```json
-[
-  { ... },
-  { ... },
-  { ... }
-]
-```
+HTTP запросы нужны для взаимодействия с сервером.
 
-Теперь подключим провайдер HTTP в файле.
+Подключим модуль HTTP в файле `app.modules.ts`.
 ```ts
 import { HttpModule } from '@angular/http';
 
 @Component({
-  imports: [
-    HttpModule
-  ]
+  imports: [ HttpModule ]
 })
 ```
 
-Создадим сервис `http.service.ts` для отработки HTTP-запроса.
+Для отработки HTTP-запроса создадим сервис `http.service.ts`.
 ```ts
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService {
   constructor(private http: Http) {}
 
-  getPersons() {
-    return this.http.get('file.json')
-      .map(response => response.json());
+  // GET-запрос
+  getData() {
+    // читаем файл с сервера
+    return this.http.get('file.json') // объект класса Observable, для которого доступен метод subscribe(success, error, complete)
+      .map((response: Response) => response.json()); // преобразуем полученные данные в объект JS
+  }
+
+  // POST-запрос
+  sendData(data: any) {
+    const body = JSON.stringify(data);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // отправка информации в файл на сервере
+    return this.http.post('file.json', body, {
+      headers: headers
+    }).map((response: Response) => response.json());;
   }
 }
 ```
@@ -663,17 +668,24 @@ export class HttpService {
 import { HttpService } from './http.service';
 
 export class MyComponent {
-  data: any;
-
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    // в конце концов нужно подписаться о получении данных
-    this.httpService.getPersons()
-      .subscribe(data => this.data = data);
+    // воспользуемся методом subscribe() для обработки данных
+
+    // get
+    this.httpService.getData().subscribe(
+      data => console.log(data)
+    );
+
+    // post
+    this.httpService.sendData().subscribe(
+      data => console.log(data)
+    );
   }
 }
 ```
+
 > Если возникает ошибка из-за того, что какая-то переменная не определена, то это из-за того, что при первичной загрузке никакой информации с сервера не приходит до тех пор, пока не сделан запрос.
 > Решить эту проблему можно поставив в соответствующем месте проверку, содержит ли переменная информацию.
 > Например,
@@ -1198,8 +1210,8 @@ ng destroy component compName
 
 ## Источники
 - [x] [Установка](https://angular.io/docs/ts/latest/quickstart.html)
-- [x] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
 - [ ] [Angular 2 - The Complete Guide](https://www.udemy.com/the-complete-guide-to-angular-2/)
+- [x] [Курс на Code School](https://www.codeschool.com/courses/accelerating-through-angular-2)
 - [ ] [Официальная документация](https://angular.io/docs/ts/latest/)
 - [ ] [Style Guide](https://angular.io/styleguide)
 - [ ] [TypeScript](http://www.typescriptlang.org/)
