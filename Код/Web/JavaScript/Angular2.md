@@ -163,7 +163,7 @@ export class AppComponent { // export нужен для того, чтобы к�
 </div>
 ```
 
-#### __*__ Создание собственной структурной директивы
+#### Создание собственной структурной директивы
 
 Создаём директиву
 ```ts
@@ -214,7 +214,7 @@ import { UnlessDirective } from './unless.directive';
 <div [ngStyle]="{"color": "red"}"></div>
 ```
 
-#### __*__ Создание собственной атрибутной директивы
+#### Создание собственной атрибутной директивы
 
 Создаём директиву
 ```ts
@@ -305,13 +305,11 @@ Pipe (пайп, конвейер) нужен для того, чтобы пре�
 ```
 
 [Примеры пайпов]((https://angular.io/docs/ts/latest/api/#!?query=pipe)):
-- [uppercase](https://angular.io/docs/ts/latest/api/common/index/UpperCasePipe-pipe.html)
-- [lowercase](https://angular.io/docs/ts/latest/api/common/index/LowerCasePipe-pipe.html)
-- [date](https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html)
-- [currency](https://angular.io/docs/ts/latest/api/common/index/CurrencyPipe-pipe.html) — оформление цен
-- number
+- [uppercase](https://angular.io/docs/ts/latest/api/common/index/UpperCasePipe-pipe.html) — все буквы заглавные
+- [lowercase](https://angular.io/docs/ts/latest/api/common/index/LowerCasePipe-pipe.html) — все буквы строчный
+- [date](https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html) — оформление даты
+- [currency](https://angular.io/docs/ts/latest/api/common/index/CurrencyPipe-pipe.html) — оформление цены
 - [decimal](https://angular.io/docs/ts/latest/api/common/index/DecimalPipe-pipe.html)
-- replace — замена определённых символов
 - [slice](https://angular.io/docs/ts/latest/api/common/index/SlicePipe-pipe.html) — выборка из массива или части строки
 - [json](https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html) — преобразует строку в JSON
 - [async](https://angular.io/docs/ts/latest/api/common/index/AsyncPipe-pipe.html) — возвращает значение как только оно будет получено
