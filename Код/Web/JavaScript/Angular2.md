@@ -281,14 +281,27 @@ export class HighlightDirective {
 <div>{{ expression }}</div>
 ```
 
-#### Конвейер (pipe)
+#### Pipes
 
-В первом Angular его называли фильтром.
+Pipe (пайп, конвейер) нужен для того, чтобы представлять данные в нужном виде в нужном месте.
+
+> В первом Angular пайп называли фильтром.
+
 Принцип работы такой же, как в [Bash](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Bash (UNIX).sh) — команды записываются поочерёдно через символ `|` и выходное значение любой команды используется на входе следующей.
 
 Пример использования:
 ```html
-{{ "Заголовок" | uppercase }} <!-- ЗАГОЛОВОК -->
+{{ "Заголовок" | lowercase }} <!-- заголовок -->
+```
+
+Параметризация пайпов
+```html
+{{ myDate | date:"dd.MM.yyyy" }}
+```
+
+Цепочка преобразований:
+```html
+{{ "Заголовок" | slice:4:-1 | uppercase }} <!-- ЛОВОК -->
 ```
 
 [Примеры пайпов]((https://angular.io/docs/ts/latest/api/#!?query=pipe)):
@@ -301,8 +314,39 @@ export class HighlightDirective {
 - replace — замена определённых символов
 - [slice](https://angular.io/docs/ts/latest/api/common/index/SlicePipe-pipe.html) — выборка из массива или части строки
 - [json](https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html) — преобразует строку в JSON
+- [async](https://angular.io/docs/ts/latest/api/common/index/AsyncPipe-pipe.html) — возвращает значение как только оно будет получено
 
-Можно также создавать свои пайпы.
+##### Создание пайпа
+
+Создаём пайп.
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'double',
+  // pure: false // информация обновляется при изменениях значения
+})
+export class DoublePipe implements PipeTransform {
+  transform(value: any, args?: any): any { // args — массив аргументов
+    // то, что будет происходить со значением
+    return value * 2;
+  }
+}
+```
+
+Подключаем его в файле `app.module.ts`.
+```ts
+import { DoublePipe } from './double.pipe';
+
+@NgModule({
+  declarations: [DoublePipe]
+})
+```
+
+Пользуемся на здоровье!
+```html
+{{ 2 | double }}
+```
 
 ### По атрибуту (Property Binding)
 
