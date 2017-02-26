@@ -25,6 +25,8 @@ cd myApp
 ionic serve
 ```
 
+[Документация по CLI](https://ionicframework.com/docs/v2/cli/)
+
 ## Источники
 
 - [ ] [Ionic 2 - The Practical Guide to Building iOS & Android Apps](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/)
