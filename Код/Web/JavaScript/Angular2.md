@@ -998,12 +998,12 @@ export class FormComponent {
 
 ### Управление из класса компоненты
 
-Для начала нужно подключить модуль `ReactiveFormModule` в `app.modules.ts`
+Для начала нужно подключить модуль `ReactiveFormsModule` в `app.modules.ts`
 ```ts
-import { ReactiveFormModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [ReactiveFormModule]
+  imports: [ ReactiveFormsModule ]
 })
 ```
 
