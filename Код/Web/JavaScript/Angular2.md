@@ -761,6 +761,11 @@ import { UserComponent } from './user/user.component';
 const APP_ROUTES: Routes = [
   { path: '', component: MainComponent }, // главная страница
   { path: 'user', component: UserComponent } // /user
+
+  // редирект
+  { path: 'smth', redirectTo: '/' } // если адрес будет начинаться с smth
+  { path: 'smth', redirectTo: '/', pathMatch: 'full' } // если адрес будет начинаться с smth и после него ничего не будет (для этого следует подключить RouterConfig из "@angular/router")
+  { path: '**', redirectTo: '/notfound', pathMatch: 'full' } // перекидывание, если указан любой путь, не соответствующий ни одному из известных путей
 ];
 
 // передаём пути на экспорт
@@ -782,8 +787,8 @@ import { routing } from "./app.routing";
   <div class="row">
     <div class="col">
       <!-- Навигация -->
-      <a [routerLink]="['/']">Главная</a>
-      <a [routerLink]="['/user']">Моя страница</a><!-- абсолютный путь -->
+      <a [routerLink]="['/']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}">Главная</a>
+      <a [routerLink]="['/user']" routerLinkActive='active'>Моя страница</a><!-- абсолютный путь -->
       <a [routerLink]="['../']">< Назад</a><!-- относительный путь -->
       <hr>
       <router-outlet><!-- сюда будут загружаться компоненты --></router-outlet>
@@ -791,6 +796,8 @@ import { routing } from "./app.routing";
   </div>
 </div>
 ```
+> Здесь атрибут `routerLinkActive='active'` указывает на класс, который присваивается объекту, когда страница совпадает со ссылкой (класс присваивается любому объекту, внутри которого находится ссылка).
+> А `[routerLinkActiveOptions]="{exact: true}"` сообщает о том, что объект активируется только тогда, когда путь полностью соответствует значению ссылки (если этого не указать, то класс будет присваиваться при любых дочерних путях).
 
 Навигацией также можно пользоваться в классе компоненты.
 ```ts
