@@ -1036,7 +1036,7 @@ export class FormComponent {
     this.myForm = new FormGroup({
       'username': new FormControl('Ваня', Validators.required),
       'email': new FormControl('example@ya.ru', [
-        Validators.required
+        Validators.required,
         Validators.pattern("^[\w_\.]+@\w+\.\w{2,6}$")
       ]),
       'password': new FormControl('', Validators.required),
