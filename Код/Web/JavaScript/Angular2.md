@@ -1310,3 +1310,4 @@ declare var $: any; // теперь можно пользоваться jQuery
 - [ ] [TypeScript](http://www.typescriptlang.org/)
 - [ ] [Отладчик Angular 2](https://augury.angular.io/)
 - [ ] [Ionic 2](https://github.com/noggatur/abstracts/blob/master/%D0%9A%D0%BE%D0%B4/Web/JavaScript/Ionic2.md)
+- [ ] [Дополнительные компоненты на базе Bootstrap](http://valor-software.com/ng2-bootstrap/)
