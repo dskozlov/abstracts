@@ -19,6 +19,7 @@
     - [Создание собственной связки по атрибуту](#Создание-собственной-связки-по-атрибуту)
   - [По событию (Event Binding)](#По-событию-event-binding)
     - [Создание собственной связки по событию](#Создание-собственной-связки-по-событию)
+    - [Передача данных от одной компоненте к другой](#Передача-данных-от-одной-компоненте-к-другой)
   - [Комбинированная связка (Two-Way Binding)](#Комбинированная-связка-two-way-binding)
 - [Обращение к элементу по ссылке](#Обращение-к-элементу-по-ссылке)
 - [Модели](#Модели)
@@ -483,6 +484,67 @@ onClicked(value) {
 }
 ```
 
+#### Передача данных от одной компоненте к другой
+
+Для общения между компонентами вовсе не нужно создавать длинные цепочки для перехода данных от дочерней компоненты к родительской и т. д.
+Наиболее простой способ создания такой связки — через [сервис](#Сервисы-и-внедрение-зависимостей-dependency-injection).
+
+Создадим сервис
+```ts
+import { Injectable, EventEmitter } from '@angular/core';
+
+@Injectable()
+export class PushService {
+  pushedData = new EventEmitter();
+
+  pushData(value) {
+    this.pushedData.emit(value);
+  }
+}
+```
+
+Подключим его в './app.module.ts'
+```ts
+import { PushService } from './push.service';
+
+@NgModule({
+  providers: [ PushService ]
+})
+```
+
+Теперь можем отправлять информацию из одной компоненты
+```ts
+import { PushService } from './push.service';
+
+@Component()
+export class firstComponent {
+  constructor (private pushService: PushService) {}
+
+  onSend(value) {
+    this.pushService.pushedData(value);
+  }
+}
+```
+
+И принимать её в другой
+```ts
+import { Component, OnInit } from '@angular/core';
+import { PushService } from './push.service';
+
+@Component()
+export class secondComponent implements OnInit {
+  receivedData;
+
+  constructor (private pushService: PushService) {}
+
+  ngOnInit() {
+    this.pushService.pushedData.subscribe(
+      data => this.receivedData = data
+    );
+  }
+}
+```
+
 ### Комбинированная связка (Two-Way Binding)
 
 > JS <–> HTML
@@ -629,7 +691,7 @@ import { PersonsService } from './persons.service';
 })
 ```
 
-Сервисы могут быть использованы другими сервисами.
+Сервисы могут быть использованы другими сервисами (в этом случае провайдеры не прописываются).
 
 
 ## HTTP запросы
