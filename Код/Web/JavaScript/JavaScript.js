@@ -57,7 +57,7 @@ var currentYear1992_$,
 // Функции (не важно, где их вызывать (поскольку перед компиляцией код просматривается браузером 1 раз на наличие функций), но крайне желательно делать это перед их объявлением)
 function functionName(arg_1, arg_2) {
   // Можно использовать ключевые слова
-  this;      // объект, к которому применяется функция
+  this;      // объект, к которому применяется функция (как метод)
   arguments; // аргументы, заданные в функции
 
   x = 3; // глобальная переменная (должна быть объявлена до функции)
@@ -176,39 +176,42 @@ today.setTime();
 
 
 // Объекты
-// var player = new Object();
-var player = {};
-// Свойства объекта
-player.name = "Fred";
-player.score = 10000;
-var rank = 1;
-player.rank = rank; // при этом создаётся лишь ссылка на переменную. и при изменении свойства объекта, меняется сама переменная
+var player = new Object();
+var player = {}; // пустой объект
 // Сокращённая запись
-var player1 = {
-  name: "Fred",
+var player = {
+  name: "iGor",
   score: 10000,
-  rank: 1
+  "another prop": "Another"
 };
-
-// К свойствам объекта можно обращаться двумя способами:
-obj.name;
-obj["name"];  // как ассоциативный массив
-// можно также и задавать значения свойств
-obj["na" + "me"] = "iGor";
-// и даже так
-obj["another prop"] = "iGor";
-// но при этом уже НЕЛЬЗЯ будет обратиться к нему так
-obj."another prop"
+// Доступ к свойствам объекта (2 способа)
+player.name;
+player["name"];  // как ассоциативный массив
+player["na" + "me"]; // то же самое
+player["another prop"]; // свойства могут быть с пробелами
+// player."another prop" // НО так делать НЕЛЬЗЯ
+// Изменение свойств
+player.name = "iLyona";
+player["name"] = "iLyona";
+player.newProperty = "New"; // новое свойство объекта
+var gunsArray = ['Knife', 'Rifle', 'Bomb'];
+player.guns = gunsArray; // при этом создаётся лишь ссылка на переменную. и при изменении свойства объекта, меняется сама переменная
 
 // Свойства можно удалить
-delete obj.name; // возвращает true, если свойства больше нет
+delete player.name; // возвращает true, если свойства больше нет
 
 // Создание метода для объекта
-player1.someMethod = function () {
+player.someMethod = function () {
   // операции со свойствами
 };
 // Вызов метода объекта
-player1.someMethod();
+player.someMethod();
+
+// Перебрать все свойства объекта
+for (key in player) {
+  console.log("key: " + key, "value: " + player[key]);
+}
+
 
 // Условный оператор
 if (/*condition*/) {/*true*/} else {/*false*/}
