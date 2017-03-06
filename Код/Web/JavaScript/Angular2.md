@@ -521,7 +521,7 @@ export class firstComponent {
   constructor (private pushService: PushService) {}
 
   onSend(value) {
-    this.pushService.pushedData(value);
+    this.pushService.pushData(value);
   }
 }
 ```
