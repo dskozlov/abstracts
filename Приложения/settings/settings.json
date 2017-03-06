@@ -1,6 +1,6 @@
 // Visual Studio Code
 {
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   "files.autoSave": "onFocusChange",
   "editor.fontFamily": "Anonymous Pro",
   "editor.tabSize": 2,
@@ -11,11 +11,13 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line",
   "editor.renderControlCharacters": true,
-  "editor.renderIndentGuides": true,
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Default Dark+",
   "window.restoreFullscreen": true,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 1.5,
   "terminal.integrated.cursorStyle": "line",
+  "guides.active.gutter": true,
+  "guides.active.color.dark": "rgba(200, 200, 60, 1)",
+  "color-highlight.markRuler": false
 }
