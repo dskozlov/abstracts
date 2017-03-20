@@ -122,3 +122,7 @@ image()   # тепловая карта
 # [ ] https://habrahabr.ru/post/160373/
 # [ ] http://www.oreilly.com/data/try-r/thanks.html
 # [ ] http://www.oreilly.com/data/try-r/congrats.html
+# [ ] Мастицкий С.Э. Визуализация данных с помощью ggplot2
+
+# Библиотеки
+# [ ] [ggplot2](http://ggplot2.org/)

@@ -374,6 +374,7 @@ __Дисклеймер__: большинство источников как п�
 - [ ] https://pragprog.com/book/csjava/3d-game-programming-for-kids
 - [ ] http://tympanus.net/codrops/2016/04/26/the-aviator-animating-basic-3d-scene-threejs/
 - [ ] https://stemkoski.github.io/Three.js/
+- [ ] Коичи Мацуда, Роджер Ли — WebGL: Программирование трёхмерной графики
 
 ## Стоки моделей
 - http://tf3dm.com/
