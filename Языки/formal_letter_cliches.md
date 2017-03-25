@@ -11,7 +11,7 @@
 в ответ на ваше письмо | in reply / response to
 прошу не отказать в любезности | will you be so kind as to
 с уважением | sincerely yours / faithfully yours
-удовлетворить просьбу | to comly with meet / grasity
+удовлетворить просьбу | to comply with meet / gratify
 уделите должное внимание | give due attention
 обратиться с просьбой | approach smb with request
 не в состоянии выполнить просьбу | I am not in a position to comply with your request
