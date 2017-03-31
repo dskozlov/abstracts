@@ -12,14 +12,21 @@ Ionic 2 компилирует код Angular 2 в JS+CSS+HTML, нужный д�
 
 ## Установка (CLI)
 
+Устанавливаем Ionic 2.
 ```sh
 npm install ionic cordova -g
 ```
 
+Создаём новое приложение `myApp`.
 ```sh
 ionic start myApp --v2
+  blank    # пустой проект
+  tabs     # проект с вкладками
+  sidemenu # с менюшкой
+  tutorial # для официальной обучалки https://ionicframework.com/docs/v2/intro/tutorial/
 ```
 
+Запускаем приложение.
 ```sh
 cd myApp
 ionic serve
@@ -31,3 +38,4 @@ ionic serve
 
 - [ ] [Ionic 2 - The Practical Guide to Building iOS & Android Apps](https://www.udemy.com/ionic-2-the-practical-guide-to-building-ios-android-apps/)
 - [ ] [Официальная документация](http://ionicframework.com/docs/)
+- [ ] [Официальная обучалка](https://ionicframework.com/docs/v2/intro/tutorial/)
