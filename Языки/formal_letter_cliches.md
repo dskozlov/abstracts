@@ -34,7 +34,7 @@
 пользуясь случаем | making use of this opportunity
 сообщите нам ваши соображения | inform us of your considerations
 от имени | on behalf of
-поблагодарить вал лично | thank you in person
+поблагодарить вас лично | thank you in person
 отдельным письмом | under separate cover
 извините за задержку с ответом | sorry for the delay in answering
 как можно скорее | at your earliest convenience
