@@ -782,8 +782,9 @@ try {
 // http://www.typescriptlang.org/
 // http://babeljs.io/ — компилятор кода на ES2015 в старый JS (для поддержки разных платформ)
 // http://coffeescript.org/
-// [ ] [FlowType](https://flow.org/) - для типизации
+// [FlowType](https://flow.org/) - для типизации
 
 // Библиотеки
 // [CDN популярных библиотек](https://developers.google.com/discovery/libraries)
+// [LaTeX на сайте](https://www.mathjax.org/)
 // Modernizr — Кроссбаузерные фичи
