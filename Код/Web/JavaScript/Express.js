@@ -10,7 +10,7 @@ $ npm install express
 var express = require('express');
 var app = express();
 
-// Создаём GET-запрос
+// GET-запрос
 app.get('/', function(request, response){ // страница (Route), поведение которой задаётся далее
   response.send('Hello world'); // тот же эффект даёт response.write('Hello world'); response.end();
 
@@ -95,11 +95,71 @@ $ curl http://localhost:8080/users/iGor # => 'Это iGor'
 // также можно создать функцию, которую можно использовать в разных запросах
 app.param('name', function(request, response, next) {
   var name = request.params.name;
-  var block = name.toLowerCase();
-  request.blockName = block; // свойство доступно для других путей приложения
+  var user = name.toLowerCase();
+  request.userName = user; // свойство доступно для других путей приложения
   next(); // функция должна быть вызвана для продолжения запроса
 });
 // теперь можно обращаться к новому свойству
 app.get('/users/:name', function(request, response){
-  var decription = users[request.blockName];
+  var decription = users[request.userName];
 });
+
+
+// POST-запрос
+// Отправляем запрос от клиента
+$('form').on('submit', function(){
+  var data = $(this).serialize(); // преобразует данные формы в URL-кодированную строку
+  $.ajax({
+    type: 'POST',
+    url: '/users',
+    data: data
+  }).done(function(data) {
+    form.trigger('reset'); // очищает поля формы
+  });
+});
+// принимает запрос на сервере
+var bodyParser = require('body-parser'); // $ npm i body-parser
+var parseUrlencoded = bodyParser.urlencoded({ extended: false}); // парсим данные формы
+app.post('/users', parseUrlencoded, function(request, response) {
+  var newUser = request.body;
+  users[newUser.name] = newUser.description;
+  response // отвечаем
+    .status(201)
+    .json(newUser.name);
+});
+
+
+// DELETE-запрос
+// отправляем от клиента запрос
+$.ajax({ type: 'DELETE', url: '/users/iGor' });
+// и обрабатываем его на сервере
+app.delete('/users/:name', function(request, response) {
+  delete users[request.blockName];
+  response.sendStatus(200);
+});
+
+
+// Упрощённое обращение к путям
+app.route('/users')
+   .get(function(){
+    // ...
+   })
+   .post(parseUrlencoded, function(){
+    // ...
+   });
+// ещё лучше хранить все обращения по конкретному пути в отдельном файле
+var users = require('./routes/users');
+app.use('/users', users);
+// теперь запросы хранятся в ./routes/users.js
+var express = require('express');
+var router = express.Router();
+
+router.route('/')
+  .get();
+router.route('/:name')
+  .all(function (request, response, next) {
+    // то же, что и app.param()
+  })
+  .get(); // сначала будет обрабатываться all, а затем любой другой запрос
+
+module.exports = router;
