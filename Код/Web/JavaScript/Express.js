@@ -163,3 +163,7 @@ router.route('/:name')
   .get(); // сначала будет обрабатываться all, а затем любой другой запрос
 
 module.exports = router;
+
+
+// Источники
+// https://www.codeschool.com/courses/building-blocks-of-express-js

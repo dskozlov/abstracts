@@ -281,9 +281,14 @@ Riak
 redis — https://redis.io/
 
 // Полезные модули
+// организация бекенда
+  express // http://expressjs.com/
+  sails // http://sailsjs.com/ — улучшенный Express
+  koa // http://koajs.com/ - наиболее современный фреймворк для организации бекенда
 jake // позволяет создавать терминальные команды, выполняющие код node.js
+bluebird // упрощает работу с промисами
 
 // Источники
 // https://nodejs.org/api/ — официальная документация
 // https://www.codeschool.com/courses/real-time-web-with-node-js
-// https://www.codeschool.com/courses/building-blocks-of-express-js
+// https://nodeschool.io/
