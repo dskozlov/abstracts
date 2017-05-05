@@ -755,6 +755,11 @@ try {
 // https://css-tricks.com/snippets/jquery/smooth-scrolling/
 // https://greensock.com/tweenmax
 
+// Крутые JS-программисты-преподаватели
+- [Wes Bos](https://github.com/wesbos)
+- [Ray Villalobos](https://github.com/planetoftheweb)
+- [Maximilian Schwarzmueller](https://mschwarzmueller.com/)
+
 // Источники
 // [x] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-1
