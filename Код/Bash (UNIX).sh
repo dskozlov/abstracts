@@ -707,9 +707,13 @@ do
   break
 done
 
+
+# Терминалы
+# [iTerm2](http://iterm2.com/)
+# [Cmder](https://github.com/cmderdev/cmder)
+
 # Программы
 # Midnight Commander (файловый менеджер внутри терминала) — http://www.vivapage.info/midnight-commander-mac-os-x/
-
 
 # Источники
 # [x] [Базовые знания по работе в среде UNIX и основы Bash](https://www.lynda.com/Mac-OS-X-10-6-tutorials/Unix-for-Mac-OS-X-Users/78546-2.html)
