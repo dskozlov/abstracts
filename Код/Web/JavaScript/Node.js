@@ -285,6 +285,10 @@ redis — https://redis.io/
   express // http://expressjs.com/
   sails // http://sailsjs.com/ — улучшенный Express
   koa // http://koajs.com/ - наиболее современный фреймворк для организации бекенда
+// сборщики кода (программы для создания фреймворков)
+  gulp
+  grunt
+  webpack
 jake // позволяет создавать терминальные команды, выполняющие код node.js
 bluebird // упрощает работу с промисами
 
