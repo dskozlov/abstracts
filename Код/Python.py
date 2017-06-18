@@ -2,11 +2,12 @@
 
 
 # Отступы здесь важны
-# Дополнительные пакеты (например, какой-нибудь module) подключаются с помощью
-import module
 
 # Скрипты можно записывать в файлы с расширением .py, а запускать из терминала с помощью команды
 python script.py
+
+# Можно просто войти в интерактивный режим (консоль) с помощью команды
+python
 
 "Строка"
 'Спецсимволы: \n \t'
@@ -16,6 +17,7 @@ python script.py
 -
 *
 /  # деление
+10./3  # результат деления — число с плавающей точкой
 // # целочисленное деление
 7 // 2 #=> 3
 ** # возведение в степень
@@ -83,7 +85,7 @@ print("iGor", "Polyakov") #=> "iGor Polyakov"
 print name # в Python 2 можно не ставить скобки. а в Python 3 — нужно
 str(123)  #=> "123"
 len("iGor") #=> 4
-
+round(10./3, 2) #=> 3.33 # округление числа с указанием количества знаков после запятой
 
 # Условный оператор
 if(a < b):
@@ -127,8 +129,27 @@ class AnotherClass(ClassName):
     ClassName.method_1(self);
     print "method_1 of AnotherClass"
 
+
+# Есть мнение, что для того, чтобы хорошо владеть языком программирования, нужно хорошо знать его библиотеки.
+# Подключение библиотеки
+# Дополнительные пакеты (например, какой-нибудь module) подключаются с помощью
+import module
+# Проверить версию библиотеки
+module.__version__
+
+# Подключить только конкретную функцию
+from math import factorial
+factorial(10)
+
+
+
 # Редакторы
 # http://jupyter.org/
+  # В этом редакторе можно одновременно работать с кусками текста на Markdown + LaTeX и кода на Python + Bash
+  # Запуск
+  ipython2 notebook
+  # или
+  jupyter notebook
 # http://pythonfiddle.com/
 
 
@@ -142,3 +163,4 @@ class AnotherClass(ClassName):
 # [ ] https://www.codeschool.com/courses/try-python
 # [ ] https://www.codeschool.com/courses/flying-through-python
 # [ ] https://www.pluralsight.com/browse/software-development/python
+# [ ] [Изучение Python вместе с машинным обучением]https://www.coursera.org/learn/mathematics-and-python/
