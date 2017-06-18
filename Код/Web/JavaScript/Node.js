@@ -289,6 +289,7 @@ redis — https://redis.io/
   gulp
   grunt
   webpack
+nodemon // https://github.com/remy/nodemon — авто обновление сервера при изменениях кода
 jake // позволяет создавать терминальные команды, выполняющие код node.js
 bluebird // упрощает работу с промисами
 
