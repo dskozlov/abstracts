@@ -10,7 +10,7 @@
 Сочетание | Команда
 --------- | -------
 ⌘ + +, [space + ⌘] + click, [alt] + scroll up, _[z] + click_, __[z] + drag right__ | Увеличить холст (приблизиться)
-⌘ + -, [space + alt] + click, [alt] + scroll down, _[z + alt] + click_, __[z] + drag left__ | Уменьшить холст (удалиться)
+⌘ + -, [space + alt] + click, [alt] + scroll down, _[z + alt] + click_, __[z] + drag left__ | Уменьшить холст (удалиться)
 ⌘ + 0 | На весь экран
 ⌘ + 1 | 100%
 scroll up, [⌘] + scroll, _[space] + drag_, __[H] + drag__ | Переместиться по холсту
