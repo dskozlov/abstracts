@@ -346,3 +346,5 @@ export PS1='\W$(__git_ps1 "(%s)")> '
 # [ ] http://nvie.com/posts/a-successful-git-branching-model/
 # [ ] http://scottchacon.com/2011/08/31/github-flow.html
 # [ ] http://semver.org (про версификацию)
+# [ ] Чакон, Штрауб — Git для профессионального программиста
+# [ ] Jon Loeliger — Version Control with Git

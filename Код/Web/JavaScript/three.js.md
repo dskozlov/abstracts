@@ -351,6 +351,24 @@ texture.repeat.set(10, 10);
 - https://www.justareflektor.com/
 - https://throughthedark.withgoogle.com/
 
+## Стоки моделей
+- http://tf3dm.com/
+
+## Стоки текстур
+- http://opengameart.org/
+- https://www.arroway-textures.ch
+- http://www.textures.com/
+
+## [Скайбоксы](https://ru.wikipedia.org/wiki/Скайбокс)
+- http://www.custommapmakers.org/skyboxes.php
+
+## Альтернативные библиотеки для WebGL
+- [Babylon.js](babylonjs.com)
+- [PhiloGL](senchalabs.org/philogl)
+- [03D](code.google.com/p/o3d)
+- [GLGE](glge.org)
+- [J3D](github.com/drojdjou/J3D)
+
 ## Источники
 __Дисклеймер__: большинство источников как правило повторяют и как исключение взаимодополняют друг друга.
 Более того очень многие книги рассчитаны на аудиторию, не занимающуюся ни программированием, ни моделированием.
@@ -375,21 +393,3 @@ __Дисклеймер__: большинство источников как п�
 - [ ] http://tympanus.net/codrops/2016/04/26/the-aviator-animating-basic-3d-scene-threejs/
 - [ ] https://stemkoski.github.io/Three.js/
 - [ ] Коичи Мацуда, Роджер Ли — WebGL: Программирование трёхмерной графики
-
-## Стоки моделей
-- http://tf3dm.com/
-
-## Стеки текстур
-- http://opengameart.org/
-- https://www.arroway-textures.ch
-- http://www.textures.com/
-
-## [Скайбоксы](https://ru.wikipedia.org/wiki/Скайбокс)
-- http://www.custommapmakers.org/skyboxes.php
-
-## Альтернативные библиотеки для WebGL
-- [Babylon.js](babylonjs.com)
-- [PhiloGL](senchalabs.org/philogl)
-- [03D](code.google.com/p/o3d)
-- [GLGE](glge.org)
-- [J3D](github.com/drojdjou/J3D)
