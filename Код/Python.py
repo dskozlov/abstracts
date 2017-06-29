@@ -468,6 +468,7 @@ plt.legend() # показать легенду
 # подписи к рисунку
 plt.ylabel('$f(x)$')
 plt.xlabel('$x$')
+plt.axvline(x=EX, color='k', linestyle='--') # прямая линия
 plt.title("Function")
 
 
@@ -488,7 +489,8 @@ plt.title("Function")
 
 # Источники
 # [ ] https://python.org/
-# [ ] https://docs.python.org/3.5/tutorial/
+# [ ] https://docs.python.org/2/tutorial/
+# [ ] https://docs.python.org/3/tutorial/
 # [ ] https://www.python.org/dev/peps/pep-0008/
 # [ ] https://docs.python.org/3.5/library/
 # [ ] https://automatetheboringstuff.com/
@@ -496,12 +498,16 @@ plt.title("Function")
 # [ ] https://www.codeschool.com/courses/try-python
 # [ ] https://www.codeschool.com/courses/flying-through-python
 # [ ] https://www.pluralsight.com/browse/software-development/python
-# [ ] [Изучение Python вместе с машинным обучением]https://www.coursera.org/learn/mathematics-and-python/
+# [ ] [Изучение Python вместе с машинным обучением](https://www.coursera.org/learn/mathematics-and-python/)
 # [ ] https://www.coursera.org/courses?query=Python
 # [ ] https://www.codeacademy.com
 # [ ] http://www.pythontutor.ru
 # [ ] http://www.learnpythonthehardway.org
 # [ ] http://snakify.org
 # [ ] https://www.checkio.org
+# [ ] [Reitz — The Hitchhiker’s Guide to Python](http://docs.python-guide.org/en/latest/) — довольно полное руководство, в котором рассматриваются вопросы от установки, работы с виртуальным окружением и работы в различных IDE до основных структур языка с примерами кода.
+# [ ] [Google python class](https://developers.google.com/edu/python/) — небольшой бесплатный онлайн-курс по Python для слушателей с минимальным опытом программирования.
+# [ ] Lutz — Learning Python (_с этой книги можно начинать изучение, она покрывает все основные структуры языка_)
+# [ ] Lutz — Python Pocket Reference (_подробный справочник_)
 
-# https://docs.python.org/2/library/re.html — справка по регулярным выражениям в Python (если вы захотите узнать про них чуть больше)
+# https://docs.python.org/2/library/re.html — справка по регулярным выражениям в Python
