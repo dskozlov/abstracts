@@ -431,3 +431,5 @@ every picture/.style={line width=1pt}
 % Источники
 % [ ] http://mirror.macomnet.net/pub/CTAN/graphics/pgf/base/doc/pgfmanual.pdf
 % [ ] http://www.texample.net/tikz/
+% [ ] https://ru.sharelatex.com/learn/TikZ_package
+% [ ] https://habrahabr.ru/post/48260/
