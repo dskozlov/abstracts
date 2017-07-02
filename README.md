@@ -7,7 +7,7 @@
 
 __Внимание!__
 В некоторых конспектах используются формулы, которые не отображаются стандартными средствами GitHub.
-В связи с этим для удобства чтения рекомендуется установить расширение [GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) для Google Chrome (сочувствую тем, кто не пользуется Хромом).
+Поэтому если вдруг вы видите вместо уравнений (например $\frac{\sin x}n = 6$) какие-то знаки доллара и клинопись, то это значит, что у вас не установлено расширение [GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) (работает только для Google Chrome).
 
 ## В качестве вступления
 
