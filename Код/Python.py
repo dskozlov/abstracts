@@ -260,6 +260,8 @@ with open("path/to/file.txt", "w") as file:
 
 # Pandas — работа с таблицами
 import pandas as pd
+# http://pandas.pydata.org/pandas-docs/stable/tutorials.html
+# https://www.analyticsvidhya.com/blog/2015/07/11-steps-perform-data-analysis-pandas-python/ — шпора
 pd.DataFrame({'numbers': range(10), 'chars':['a']*10}) # таблица (Data Frame)
 frame = pd.read_csv('data.tsv', header=0, sep='\t') # чтение CSV
 frame.colums # показать имена столбцов таблицы
@@ -307,8 +309,13 @@ frame.ix[[1,3,4,5], [0, 2]]   # то же самое
 frame[frame.Birth >= pd.datetime(1992, 1, 1)]
 frame[(frame.age >= 18) & (frame.sex != 'Female')] # сложная выборка
 
+frame.plot(y='colName1', kind='hist', color='green', title='colName1 descr') # гистограмма по данным таблицы (при подключенной библиотеке mathplotlib)
+  # kind='scatter' # точки
+data.apply(lambda row: func_name(row['colName1'], row['colName2']), axis=1) # применить функцию к значениям таблицы
+
 
 # NumPy — для упрощённой работы с массивами
+# https://docs.scipy.org/doc/
 # https://docs.scipy.org/doc/numpy/user/basics.creation.html — создание массивов
 # https://docs.scipy.org/doc/numpy/reference/routines.linalg.html#matrix-and-vector-products — операции с векторами
 import numpy as np
@@ -411,6 +418,8 @@ optimize.check_grad(f, g, [2, 2]) # точность градиента функ
 optimize.fmin_bfgs(f, [2, 2], fprime=g) # BFGS
 optimize.minimize(f, [2, 2], method='BFGS', jac=g) # BFGS — используется по умолчанию (?); jac — градиент
 optimize.minimize(f, [2, 2], method='Nelder-Mead') # "амёба" / метод Нелдера-Мида — используется по умолчанию (?)
+optimize.minimize(f, x0=(0, 0), method='L-BFGS-B', bounds=((-100, 100), (-5, 5))) # аргумент функции — двумерный массив
+optimize.minimize_scalar(f, bounds=(-5, 5))
 
 # работа с линейной алгеброй
 from scipy import linalg
@@ -453,6 +462,7 @@ np.random.choice(elements, 10, p=probabilities)
 # Matplotlib — построение графиков
 %matplotlib inline # чтобы графики отображались сразу в jupyter
 from matplotlib import pylab as plt
+# http://matplotlib.org/
 # http://matplotlib.org/users/index.html
 
 x = np.arange(-10, 10, 0.1)
@@ -472,18 +482,45 @@ plt.axvline(x=EX, color='k', linestyle='--') # прямая линия
 plt.title("Function")
 
 
+# Больше графиков, больше!
+import seaborn as sns
+# http://seaborn.pydata.org/
+sns.pairplot(data) # построение попарных графиков в двумерном массиве
+sns.boxplot(x, y) # ящики с усами
+
+# 3D-графики
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.gca(projection='3d') # get current axis
+
+# Создаем массивы NumPy с координатами точек по осям X и У.
+# Используем метод meshgrid, при котором по векторам координат
+# создается матрица координат. Задаем нужную функцию Z(x, y).
+X = np.arange(-5, 5, 0.25)
+Y = np.arange(-5, 5, 0.25)
+X, Y = np.meshgrid(X, Y)
+Z = np.sin(np.sqrt(X**2 + Y**2))
+
+# Наконец, используем метод *plot_surface* объекта
+# типа Axes3DSubplot. Также подписываем оси.
+surf = ax.plot_surface(X, Y, Z)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+plt.show()
 
 
 # Библиотеки
 # - scikit-learn
 
-# Редакторы
+# Инструменты
 # http://jupyter.org/
-  # В этом редакторе можно одновременно работать с кусками текста на Markdown + LaTeX и кода на Python + Bash
+  # В этом редакторе можно одновременно работать с кусками текста на Markdown + LaTeX и кода на Python + Bash (или любой практически другой язык)
   # Запуск
   ipython2 notebook
   # или
   jupyter notebook
+  # http://nbviewer.jupyter.org/ — читать ноутбук онлайн
 # http://pythonfiddle.com/
 
 
