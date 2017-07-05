@@ -279,6 +279,8 @@ frame['IsStudent'] = (False, True)
 
 # Удаление строк
 frame.drop([5,6], axis=0, inplace=True) # удаление строк 5 и 6 с заменой таблицы
+axis=0 # операция выполняется для каждого столбца
+axis=1 # операция выполняется для каждой строки
 
 # Удаление столбцов
 frame.drop('newCol', axis=1, inplace=True) # axis=1 указывает, что мы удаляем именно столбец
@@ -288,6 +290,7 @@ frame.to_csv('data.csv', sep=',', header=True, index=None)
 
 frame.dtypes # типы объектов в таблице
 frame.colName.apply(pd.to_datetime) # изменение типа данных в таблице на формат даты и времени
+frame.apply(lambda row: func_name(row['colName1'], row['colName2']), axis=1) # применить функцию к значениям таблицы
 
 frame.info() # мини-сводка по всем колонкам
 frame.fillna('заполнитель', inplace=True) # заполнение пустых ячеек
@@ -311,7 +314,6 @@ frame[(frame.age >= 18) & (frame.sex != 'Female')] # сложная выборк
 
 frame.plot(y='colName1', kind='hist', color='green', title='colName1 descr') # гистограмма по данным таблицы (при подключенной библиотеке mathplotlib)
   # kind='scatter' # точки
-data.apply(lambda row: func_name(row['colName1'], row['colName2']), axis=1) # применить функцию к значениям таблицы
 
 
 # NumPy — для упрощённой работы с массивами
