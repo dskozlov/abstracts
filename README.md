@@ -25,3 +25,12 @@ __Внимание!__
 ## Дополнительные источники
 - [Группа поддержки ВК](https://vk.com/ip.knowledgebase)
 - [Подборка __шикарных__ источников информации](https://github.com/sindresorhus/awesome)
+
+## Образовательные ресурсы
+- [Lynda.com](https://www.lynda.com/)
+- [udemy](https://www.udemy.com/)
+- [Pluralsight](https://www.pluralsight.com/)
+- [Coursera](https://www.coursera.org/)
+- [Code School](https://www.codeschool.com/learn)
+- [Универсариум](http://universarium.org/)
+- [Лекторий МФТИ](http://lectoriy.mipt.ru/)
