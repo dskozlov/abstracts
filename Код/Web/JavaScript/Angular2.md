@@ -256,7 +256,7 @@ import { UnlessDirective } from './unless.directive';
 ```
 `ngStyle` задаёт CSS-стиль
 ```html
-<div [ngStyle]="{"color": "red"}"></div>
+<div [ngStyle]="{'color': 'red'}"></div>
 ```
 
 #### Создание собственной атрибутной директивы
