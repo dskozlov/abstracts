@@ -749,6 +749,7 @@ try {
 
 // Инструменты
 // https://c9.io/
+// [Profiler](https://developer.mozilla.org/ru/docs/Tools/Profiler) — отслеживание времени выполнения кода
 
 // Полезные фишки для сайтов
 // http://scrollmagic.io/
@@ -761,6 +762,7 @@ try {
 - [Maximilian Schwarzmueller](https://mschwarzmueller.com/)
 
 // Источники
+// [ ] [Дэвид Флэнаган — JavaScript. Подробное руководство](http://kharchuk.ru/JavaScript.pdf)
 // [x] https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-1
 // [x] https://www.codeschool.com/courses/javascript-road-trip-part-2
