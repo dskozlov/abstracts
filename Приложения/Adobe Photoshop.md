@@ -50,6 +50,6 @@ F5 | Отобразить или спрятать палитру brushes
 
 ## Источники
 - [ ] [Видеоуроки](https://vk.com/videos-79901615)
-- [ ] [Illustrator CC 2017 One-on-One Fundamentals](https://www.lynda.com/Illustrator-tutorials/Illustrator-CC-2017-One-One-Fundamentals/497773-2.html)
+- [ ] [Photoshop CC 2017 One-on-One: Fundamentals](https://www.lynda.com/course-tutorials/Photoshop-CC-2017-One-One-Fundamentals/497776-2.html)
 - [ ] [Photoshop CC 2017 One-on-One: Advanced](https://www.lynda.com/Photoshop-tutorials/Photoshop-CC-2017-One-One-Advanced/497775-2.html)
 - [ ] [Photoshop CC 2017 One-on-One: Mastery](https://www.lynda.com/Design-tutorials/Photoshop-CC-2017-One-One-Mastery/497777-2.html)
